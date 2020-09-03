@@ -1,3 +1,46 @@
 baseURL = "https://tehgm.github.io/"
 languageCode = "en-gb"
 title = "TehGM"
+theme = "LoveIt-0.2.10"
+
+[permalinks]
+	posts = "blog/:title"
+
+[params]
+	version = "0.2.X"
+	defaultTheme = "dark"
+
+	[params.footer]
+		hugo = false
+
+	[params.home.profile]
+		enable = true
+		social = true
+		avatarURL = "https://cdn.tehgm.net/global/img/tehgm_avatar.png"
+		title = "TehGM"
+		subtitle = "ASP.NET Core programmer by profession; <br/> Gamer and developer of libraries and bots by hobby;"
+	[params.home.posts]
+		enable = false
+	[params.social]
+		GitHub = "TehGM"
+		Twitter = "TehOriginalGM"
+		Youtubecustom = "TehGM"
+		Reddit = "TehGM"
+		Stackoverflow = "TehGM"
+		Patreon = "TehGMdev"
+		Steam = "TehGM"
+		Twitch = "TehGM"
+		Email = "admin@tehgm.net"
+
+[author]
+	name = "TehGM"
+	email = "admin@tehgm.net"
+	link = "https://tehgm.net"
+
+
+[menu]
+	[[menu.main]]
+	identifier = "blog"
+	name = "Blog"
+	url = "https://blog.tehgm.net"
+	title = "Blog"
