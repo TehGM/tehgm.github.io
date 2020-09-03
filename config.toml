@@ -18,7 +18,7 @@ theme = "LoveIt-0.2.10"
 		social = true
 		avatarURL = "https://cdn.tehgm.net/global/img/tehgm_avatar.png"
 		title = "TehGM"
-		subtitle = "ASP.NET Core programmer by professions; Gamer and developer of libraries and bots by hobby;"
+		subtitle = "ASP.NET Core programmer by profession; <br/> Gamer and developer of libraries and bots by hobby;"
 	[params.home.posts]
 		enable = false
 	[params.social]
