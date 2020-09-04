@@ -2,6 +2,9 @@ baseURL = "https://tehgm.net/"
 languageCode = "en-gb"
 title = "TehGM"
 theme = "LoveIt-0.2.10"
+description = "ASP.NET Core programmer by profession. Gamer and developer of libraries and bots by hobby. This is my personal website - technology, personal thoughts, and more."
+dateFormat = "02.01.2006"
+images = [ "https://cdn.tehgm.net/global/img/tehgm_avatar.png" ]
 
 [permalinks]
 	posts = "blog/:title"
@@ -9,6 +12,13 @@ theme = "LoveIt-0.2.10"
 [params]
 	version = "0.2.X"
 	defaultTheme = "dark"
+
+	[params.app]
+		title = "TehGM"
+
+	[params.header.title]
+		name = "TehGM"
+		typeit = true
 
 	[params.footer]
 		hugo = false
@@ -32,6 +42,10 @@ theme = "LoveIt-0.2.10"
 		Twitch = "TehGM"
 		Email = "admin@tehgm.net"
 
+	[params.seo]
+		image = "https://cdn.tehgm.net/global/img/tehgm_avatar.png"
+		thumbnail = "https://cdn.tehgm.net/global/img/tehgm_avatar.png"
+
 [author]
 	name = "TehGM"
 	email = "admin@tehgm.net"
@@ -44,3 +58,4 @@ theme = "LoveIt-0.2.10"
 	name = "Blog"
 	url = "https://blog.tehgm.net"
 	title = "Blog"
+	weight = 1
