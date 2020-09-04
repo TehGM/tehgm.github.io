@@ -6,18 +6,10 @@
     {{- end -}}
     {{- if $avatar -}}
         <div class="home-avatar">
-            {{- $menus := $.Site.Menus.main | default slice -}}
-            {{- with index $menus 0 -}}
-                {{- $url := .URL | relLangURL -}}
-                {{- with .Page -}}
-                    {{- $url = .RelPermalink -}}
-                {{- end -}}
-                <a href="{{ $url }}"{{ with .Title | default .Name }} title="{{ . }}"{{ end }}{{ if (urls.Parse $url).Host }} rel="noopener noreffer" target="_blank"{{ end }}>
-                    {{- dict "Src" $avatar | partial "plugin/image.html" -}}
+            {{- $avatarHref := $profile.avatarHref | default .Site.BaseURL -}}
+                <a href="{{ $avatarHref }}" title="{{ .Site.Title }}" rel="noopener noreffer" target="_blank">
+                    {{- dict "Src" $avatar "Title" .Site.Title | partial "plugin/image.html" -}}
                 </a>
-            {{- else -}}
-                {{- dict "Src" $avatar | partial "plugin/image.html" -}}
-            {{- end -}}
         </div>
     {{- end -}}
 
