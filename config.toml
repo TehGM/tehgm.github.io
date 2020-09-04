@@ -56,6 +56,6 @@ images = [ "https://cdn.tehgm.net/global/img/tehgm_avatar.png" ]
 	[[menu.main]]
 	identifier = "blog"
 	name = "Blog"
-	url = "https://blog.tehgm.net"
+	url = "/blog/"
 	title = "Blog"
 	weight = 1
