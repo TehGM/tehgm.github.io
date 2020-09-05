@@ -2,10 +2,13 @@
 {{- $image := .Get "image" | default .Site.Params.home.profile.avatarURL -}}
 {{- $imageAlt := .Get "imageAlt" | default "Avatar" -}}
 {{- $title := "" -}}
+{{- $stars := 0 -}}
 
 {{- if .IsNamedParams -}}
+    {{- $stars = .Get "stars" | default 0 -}}
     {{- $title = .Get "title" -}}
 {{- else -}}
+    {{- $stars = .Get 0 | default 0 -}}
     {{- $title = .Get 1 -}}
 {{- end -}}
 
@@ -18,5 +21,19 @@
             <h2>{{ $title }}</h2>
         {{- end -}}
         <p>{{ $inner }}</p>
+        {{- if ne $stars 0 -}}
+            <div class="stars">
+                {{- range $i, $sequence := (seq 5) -}}
+                    {{- $s := (add $i 1) -}}
+                    {{- if or (lt $s $stars) (eq $s $stars) -}}
+                        <span class="fas fa-star"></span>
+                    {{- else if lt $s (add $stars 1) -}}
+                        <span class="fas fa-star-half-alt"></span>
+                    {{- else -}}
+                        <span class="far fa-star"></span>
+                    {{- end -}}
+                {{- end -}}
+            </div>
+        {{- end -}}
     </div>
 </div>

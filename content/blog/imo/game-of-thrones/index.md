@@ -91,6 +91,6 @@ I think the last season was okay. It as good compared to previous ones, but it w
 The second last episode left me in "wow" emotion (although I wasn't really surprised by what happened), and the last one was really slow paced, which IMO fit GoT story very well - soothing after a lot happening in the show. While many people hated it, I believe it was done right, even though not necessarily perfect.
 
 
-{{<testimonial title="My opinion?">}}
+{{<testimonial stars=4 title="My opinion?">}}
 GoT is a fine show. I liked it. I still think it was bit overhyped - it won't beat The Expanse, The 100 and The X Files for me, but I probably could place it 4th. I am not 100% sure about it, but over the time the show indeed did grow on me, and I must say it's actually good - just not as good as people hyped it to be, compared to my other favourites. But yes, this is a purely subjective verdict.
 {{</testimonial>}}

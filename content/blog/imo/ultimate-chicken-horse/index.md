@@ -95,7 +95,7 @@ The game has very high replay-ability since maps are mostly player-driven, and P
 
 Ultimate Chicken Horse is available on PC through [Steam](https://store.steampowered.com/app/386940/Ultimate_Chicken_Horse/) and Origin, and on Nintendo Switch, PlayStation 4 and Xbox One. It costs 11GBP on [Steam](https://store.steampowered.com/app/386940/Ultimate_Chicken_Horse/) at the time I am writing this, and is also available on [developer's website](https://www.cleverendeavourgames.com/ultimate-chicken-horse).
 
-{{<testimonial title="My opinion?">}}
+{{<testimonial stars=5 title="My opinion?">}}
 This game is absolutely great - beats any other party game I've ever played in my life. It's so much fun, it'll make you laugh even when you're seriously depressed - trust me, I've been there, so I know.
 
 Buy the game, call your friends and/or family to come over, grab few beers, and make life of their in-game animal avatars hell.

@@ -23,4 +23,14 @@
 .testimonial .content {
     width: 75%;
     word-break: break-word;
+
+    .stars {
+        margin-top: 15px;
+        font-size: 33px;
+        text-align: center;
+
+        span + span {
+            margin-left: 10px;
+        }
+    }
 }
