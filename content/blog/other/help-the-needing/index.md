@@ -15,7 +15,7 @@ series: []
 aliases: 
 - /blog/uncategorized/help-the-needing
 
-featuredImage: ""
+featuredImage: "thumb.png"
 featuredImagePreview: ""
 ---
 
@@ -65,4 +65,4 @@ Just donate to a charity. No matter what form, if you have a stable income, you 
 
 I added a link to [The Scars Foundation](https://www.godsmack.com/scarsfoundation) on the side panel of this blog. You can join me in helping them, but feel free to choose other charity if you wish - no matter what you pick, there will be someone somewhere who will be really thankful to you.
 
-<iframe src="//www.youtube.com/embed/-wSrljiomEw" allowfullscreen="allowfullscreen" height="314" width="560"></iframe>
+{{<youtube -wSrljiomEw >}}

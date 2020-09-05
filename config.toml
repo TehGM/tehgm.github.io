@@ -26,6 +26,12 @@ images = [ "https://cdn.tehgm.net/global/img/tehgm_avatar.png" ]
 	[params.Blog]
 		title = "TehGM's Blog"
 
+	[params.page]
+		lightgallery = true
+
+		[params.page.toc]
+			auto = false
+
 	[params.home.profile]
 		enable = true
 		social = true

@@ -25,7 +25,7 @@ IDs sometimes need to be made public - be it for use in links, WebAPI requests, 
 
 <!--more-->
 
-# Why Sequential IDs are evil
+## Why Sequential IDs are evil
 
 Imagine a website allowing users upload some files or data. Once user uploads the file/data, the website tells user "hey, now you can access your stuff at `totallysecretfilesspace.com/file/abcdef`. Cool, right? User can now access the file anywhere and even share it.
 
@@ -37,7 +37,7 @@ Now severity may wary. Very likely, this file is not useful to anyone but upload
 
 For an example, I'll use the website used by a popular screenshots tool LightShot - prnt.sc.
 
-I use LightShot daily - I just don't upload the screenshot automatically. But for the example, I took a screenshot and clicked upload. It gave me the following link: [http://prntscr.com/u4f4ih](http://prntscr.com/u4f4ih). Now, I change the ID in the link by one letter, and suddenly have someone's screenshot of YouTube: [https://prnt.sc/u4f4ig](https://prnt.sc/u4f4ig).
+I use LightShot daily - I just don't upload the screenshot automatically. But for the example, I took a screenshot and clicked upload. It gave me the following link: http://prntscr.com/u4f4ih. Now, I change the ID in the link by one letter, and suddenly have someone's screenshot of YouTube: https://prnt.sc/u4f4i).
 
 YouTube screenshot isn't dangerous, but as I mentioned earlier, people tend to upload screenshots of very personal nature.
 
@@ -51,7 +51,7 @@ In fact, only 2 files of the entire tool are really needed: [ScreenshotID.cs](ht
 
 This really shows that semi-automating (or even full-automating) scrapping of sequential ID-based web applications is so easy, so virtually anyone can do it.
 
-# Alternatives
+## Alternatives
 
 Now you might ask, how to deal with the problem. Well, there are a few options.
 
@@ -71,8 +71,7 @@ Encoding GUID bytes (for example using Base64) works well for making them much s
 
 For URL shortener project, I tried reducing the length of GUID even further by calling C#'s `GetHashCode()`. I expected collisions to occur, but they started happening way faster than I expected - at around 400k GUIDs generated, collisions were very frequent.
 
-[caption id="attachment_194" align="aligncenter" width="735"][![](http://blog.tehgm.net/wp-content/uploads/2020/08/unknown.png)
-](http://blog.tehgm.net/wp-content/uploads/2020/08/unknown.png) GUID HashCode Collision Test[/caption]
+{{<image src="screenshot1.png" alt="Screenshot" title="GUID HashCode Collision Test" caption="GUID HashCode Collision Test">}}
 
 ### DateTime
 
@@ -86,7 +85,7 @@ After researching GUIDs, I came across a cool looking library called [Hashids](h
 
 With this library, you can store normal (even sequential) IDs in database, while providing non-sequential string IDs publicly.
 
-# But Sequential IDs aren't always evil!
+## But Sequential IDs aren't always evil!
 
 You might shout this in response to this post. And you'd be absolutely right!
 

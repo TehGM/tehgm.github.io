@@ -19,7 +19,7 @@ series: []
 aliases: 
 - imo-game-of-thrones
 
-featuredImage: ""
+featuredImage: "thumb.png"
 featuredImagePreview: ""
 ---
 
@@ -30,10 +30,9 @@ However, this summer I decided to catch up. I was fed up with spoilers all over 
 Now, I'm not good at reviews, so I might not talk about everything I should. Treat this post (and all other IMO posts) as just opinions and thoughts rather than a comprehensive review.
 
 <!--more-->
-
-		
-			Potential Spoilers Warning
-							I try to avoid direct spoilers, but I may talk about stuff that some people would consider a spoiler. If you haven't watched the show yet, you should do it before reading this post, or any other topic about GoT on the internet for that matter. You have been warned.
+{{<admonition warning "Potential Spoilers Warning" true>}}
+I try to avoid direct spoilers, but I may talk about stuff that some people would consider a spoiler. If you haven't watched the show yet, you should do it before reading this post, or any other topic about GoT on the internet for that matter. You have been warned.
+{{</admonition>}}
 		
 
 ## The pacing is... strange
@@ -76,7 +75,7 @@ I believe the right intro plays a great role in how we perceive the show. If int
 
 I no longer wonder why it became iconic. And why Leo made a cover of it...
 
-<iframe src="//www.youtube.com/embed/6austQHyJQU" allowfullscreen="allowfullscreen" height="314" data-mce-fragment="1" width="560"></iframe>
+{{<youtube 6austQHyJQU >}}
 
 ## The last season
 
@@ -91,25 +90,7 @@ I think the last season was okay. It as good compared to previous ones, but it w
 
 The second last episode left me in "wow" emotion (although I wasn't really surprised by what happened), and the last one was really slow paced, which IMO fit GoT story very well - soothing after a lot happening in the show. While many people hated it, I believe it was done right, even though not necessarily perfect.
 
-		
-									![](http://blog.tehgm.net/wp-content/uploads/2019/09/morte3-150x150.png)
 
-				
-
-## My opinion?
-
-
-
-
+{{<testimonial title="My opinion?">}}
 GoT is a fine show. I liked it. I still think it was bit overhyped - it won't beat The Expanse, The 100 and The X Files for me, but I probably could place it 4th. I am not 100% sure about it, but over the time the show indeed did grow on me, and I must say it's actually good - just not as good as people hyped it to be, compared to my other favourites. But yes, this is a purely subjective verdict.
-
-
-		
-
-
-			  * 
-			  * 
-			  * 
-			  * 
-			  * 
-		
+{{</testimonial>}}

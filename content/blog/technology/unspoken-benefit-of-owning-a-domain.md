@@ -46,4 +46,4 @@ I am still thinking of ideas. Browser based game? ASP.NET Core based homepage to
 
 ## Having domain feels cool
 
-I told my best friend when he was buying his own domain after I bought mine: "_owning a domain opens up possibilities. Ones which you de facto already had, but with own domain they're just cooler_". I think that best summarizes the benefit of owning a domain. Besides all the benefits everyone talks around, it is simply cool, especially for the techy folks.
+I told [my best friend](https://kalik.dev) when he was buying his own domain after I bought mine: "_owning a domain opens up possibilities. Ones which you de facto already had, but with own domain they're just cooler_". I think that best summarizes the benefit of owning a domain. Besides all the benefits everyone talks around, it is simply cool, especially for the techy folks.

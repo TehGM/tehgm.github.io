@@ -19,7 +19,7 @@ series: []
 aliases: 
 - imo-ultimate-chicken-horse
 
-featuredImage: ""
+featuredImage: "thumb.jpg"
 featuredImagePreview: ""
 ---
 
@@ -35,28 +35,16 @@ This name will make most people go like "what? no...". But those that do skip th
 
 So what actually is this game about? Simply put, it's a platformer party game. A player is a silly animal of choice, and is placed together with other players in the same start area on a map. The map can have various walls, ground (or instead of ground - a huge pit that will kill you if you fall into it), moving elements, and sometimes traps. There's also finish area, which is your goal. Each player can place an element on the map that allows them reach that goal. Sounds simple? Well, there's a twist: you have to also make it really hard (ideally impossible) for others. This is where all the fun is coming from.
 
-		
-							
-											[
-							![](http://blog.tehgm.net/wp-content/uploads/2019/09/2015-11-10Screenshot2.png)
-								](http://blog.tehgm.net/wp-content/uploads/2019/09/2015-11-10Screenshot2.png)
-											Source: Clever Endeavour Games (https://www.cleverendeavourgames.com/ultimate-chicken-horse)
+{{<image src="screenshot1.png" alt="Screenshot" title="Ultimate Chicken Horse" caption="Image source: [Clever Endeavour Games](https://www.cleverendeavourgames.com/ultimate-chicken-horse)">}}
 										
 		
 
 ## Cutthroat competition
 
 This game is highly competitive. Each of the players is set against every other player. The match is split into the rounds. During each round, each player places a trap element (more on that below), and tries their best to reach the finish area. Once all players either reached the finish line or died trying, game gives out points for managing to reach the target place (displayed as progress bars). Bonus points are given for reaching the finish line first, killing other player with a trap, or winning after failing for few previous rounds. However, no points for reaching the end are given to anyone if everyone manages to do it - at least one player has to fail, otherwise the game will say that it was too easy. Once scores are given (or not), next round starts exactly the same, except previously placed obstacles remain on the map. Game ends once one player reaches required amount of points, or after certain count of rounds.
-
-		
+	
+{{<image src="screenshot2.jpg" alt="Screenshot" title="Ultimate Chicken Horse" caption="Image source: [Giant Bomb](https://www.giantbomb.com/shows/quick-look-ultimate-chicken-horse/2970-12694)">}}
 							
-											[
-							![](http://blog.tehgm.net/wp-content/uploads/2019/09/2831896-cp_ultimatechickenhorse_ql.00_19_06_03.still002-1024x576.jpg)
-								](http://blog.tehgm.net/wp-content/uploads/2019/09/2831896-cp_ultimatechickenhorse_ql.00_19_06_03.still002.jpg)
-											Source: Giant Bomb (https://www.giantbomb.com/shows/quick-look-ultimate-chicken-horse/2970-12694)
-										
-		
-
 But since this is a party game, the competition is actually funny. Unless you have some joy-killer friend playing with you, you most likely will just laugh at each other's and own mistakes, sometimes throw an insult purely as a joke, and just keep playing and having fun even if you aren't really good - because even worse players can get entertainment from bothering others in-game.
 
 Additionally, player animals have a dance action - and the animal will start singing in a silly way, which is very functional as taunting other players.
@@ -71,14 +59,7 @@ Elements vary a fair bit. There are normal planks to walk on and blocks that bre
 
 The thing is, elements in the Party Box are randomized, and once one player picks an element, it disappears, so other players can't pick it anymore. So the first thing at the beginning of a round is a rush to pick an element that you want before someone else does it. This simple feature adds a lot of unpredictability to each match.
 
-		
-							
-											[
-							![](http://blog.tehgm.net/wp-content/uploads/2019/09/partybox.jpg)
-								](http://blog.tehgm.net/wp-content/uploads/2019/09/partybox.jpg)
-											Source: Plant Powered Gamers (https://plantpoweredgamers.com/2018/07/04/are-you-the-ultimate-chicken-horse-maybe/)
-										
-		
+{{<image src="screenshot3.jpg" alt="Screenshot" title="Ultimate Chicken Horse" caption="Image source: [Plant Powered Gamers](https://plantpoweredgamers.com/2018/07/04/are-you-the-ultimate-chicken-horse-maybe/)">}}
 
 After picking the element, you place it on any spot on the map as long as it doesn't already contain anything else. This ensures the possibilities are seemingly endless.
 
@@ -100,14 +81,7 @@ This game looks quite good. It has cartoonish graphics that are very readable an
 
 I believe the only people who will be unhappy with how this game looks are gamers that always need top-notch almost-realistic graphics. But they should chill and open up for different styles, really.
 
-		
-							
-											[
-							![](http://blog.tehgm.net/wp-content/uploads/2019/09/2015-04-15Farm_Titleweb.png)
-								](http://blog.tehgm.net/wp-content/uploads/2019/09/2015-04-15Farm_Titleweb.png)
-											Source: Clever Endeavour Games (https://www.cleverendeavourgames.com/ultimate-chicken-horse)
-										
-		
+{{<image src="screenshot4.png" alt="Screenshot" title="Ultimate Chicken Horse" caption="Image source: [Clever Endeavour Games](https://www.cleverendeavourgames.com/ultimate-chicken-horse)">}}
 
 Sounds... this is gonna be hard for me to describe, as I don't listen to details much in general, yet alone with friends next to me, all laughing at something stupid someone did and getting excited when trying to jump between a saw, crossbow bolt and a black hole. But I never noticed anything bad with sounds, so I suppose they're fit just well.
 
@@ -121,35 +95,10 @@ The game has very high replay-ability since maps are mostly player-driven, and P
 
 Ultimate Chicken Horse is available on PC through [Steam](https://store.steampowered.com/app/386940/Ultimate_Chicken_Horse/) and Origin, and on Nintendo Switch, PlayStation 4 and Xbox One. It costs 11GBP on [Steam](https://store.steampowered.com/app/386940/Ultimate_Chicken_Horse/) at the time I am writing this, and is also available on [developer's website](https://www.cleverendeavourgames.com/ultimate-chicken-horse).
 
-		
-									![](http://blog.tehgm.net/wp-content/uploads/2019/09/morte3-150x150.png)
-
-				
-
-## My opinion?
-
-
-
-
+{{<testimonial title="My opinion?">}}
 This game is absolutely great - beats any other party game I've ever played in my life. It's so much fun, it'll make you laugh even when you're seriously depressed - trust me, I've been there, so I know.
-
-
-
 
 Buy the game, call your friends and/or family to come over, grab few beers, and make life of their in-game animal avatars hell.
 
-
-
-
 One of the best games I've ever bought.
-
-
-		
-
-
-			  * 
-			  * 
-			  * 
-			  * 
-			  * 
-		
+{{</testimonial>}}
