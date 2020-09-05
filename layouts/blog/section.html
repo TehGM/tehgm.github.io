@@ -4,9 +4,6 @@
     {{- else -}}
         {{- .Params.Title | default (T .Section) | default .Section }} - {{ .Site.Title -}}
     {{- end -}}
-    {{- if ne .Paginator.PageNumber 1 -}}
-        &nbsp;- Page {{ .Paginator.PageNumber -}}
-    {{- end -}}
 {{- end -}}
 
 {{- define "content" -}}
