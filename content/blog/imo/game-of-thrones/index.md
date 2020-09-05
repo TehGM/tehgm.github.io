@@ -2,7 +2,7 @@
 title: 'IMO: Game of Thrones'
 slug: game-of-thrones
 subtitle: ""
-description: ""
+description: "My opinion on Game of Thrones"
 
 date: 2019-09-22 02:24:07+00:00
 lastmod: 2019-09-22 02:24:07+00:00

@@ -2,7 +2,7 @@
 title: 'IMO: Ultimate Chicken Horse'
 slug: ultimate-chicken-horse
 subtitle: ""
-description: ""
+description: "My opinion on Ultimate Chicken Horse"
 
 date: 2019-09-29 19:46:21+00:00
 lastmod: 2019-09-29 19:46:21+00:00

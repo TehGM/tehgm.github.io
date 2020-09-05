@@ -2,7 +2,7 @@
 title: Unspoken benefit of owning a domain
 slug: unspoken-benefit-owning-domain
 subtitle: ""
-description: ""
+description: "Why I think owning a domain is great - and the benefit that people rarely mention."
 
 date: 2019-09-20 19:00:33+00:00
 lastmod: 2019-09-20 19:00:33+00:00

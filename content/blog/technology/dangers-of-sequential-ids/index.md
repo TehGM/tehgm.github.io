@@ -1,7 +1,7 @@
 ---
 title: Dangers of Sequential IDs
 subtitle: ""
-description: ""
+description: "Sequential IDs can be dangerous. This post explains why you should avoid them, and what are your alternatives."
 
 date: 2020-08-23 16:15:21+00:00
 lastmod: 2020-08-23 16:15:21+00:00
