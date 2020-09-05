@@ -4,7 +4,7 @@ subtitle: ""
 description: "Sequential IDs can be dangerous. This post explains why you should avoid them, and what are your alternatives."
 
 date: 2020-08-23 16:15:21+00:00
-lastmod: 2020-08-23 16:15:21+00:00
+lastmod: 2020-09-05 21:08:03+01:00
 draft: false
 list: true
 hiddenFromSearch: false
@@ -75,7 +75,7 @@ For URL shortener project, I tried reducing the length of GUID even further by c
 
 ### DateTime
 
-For content that isn't generated frequently, using DateTime (Ticks property) can work well. Collision chance won't be really high in such small infrequently used applications. The code would also be really simple: `DateTime.Now.Ticks.ToString("x"`**`)`.**
+For content that isn't generated frequently, using DateTime (Ticks property) can work well. Collision chance won't be really high in such small infrequently used applications. The code would also be really simple: `DateTime.UtcNow.Ticks.ToString("x")`.
 
 However DateTime ticks might not be ideal for any kind of distributed systems that are used a lot by users - in such applications, collision chance is real. For that reason, I'd personally advise against this, but YMMV.
 
