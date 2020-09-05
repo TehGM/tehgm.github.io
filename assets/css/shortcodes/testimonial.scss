@@ -1,0 +1,26 @@
+.testimonial {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin: 20px 10px;
+}
+
+.testimonial .image-container {
+    width: 25%;
+    text-align: center;
+    flex-basis: content;
+    flex-shrink: 0;
+    margin-right: 20px;
+}
+
+.testimonial img {
+    border-radius: 42%;
+    width: 150px;
+    border-style: solid;
+    margin: 0;
+}
+
+.testimonial .content {
+    width: 75%;
+    word-break: break-word;
+}
