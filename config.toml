@@ -6,6 +6,8 @@ images = [ "https://cdn.tehgm.net/global/img/tehgm_avatar.png" ]
 
 [permalinks]
 	blog = "/:sections/:slug"
+	categories = "/blog/categories/:slug"
+	tags = "/blog/tags/:slug"
 
 [params]
 	version = "0.2.X"
