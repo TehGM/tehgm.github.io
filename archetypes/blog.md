@@ -1,5 +1,6 @@
 ---
 title: "{{ replace .TranslationBaseName "-" " " | title }}"
+slug: {{ .ContentBaseName }}
 subtitle: ""
 description: ""
 
