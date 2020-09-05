@@ -25,9 +25,6 @@ images = [ "https://cdn.tehgm.net/global/img/tehgm_avatar.png" ]
 	[params.footer]
 		hugo = false
 
-	[params.Blog]
-		title = "TehGM's Blog"
-
 	[params.page]
 		lightgallery = true
 
