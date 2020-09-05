@@ -1,6 +1,9 @@
+@import "shortcodes/testimonial";
+
 .home {
     .home-profile {
         .home-title {
+            font-family: $special-font-family;
             font-weight: 500;
             font-size: 50px;
             padding-bottom: 2rem;
@@ -12,4 +15,12 @@
 .header-title {
     font-weight: 500;
     font-size: 1.9rem !important;
+}
+
+
+.page.archive {
+    @extend .home, [posts];
+    .summary .single-title {
+        text-align: left;
+    }
 }
