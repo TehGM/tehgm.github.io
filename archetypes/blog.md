@@ -9,6 +9,7 @@ lastmod: {{ .Date }}
 draft: true
 list: true
 hiddenFromSearch: false
+type: blog
 
 categories: []
 tags: []
