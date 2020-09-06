@@ -13,7 +13,7 @@ enableRobotsTXT = true
 	version = "0.2.X"
 	dateFormat = "02.01.2006"
 	defaultTheme = "dark"
-	description = "ASP.NET Core programmer by profession. Gamer and developer of libraries and bots by hobby. This is my personal website - technology, personal thoughts, and more."
+	description = "ASP.NET Core programmer by profession. Gamer and developer of libraries and bots by hobby. My personal website - technology, personal thoughts, and more."
 	images = [ "https://cdn.tehgm.net/global/img/tehgm_avatar.png" ]
 
 	[params.app]
