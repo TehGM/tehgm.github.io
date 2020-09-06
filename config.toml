@@ -2,6 +2,7 @@ baseURL = "https://tehgm.net/"
 languageCode = "en-gb"
 title = "TehGM"
 theme = "LoveIt-0.2.10"
+enableRobotsTXT = true
 
 [permalinks]
 	blog = "/:sections/:slug"
