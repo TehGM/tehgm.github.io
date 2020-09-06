@@ -36,7 +36,7 @@ With Hugo, I can easily have both in same place - granted, Wordpress allows that
 
 I used free tier of [AwardSpace](https://www.awardspace.com/) to host the blog. I didn't want to have running cost of the website, because I knew it'll not be visited often (especially in the beginning), and I am not really a blogging person, so I didn't see myself maintaining it very frequently.
 
-The problem with free hosting is that it was terribly slow. Page was taking ages to load, and sometimes it was refusing to load at all cause there was even minimal traffic. And it wasn't just [AwardSpace](https://www.awardspace.com/) thing. I tried multiple different free PHP hosts, like [InfinityFree](https://infinityfree.net/), [Byet Host](https://byet.host/) or others, and while many looked better on paper, in my experience, they performed worse in my experience.
+The problem with free hosting is that it was terribly slow. Page was taking ages to load, and sometimes it was refusing to load at all cause there was even minimal traffic. And it wasn't just [AwardSpace](https://www.awardspace.com/) thing. I tried multiple different free PHP hosts, like [InfinityFree](https://infinityfree.net/), [Byet Host](https://byet.host/) or others, and while many looked better on paper, they performed worse in my experience.
 
 Hugo allows me to host the website almost everywhere, including free [GitHub Pages](https://pages.github.com/) - which not only performs much faster, but also has SSL Cert out of the box, and is fully integrated with GitHub (which as a developer, I use daily).
 
