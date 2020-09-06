@@ -35,6 +35,16 @@ images = [ "https://cdn.tehgm.net/global/img/tehgm_avatar.png" ]
 			copy = true
 			lineNumbersInTable = true
 
+		[params.page.share]
+			enable = true
+			Twitter = true
+			Facebook = true
+			Whatsapp = true
+			HackerNews = true
+			Reddit = true
+			Myspace = true
+			Tumblr = true
+
 	[params.home.profile]
 		enable = true
 		social = true
