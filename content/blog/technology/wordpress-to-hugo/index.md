@@ -30,13 +30,13 @@ Recently I migrated this very blog from Wordpress to Hugo. It wasn't a hard task
 
 Originally I hosted this blog on [blog.tehgm.net](https://blog.tehgm.net/) subdomain. While subdomains look cool, I wanted blog and ['home page'](https://tehgm.net) to be a related entity. Unfortunately, I read at multiple sources that Google considers subdomain and root domain to be separate entities. And this honestly makes sense - but unfortunately is not perfect for my use cases, and is bad for SEO.
 
-With Hugo, I can easily have both in same place - granted, Wordpress allows that too, but with next limitations I am about to mention
+With Hugo, I can easily have both in same place - granted, Wordpress allows that too, but with next limitations I am about to mention.
 
 ### Slow hosting
 
 I used free tier of [AwardSpace](https://www.awardspace.com/) to host the blog. I didn't want to have running cost of the website, because I knew it'll not be visited often (especially in the beginning), and I am not really a blogging person, so I didn't see myself maintaining it very frequently.
 
-The problem with free hosting is that it was terribly slow. Page was taking ages to load, and sometimes it was refusing to load at all cause there was even minimal traffic. And it wasn't just [AwardSpace](https://www.awardspace.com/) thing. I tried multiple different free PHP hosts, like [InfinityFree](https://infinityfree.net/), [Byet Host](https://byet.host/) or others, and while many looked better on paper, in my experience, they performed worse in my experience.
+The problem with free hosting is that it was terribly slow. Page was taking ages to load, and sometimes it was refusing to load at all cause there was even minimal traffic. And it wasn't just [AwardSpace](https://www.awardspace.com/) thing. I tried multiple different free PHP hosts, like [InfinityFree](https://infinityfree.net/), [Byet Host](https://byet.host/) or others, and while many looked better on paper, they performed worse in my experience.
 
 Hugo allows me to host the website almost everywhere, including free [GitHub Pages](https://pages.github.com/) - which not only performs much faster, but also has SSL Cert out of the box, and is fully integrated with GitHub (which as a developer, I use daily).
 
@@ -110,7 +110,7 @@ Once site was up, it was time to migrate the actual content from Wordpress websi
 
 ### Importing posts
 
-Hugo lists few tools to automate migration in its [documentation](https://gohugo.io/tools/migrations/#wordpress).
+Hugo lists a few tools to automate migration in its [documentation](https://gohugo.io/tools/migrations/#wordpress).
 
 First one is [wordpress-to-hugo-exporter](https://github.com/SchumacherFM/wordpress-to-hugo-exporter). Unfortunately this didn't work for me - AwardSpace's web-based file manager does not allow uploading zip files for free tiers, and FileZilla completely refused to connect to the server for some reason - *yet another reason to migrate to Hugo*! As an alternative, I could set up a local wordpress instance on my own computer, but that's more effort than it was worth.
 
@@ -230,7 +230,7 @@ I am really happy with the result. Not only the looks fit the current page style
 
 I opted to not include blog categories in URL, except for [IMO posts]({{<ref "/categories/imo">}}). However my Wordpress blog did include categories by default.
 
-Fortunately Hugo supports aliases out of the box - and they're simple to use as well: https://gohugo.io/content-management/urls/#aliases. With this feature, adding a redirect for every old post was a simple task.
+Fortunately Hugo supports aliases out of the box - and they're simple to use as well: https://gohugo.io/content-management/urls/#aliases. With this feature adding a redirect for every old post was a simple task.
 
 I still needed to redirect from `blog.tehgm.net` to `tehgm.net/blog` - here CloudFlare's Page Rules came in. They support wildcards, and contents of these wildcards can be input into redirection URL. Setting them is simple as well:
 {{<figure src="screenshot4.png">}}
@@ -241,4 +241,4 @@ Now that my blog is migrated from Wordpress, I no longer feel as limited as I di
 
 This blog post doesn't cover every single step I did - I also changed the [blog listing page]({{<ref "/blog/">}}) to look more like [theme's home page](https://hugoloveit.com/), rather than trimmed down [default posts page](https://hugoloveit.com/posts/), and did a few other changes. However these changes aren't necessarily migration per se - they're customizations, and therefore I skip them in this already lengthy (by my standards) post.
 
-Of course my work on this site is not done yet - I will for sure want to add more sub-pages, add some other customizations and change styling at least a little bit to make my page a bit more unique. But right now, I am not tied to Wordpress limitations - and damn, does that feel good.
+Of course my work on this site is not done yet - I will for sure want to add more sub-pages, add some other customizations and change styling at least a little bit to make my page a bit more unique. But right now I am not tied to Wordpress limitations - and damn, does that feel good.
