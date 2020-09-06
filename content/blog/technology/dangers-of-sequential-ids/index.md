@@ -36,7 +36,7 @@ Now, severity of this may vary. Most likely this file is not useful to anyone bu
 
 For an example I'll use the website used by a popular screenshot tool LightShot - prnt.sc.
 
-I use LightShot daily - I just don't upload the screenshot automatically. But for this example I took a screenshot and clicked upload. It gave me the following link: http://prntscr.com/u4f4ih. Now I change the ID in the link by one letter, and suddenly have someone's screenshot of YouTube: https://prnt.sc/u4f4i).  
+I use LightShot daily - I just don't upload the screenshot automatically. But for this example I took a screenshot and clicked upload. It gave me the following link: http://prntscr.com/u4f4ih. Now I change the ID in the link by one letter, and suddenly have someone's screenshot of YouTube: https://prnt.sc/u4f4ig.  
 YouTube screenshot isn't dangerous, but as I mentioned earlier, people tend to upload screenshots of very personal nature.
 
 ### A live example - a step further
