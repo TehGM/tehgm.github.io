@@ -2,7 +2,6 @@ baseURL = "https://tehgm.net/"
 languageCode = "en-gb"
 title = "TehGM"
 theme = "LoveIt-0.2.10"
-images = [ "https://cdn.tehgm.net/global/img/tehgm_avatar.png" ]
 
 [permalinks]
 	blog = "/:sections/:slug"
@@ -14,6 +13,7 @@ images = [ "https://cdn.tehgm.net/global/img/tehgm_avatar.png" ]
 	dateFormat = "02.01.2006"
 	defaultTheme = "dark"
 	description = "ASP.NET Core programmer by profession. Gamer and developer of libraries and bots by hobby. This is my personal website - technology, personal thoughts, and more."
+	images = [ "https://cdn.tehgm.net/global/img/tehgm_avatar.png" ]
 
 	[params.app]
 		title = "TehGM"
@@ -34,6 +34,16 @@ images = [ "https://cdn.tehgm.net/global/img/tehgm_avatar.png" ]
 		[params.page.code]
 			copy = true
 			lineNumbersInTable = true
+
+		[params.page.share]
+			enable = true
+			Twitter = true
+			Facebook = true
+			Whatsapp = true
+			HackerNews = true
+			Reddit = true
+			Myspace = true
+			Tumblr = true
 
 	[params.home.profile]
 		enable = true
@@ -56,7 +66,7 @@ images = [ "https://cdn.tehgm.net/global/img/tehgm_avatar.png" ]
 
 	[params.seo]
 		image = "https://cdn.tehgm.net/global/img/tehgm_avatar.png"
-		thumbnail = "https://cdn.tehgm.net/global/img/tehgm_avatar.png"
+		thumbnailUrl = "https://cdn.tehgm.net/global/img/tehgm_avatar.png"
 
 [author]
 	name = "TehGM"
@@ -83,3 +93,8 @@ images = [ "https://cdn.tehgm.net/global/img/tehgm_avatar.png" ]
 		codeFences = true
 		lineNos = true
 		noClasses = false
+
+[sitemap]
+	changefreq = "weekly"
+	filename = "sitemap.xml"
+	priority = 0.5
