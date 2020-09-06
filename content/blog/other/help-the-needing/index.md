@@ -30,7 +30,7 @@ I was telling my friends and family for a long time that once I have a stable in
 
 The main thing is: if you earn money and don't live 1st-to-1st, you most likely can afford to help others. You don't need to donate much. I always say "skip one Starbucks a month". That means about 4-5 british pounds a month if you live in UK. Now think about it - is 5 pounds once a month really much to you? It may be, but if it is the case, you're either cheap or need help yourself. In the former case, shame on you. In the latter - please contact some charity, I believe you deserve better.
 
-But again, the amount is not important. Donate as much or as little as you can - the point is, if you earn money, you _most likely _(with some very extreme exceptions) can afford to spare few coins per month to help others. To you it'll be almost nothing - to someone it can mean **a lot**.
+But again, the amount is not important. Donate as much or as little as you can - the point is, if you earn money, you *{{<underline>}}most likely{{</underline>}}* (with some very extreme exceptions) can afford to spare few coins per month to help others. To you it'll be almost nothing - to someone it can mean **a lot**.
 
 
 ## Which charity?
