@@ -4,7 +4,7 @@ subtitle: ""
 description: "Sequential IDs can be dangerous. This post explains why you should avoid them, and what are your alternatives."
 
 date: 2020-08-23 16:15:21+00:00
-lastmod: 2020-09-05 21:08:03+01:00
+lastmod: 2020-09-06 15:43:03+01:00
 draft: false
 list: true
 hiddenFromSearch: false
