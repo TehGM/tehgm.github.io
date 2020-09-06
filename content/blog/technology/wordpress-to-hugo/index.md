@@ -6,7 +6,7 @@ description: "The journey of migrating this blog from Wordpress CMS to Hugo stat
 
 date: 2020-09-06T12:28:59+02:00
 lastmod: 2020-09-06T12:28:59+02:00
-draft: true
+draft: false
 list: true
 hiddenFromSearch: false
 type: blog
