@@ -66,11 +66,17 @@ images = [ "https://cdn.tehgm.net/global/img/tehgm_avatar.png" ]
 
 [menu]
 	[[menu.main]]
+	identifier = "home"
+	name = "Home"
+	url = "/"
+	title = "Home"
+	weight = 1
+	[[menu.main]]
 	identifier = "blog"
 	name = "Blog"
 	url = "/blog/"
 	title = "Blog"
-	weight = 1
+	weight = 2
 
 [markup]
 	[markup.highlight]
