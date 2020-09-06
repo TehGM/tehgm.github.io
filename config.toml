@@ -31,6 +31,10 @@ images = [ "https://cdn.tehgm.net/global/img/tehgm_avatar.png" ]
 		[params.page.toc]
 			auto = false
 
+		[params.page.code]
+			copy = true
+			lineNumbersInTable = true
+
 	[params.home.profile]
 		enable = true
 		social = true
@@ -67,3 +71,9 @@ images = [ "https://cdn.tehgm.net/global/img/tehgm_avatar.png" ]
 	url = "/blog/"
 	title = "Blog"
 	weight = 1
+
+[markup]
+	[markup.highlight]
+		codeFences = true
+		lineNos = true
+		noClasses = false
