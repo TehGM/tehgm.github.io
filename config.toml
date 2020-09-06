@@ -25,14 +25,15 @@ images = [ "https://cdn.tehgm.net/global/img/tehgm_avatar.png" ]
 	[params.footer]
 		hugo = false
 
-	[params.Blog]
-		title = "TehGM's Blog"
-
 	[params.page]
 		lightgallery = true
 
 		[params.page.toc]
 			auto = false
+
+		[params.page.code]
+			copy = true
+			lineNumbersInTable = true
 
 	[params.home.profile]
 		enable = true
@@ -47,7 +48,7 @@ images = [ "https://cdn.tehgm.net/global/img/tehgm_avatar.png" ]
 		Twitter = "TehOriginalGM"
 		Youtubecustom = "TehGM"
 		Reddit = "TehGM"
-		Stackoverflow = "TehGM"
+		Stackoverflow = "4644581/tehgm?tab=profile"
 		Patreon = "TehGMdev"
 		Steam = "TehGM"
 		Twitch = "TehGM"
@@ -65,8 +66,20 @@ images = [ "https://cdn.tehgm.net/global/img/tehgm_avatar.png" ]
 
 [menu]
 	[[menu.main]]
+	identifier = "home"
+	name = "Home"
+	url = "/"
+	title = "Home"
+	weight = 1
+	[[menu.main]]
 	identifier = "blog"
 	name = "Blog"
 	url = "/blog/"
 	title = "Blog"
-	weight = 1
+	weight = 2
+
+[markup]
+	[markup.highlight]
+		codeFences = true
+		lineNos = true
+		noClasses = false

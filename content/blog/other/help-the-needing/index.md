@@ -1,5 +1,5 @@
 ---
-title: Help the needing
+title: Help the Needing
 subtitle: ""
 description: "Charity donations can save lives. And they don't need to cost you a lot."
 summary: "Charity donations can have huge impact on others, while having no impact on you - let me convince you."

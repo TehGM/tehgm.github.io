@@ -1,17 +1,11 @@
 {{- define "title" }}
-    {{- if .Site.Params.Blog.Title -}}
-        {{- .Site.Params.Blog.Title -}}
-    {{- else -}}
-        {{- .Params.Title | default (T .Section) | default .Section }} - {{ .Site.Title -}}
-    {{- end -}}
+    {{- .Params.Title | default (T .Section) | default .Section }}
 {{- end -}}
 
 {{- define "content" -}}
     <div class="page archive">
         {{- /* Title */ -}}
-        <h2 class="single-title animated pulse faster">
-            {{- .Params.Title | default (T .Section) | default .Section -}}
-        </h2>
+        <h2 class="single-title animated pulse faster">Blog</h2>
 
         {{- /* Paginate */ -}}
         {{- if .RegularPagesRecursive -}}
