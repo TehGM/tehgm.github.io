@@ -56,7 +56,7 @@ images = [ "https://cdn.tehgm.net/global/img/tehgm_avatar.png" ]
 
 	[params.seo]
 		image = "https://cdn.tehgm.net/global/img/tehgm_avatar.png"
-		thumbnail = "https://cdn.tehgm.net/global/img/tehgm_avatar.png"
+		thumbnailUrl = "https://cdn.tehgm.net/global/img/tehgm_avatar.png"
 
 [author]
 	name = "TehGM"
