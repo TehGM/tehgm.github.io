@@ -61,16 +61,16 @@ Of course this solution requires some effort to implement the security. In addit
 
 ### GUIDs
 
-The first to sequential IDs is really simple - use [GUIDs (UUIDs)](https://en.wikipedia.org/wiki/Universally_unique_identifier). They're designed to be unique, and as such, are generally not sequential (at least not in increment-by-one meaning). They unfortunately are long, so aren't great for links.
+The first alternative to sequential IDs is really simple - use [GUIDs (UUIDs)](https://en.wikipedia.org/wiki/Universally_unique_identifier). They're designed to be unique, and as such, are generally not sequential (at least not in increment-by-one meaning). They unfortunately are long, so aren't great for links.
 
 Encoding GUID bytes (for example using Base64) works well for making them much shorter. For most use cases it'll be perfect - it won't be a sequential ID, and well usable for links - think YouTube video links. Mads Kristensen posted a great example on [his blog](https://www.madskristensen.net/blog/generate-unique-strings-and-numbers-in-c/) - make sure to check it out!
 
 As an experiment I tried reducing the length of GUID even further by calling C#'s `GetHashCode()`. Of course I expected collisions to occur, but they started happening way faster than I expected - at around 400k GUIDs generated, collisions were very frequent.
 {{<image src="screenshot1.png" alt="Screenshot" title="GUID HashCode Collision Test" caption="GUID HashCode Collision Test">}}
 
-### DateTime
+### Timestamp
 
-For content that isn't generated frequently, using `DateTime` (`Ticks` property) can work well. Collision chance won't be really high in such small infrequently used applications. The code would also be really simple: `DateTime.UtcNow.Ticks.ToString("x")`.
+For content that isn't generated frequently, using Timestamp (C# example: `DateTime`'s `Ticks` property) can work well. Collision chance won't be really high in such small infrequently used applications. The code would also be really simple: `DateTime.UtcNow.Ticks.ToString("x")`.
 
 However DateTime ticks might not be ideal for any kind of distributed systems that are used a lot by users - in such applications, collision chance is real. For that reason I'd personally advise against this, but YMMV.
 
