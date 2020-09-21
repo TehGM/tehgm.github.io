@@ -3,6 +3,9 @@
 <article class="single summary" itemscope itemtype="http://schema.org/Article">
     {{- /* Featured image */ -}}
     {{- $image := $params.featuredimagepreview | default $params.featuredimage -}}
+    {{- if and $image (not (hasPrefix $image "/")) -}}
+        {{- $image = path.Join .RelPermalink $image -}}
+    {{- end -}}
     {{- with .Resources.GetMatch "featured-image" -}}
         {{- $image = .RelPermalink -}}
     {{- end -}}
