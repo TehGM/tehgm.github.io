@@ -3,4 +3,9 @@
   line-height: 3rem;
   @include transform(translateY(30vh));
   text-align: center;
+  @include link(false, false);
+
+  a {
+      cursor: pointer;
+  }
 }
