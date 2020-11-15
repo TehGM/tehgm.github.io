@@ -5,7 +5,7 @@ subtitle: ""
 description: "Running a service that exposes both gRPC and HTTP REST endpoints in ASP.NET Core behind Nginx is not as obvious as it might be. In this post, I do my best to explain how to achieve this without unnecessary pain."
 
 date: 2020-11-15T13:09:12+01:00
-lastmod: 2020-11-15T13:58:43+01:00
+lastmod: 2020-11-15T13:08:05+01:00
 draft: false
 list: true
 hiddenFromSearch: false
@@ -30,7 +30,7 @@ gRPC services are great - they're fast and lightweight. However, for many use ca
 
 ## What is gRPC?
 Let's start off by talking about what gRPC is. [gRPC](https://grpc.io/) is a fast binary Remote Procedure Call protocol developed by Google. It's really useful especially with service/microservice pattern, as it allows high speed communication between each of the components.  
-[ASP.NET Core 3.0](https://docs.microsoft.com/en-gb/aspnet/core/grpc/?view=aspnetcore-3.1) added support for gRPC services through [Grpc.AspNetCore](https://www.nuget.org/packages/Grpc.AspNetCore) package. Other flavours of .NET Core also support it, but in this blog post we focus on ASP.NET Core 3.0 usage.
+[ASP.NET Core 3.0](https://docs.microsoft.com/en-gb/aspnet/core/grpc/?view=aspnetcore-3.1) added support for gRPC services through [Grpc.AspNetCore](https://www.nuget.org/packages/Grpc.AspNetCore) package. Other flavours of .NET Core also support it, but in this blog post we focus on ASP.NET Core usage.
 
 The main issue with gRPC is that it is not supported by all clients. Prime example that is important for web developers - Postman does not support gRPC, at least as of time of writing this post. Older browsers might also have trouble with it. If these things need to be supported, there are 2 choices - stick to REST API only, or enable support for both. For my Adafruit sensor service, I did want both. Here's how I made sure it works.
 
@@ -39,7 +39,7 @@ The main issue with gRPC is that it is not supported by all clients. Prime examp
 The first step is to get the actual service code. As an example I am going to use parts of code of my AdafruitDHT service, which I might open source and describe at later time. Details of how the service functions is out of scope for this post, some parts were removed for brevity.  
 First let's create a new ASP.NET Core WebAPI project. This is a rather simple step, so let's jump into doing actual coding.
 
-#### REST Controller
+#### REST Controller code
 First let's create an API controller, that does whatever we need (in case of this example - reads AdafruitDHT sensor output) and returns data to the caller. I called it "CoreController".
 {{<highlight cs>}}
 public class CoreController : ControllerBase
@@ -90,9 +90,9 @@ message AdafruitDhtGrpcResponse {
 }
 {{</highlight>}}
 
-I also changed the .proto file properties a bit - I set value of "gRPC Stub Classes" to `Server only`, as the service does not need client classes generated - this however is fully optional.
+I also changed the .proto file properties a bit - I set value of **gRPC Stub Classes** to `Server only`, as the service does not need client classes generated - this however is fully optional.
 
-The gRPC service needs an actual C# service class too, so let's create it next to our .proto file. The service class needs to inherit from a class `AdafruitDHT.AdafruitDHTBase` that Visual Studio generated from the .proto file. If it doesn't exist, since rebuild the project to trigger class generation.  
+The gRPC service needs an actual C# service class too, so let's create it next to our .proto file. The service class needs to inherit from a class `AdafruitDHT.AdafruitDHTBase` that Visual Studio generated from the .proto file. If it doesn't exist, rebuild the project to trigger class generation.  
 The actual service code is very similar to REST Controller code - we want to keep functionality the same, after all.
 {{<highlight cs>}}
 public class AdafruitDhtGrpc : AdafruitDHT.AdafruitDHTBase
@@ -127,7 +127,7 @@ There are a few differences:
 - Instead of returning a HTTP error status code, we throw a RpcException. This will let gRPC stack handle it correctly.
 
 {{<admonition type=info title="Tip">}}
-There is also a less manual way to do it, using [Microsoft.AspNetCore.Grpc.HttpApi](https://www.nuget.org/packages/Microsoft.AspNetCore.Grpc.HttpApi) package, as described on [Microsoft Docs](https://docs.microsoft.com/en-us/aspnet/core/grpc/httpapi?view=aspnetcore-3.0). This however is an experimental project, and there is currently no commitment to it from Microsoft - at such, it might be not stable and it might not work at all.
+There is also a less manual way to do it, using [Microsoft.AspNetCore.Grpc.HttpApi](https://www.nuget.org/packages/Microsoft.AspNetCore.Grpc.HttpApi) package, as described on [Microsoft Docs](https://docs.microsoft.com/en-us/aspnet/core/grpc/httpapi?view=aspnetcore-3.0). This however is an experimental project, and there is currently no commitment to it from Microsoft - as such, it might be not stable and it might not work at all.
 {{</admonition>}}
 
 #### Enabling it all
