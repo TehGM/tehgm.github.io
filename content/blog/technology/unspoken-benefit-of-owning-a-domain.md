@@ -13,7 +13,8 @@ hiddenFromSearch: false
 categories:
 - Technology
 tags:
-- domains
+- web
+- dev
 series: []
 aliases: 
 - /blog/technology/unspoken-benefit-of-owning-a-domain
