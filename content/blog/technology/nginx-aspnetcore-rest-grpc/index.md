@@ -1,11 +1,11 @@
 ---
-title: "Nginx and ASP.NET Core: Running both HTTP REST and gRPC services at once"
+title: "Nginx and ASP.NET Core: Running both, HTTP REST and gRPC services, at once"
 slug: nginx-aspnetcore-grpc-rest
 subtitle: ""
 description: "Running a service that exposes both gRPC and HTTP REST endpoints in ASP.NET Core behind Nginx is not as obvious as it might be. In this post, I do my best to explain how to achieve this without unnecessary pain."
 
 date: 2020-11-15T13:09:12+01:00
-lastmod: 2020-11-15T13:53:12+01:00
+lastmod: 2020-11-15T13:58:43+01:00
 draft: false
 list: true
 hiddenFromSearch: false
@@ -29,7 +29,7 @@ gRPC services are great - they're fast and lightweight. However, for many use ca
 <!--more-->
 
 ## What is gRPC?
-Let's start off by talking about what is gRPC. [gRPC](https://grpc.io/) is a fast binary Remote Procedure Call protocol developed by Google. It's really useful especially with service/microservice pattern, as it allows high speed communication between each of the components.  
+Let's start off by talking about what gRPC is. [gRPC](https://grpc.io/) is a fast binary Remote Procedure Call protocol developed by Google. It's really useful especially with service/microservice pattern, as it allows high speed communication between each of the components.  
 [ASP.NET Core 3.0](https://docs.microsoft.com/en-gb/aspnet/core/grpc/?view=aspnetcore-3.1) added support for gRPC services through [Grpc.AspNetCore](https://www.nuget.org/packages/Grpc.AspNetCore) package. Other flavours of .NET Core also support it, but in this blog post we focus on ASP.NET Core 3.0 usage.
 
 The main issue with gRPC is that it is not supported by all clients. Prime example that is important for web developers - Postman does not support gRPC, at least as of time of writing this post. Older browsers might also have trouble with it. If these things need to be supported, there are 2 choices - stick to REST API only, or enable support for both. For my Adafruit sensor service, I did want both. Here's how I made sure it works.
@@ -131,7 +131,7 @@ There is also a less manual way to do it, using [Microsoft.AspNetCore.Grpc.HttpA
 {{</admonition>}}
 
 #### Enabling it all
-Now we just need to enable it in **_Startup.cs_**. Add following lines in `ConfigureServices`:
+Now we just need to enable it in _Startup.cs_. Add following lines in `ConfigureServices`:
 {{<highlight cs>}}
 // enable REST API controllers, with Netwonsoft.JSON support
 services.AddControllers().AddNewtonsoftJson();
@@ -273,7 +273,7 @@ dotnet ProjectName.dll --Environment=Development
 {{</highlight>}}
 
 #### Installing a testing tool
-Microsoft [lists a few tools to test gRPC with](https://docs.microsoft.com/en-gb/aspnet/core/grpc/test-tools?view=aspnetcore-3.0) - you can test whichever you prefer, but I personally chose [gRPCui](https://docs.microsoft.com/en-gb/aspnet/core/grpc/test-tools?view=aspnetcore-3.0#about-grpcui).  
+Microsoft [lists a few tools to test gRPC with](https://docs.microsoft.com/en-gb/aspnet/core/grpc/test-tools?view=aspnetcore-3.0) - you can use whichever you prefer, but I personally chose [gRPCui](https://docs.microsoft.com/en-gb/aspnet/core/grpc/test-tools?view=aspnetcore-3.0#about-grpcui).  
 The suggested way is to install is using [Go Tool](https://golang.org/). Once you have Go installed, just run 2 commands to install gRPCui:
 {{<highlight powershell>}}
 go get github.com/fullstorydev/grpcui/...
@@ -297,4 +297,4 @@ If everything is okay, your browser should open up a new website on localhost. T
 
 
 ## Summary
-Setting up a service behind Nginx and supports both HTTP/1 REST WebAPI and gRPC service requires some effort, but as I explained in this post, it's perfectly doable. Once you overcome the initial struggles, you can add more gRPC services to your ASP.NET Core project, and enjoy benefits of both - performance of gRPC where it's supported, and availability of HTTP/1 REST WebAPI where it's not!
+Setting up a service behind Nginx that supports both HTTP/1 REST WebAPI and gRPC service requires some effort, but as I explained in this post, it's perfectly doable. Once you overcome the initial struggles, you can add more gRPC services to your ASP.NET Core project, and enjoy benefits of both - performance of gRPC where it's supported, and availability of HTTP/1 REST WebAPI where it's not!
