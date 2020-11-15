@@ -2,7 +2,7 @@
 title: "Nginx and ASP.NET Core: Running both HTTP REST and gRPC services at once"
 slug: nginx-aspnet-grpc-rest
 subtitle: ""
-description: "How to run both REST Web API and gRPC service at once with Nginx and ASP.NET Core"
+description: "Running a service that exposes both gRPC and HTTP REST endpoints in ASP.NET Core behind Nginx is not as obvious as it might be. In this post, I do my best to explain how to achieve this without unnecessary pain."
 
 date: 2020-11-15T13:09:12+01:00
 lastmod: 2020-11-15T13:09:12+01:00
