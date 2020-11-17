@@ -6,10 +6,7 @@
     {{- end -}}
     {{- if $avatar -}}
         <div class="home-avatar">
-            {{- $avatarHref := $profile.avatarHref | default .Site.BaseURL -}}
-                <a href="{{ $avatarHref }}" title="{{ .Site.Title }}" rel="noopener noreffer" target="_blank">
-                    {{- dict "Src" $avatar "Title" .Site.Title | partial "plugin/image.html" -}}
-                </a>
+            {{- dict "Src" $avatar "Title" .Site.Title | partial "plugin/image.html" -}}
         </div>
     {{- end -}}
 
