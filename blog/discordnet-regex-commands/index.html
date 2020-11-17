@@ -1,0 +1,945 @@
+<!doctype html><html lang=en-gb><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><meta http-equiv=x-ua-compatible content="IE=edge, chrome=1"><title>Adding Regex Commands to Discord.Net's Command System - TehGM's Blog</title><meta name=Description content="Discord.Net isn't the most extensible library - but let's see if we can extend it to support Regex-based commands!"><meta property="og:title" content="Adding Regex Commands to Discord.Net's Command System"><meta property="og:description" content="Discord.Net isn't the most extensible library - but let's see if we can extend it to support Regex-based commands!"><meta property="og:type" content="article"><meta property="og:url" content="https://tehgm.net/blog/discordnet-regex-commands/"><meta property="og:image" content="https://cdn.tehgm.net/global/img/tehgm_avatar.png"><meta property="article:published_time" content="2020-11-17T16:19:45+01:00"><meta property="article:modified_time" content="2020-11-17T16:19:45+01:00"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://cdn.tehgm.net/global/img/tehgm_avatar.png"><meta name=twitter:title content="Adding Regex Commands to Discord.Net's Command System"><meta name=twitter:description content="Discord.Net isn't the most extensible library - but let's see if we can extend it to support Regex-based commands!"><meta name=application-name content="TehGM"><meta name=apple-mobile-web-app-title content="TehGM"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://tehgm.net/blog/discordnet-regex-commands/><link rel=prev href=https://tehgm.net/blog/nginx-aspnetcore-grpc-rest/><link rel=stylesheet href=/lib/normalize/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Adding Regex Commands to Discord.Net's Command System","inLanguage":"en-gb","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/tehgm.net\/blog\/discordnet-regex-commands\/"},"image":["https:\/\/cdn.tehgm.net\/global\/img\/tehgm_avatar.png"],"genre":"blog","keywords":"guide, dev","wordcount":5256,"url":"https:\/\/tehgm.net\/blog\/discordnet-regex-commands\/","datePublished":"2020-11-17T16:19:45+01:00","dateModified":"2020-11-17T16:19:45+01:00","publisher":{"@type":"Organization","name":"TehGM"},"author":{"@type":"Person","name":"TehGM"},"description":"Discord.Net isn't the most extensible library - but let's see if we can extend it to support Regex-based commands!"}</script></head><body header-desktop header-mobile><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':('dark'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'dark'==='dark'))&&document.body.setAttribute('theme','dark');</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title=TehGM><span id=id-1 class=typeit></span></a></div><div class=menu><div class=menu-inner><a class=menu-item href=/ title=Home>Home </a><a class=menu-item href=/blog/ title=Blog>Blog </a><span class="menu-item delimiter"></span><a href=javascript:void(0); class="menu-item theme-switch" title="Switch Theme"><i class="fas fa-adjust fa-fw"></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title=TehGM><span id=id-2 class=typeit></span></a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><a class=menu-item href=/ title=Home>Home</a><a class=menu-item href=/blog/ title=Blog>Blog</a><a href=javascript:void(0); class="menu-item theme-switch" title="Switch Theme">
+<i class="fas fa-adjust fa-fw"></i></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>Contents</h2><div class="toc-content always-active" id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animated flipInX">Adding Regex Commands to Discord.Net's Command System</h1><div class=post-meta><div class=post-meta-line><span class=post-author><a href=https://tehgm.net title=Author target=_blank rel="noopener noreffer author" class=author><i class="fas fa-user-circle fa-fw"></i>TehGM</a></span>&nbsp;<span class=post-category>included in <a href=/blog/categories/technology/><i class="far fa-folder fa-fw"></i>Technology</a></span></div><div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=17.11.2020>17.11.2020</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;5256 words&nbsp;
+<i class="far fa-clock fa-fw"></i>&nbsp;25 minutes&nbsp;</div></div><div class="details toc" id=toc-static kept><div class="details-summary toc-title"><span>Contents</span>
+<span><i class="details-icon fas fa-angle-right"></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#why-regex-commands>Why Regex Commands?</a></li><li><a href=#discordnets-existing-commands>Discord.Net&rsquo;s existing commands</a></li><li><a href=#regex-commands-implementation>Regex Commands Implementation</a><ul><li><a href=#commandsoptions>CommandsOptions</a></li><li><a href=#regex-command-instance>Regex Command Instance</a></li><li><a href=#command-module-provider>Command Module Provider</a></li><li><a href=#regex-command-handler>Regex Command Handler</a></li><li><a href=#handling-a-client-message>Handling a client message</a></li></ul></li><li><a href=#using-commands-system>Using Commands System</a><ul><li><a href=#net-generic-host--aspnet-core>.NET Generic Host / ASP.NET Core</a></li><li><a href=#other>Other</a></li></ul></li><li><a href=#summary>Summary</a></li></ul></nav></div></div><div class=content id=content><p>Discord.Net includes a basic string + parameters Command System, which is enough for most peoples&rsquo; needs. However I like to use Regex for my commands. In this blog post, I explain how I added Regex Commands support for my personal admin bot <a href=https://github.com/TehGM/EinherjiBot target=_blank rel="noopener noreffer">Einherji</a>.</p><h2 id=why-regex-commands>Why Regex Commands?</h2><p>Rigid string (that is - type exactly X, Y and Z in correct order) commands are simple and do the job - that&rsquo;s why most people use them. And it&rsquo;s all fine, they work and don&rsquo;t require complex syntax like one of regex.<br>However, I do not fear regex - maybe I&rsquo;m no regex expert, but I am fluent with it enough to use it with confidence. And this allows me to do things fancy way, exactly like I like to. Example? Einherji&rsquo;s <a href=https://github.com/TehGM/EinherjiBot/blob/b395ab4d27476f61e035f8350121a14a2599ac5c/EinherjiBot.General/Administration/AdminCommandsHandler.cs#L41 target=_blank rel="noopener noreffer">move all command</a> allows for following format: <code>move all (from) &lt;src-channel> (to) &lt;dest-channel></code> - where channels can both be just an ID or a channel ping (in theory - Discord doesn&rsquo;t allow pinging voice channels for now), and &ldquo;from&rdquo; and &ldquo;to&rdquo; are completely optional but fully accepted. This command, including finding of the channel IDs, is a complete one-liner:<div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cs data-lang=cs><span class=n>Match</span> <span class=n>match</span> <span class=p>=</span> <span class=n>Regex</span><span class=p>.</span><span class=n>Match</span><span class=p>(</span><span class=n>input</span><span class=p>,</span> <span class=s>@&#34;^move\s?all(?:(?: from)?\s+(?:&lt;#)?(\d+)(?:&gt;)?)?(?:(?: to)?\s+(?:&lt;#)?(\d+)(?:&gt;)?)?&#34;</span><span class=p>,</span> <span class=n>RegexOptions</span><span class=p>.</span><span class=n>IgnoreCase</span><span class=p>);</span>
+</code></pre></td></tr></table></div></div>Yes, I know, it might look scary - but once you learn how to Regex, it&rsquo;s a tad less scary, while opening world of possibilities.</p><p>I used to support Regex Commands by adding them in a handler constructor through my <a href=https://github.com/TehGM/Discord.Net-Helper target=_blank rel="noopener noreffer">Discord.Net-Helper</a> project, but this approach, along with the entire project itself, was less than perfect and suffered from some issues - such as dependency on concrete classes and almost no Dependency Injection support, so I abandoned it since. It should still work and you&rsquo;re free to check it out or even use if you want - but I consider it obsolete.</p><p>Additionally, I plan to add Commands System to my <a href=https://github.com/TehGM/Wolfringo target=_blank rel="noopener noreffer">Wolfringo</a> library for WOLF/Palringo - Commands System is one of the main things still missing. I figured that extending Discord.Net&rsquo;s Command System will be a good practice before writing my own system from scratch - it will let me know what to keep in mind, what to avoid, and where to be cautious.</p><h2 id=discordnets-existing-commands>Discord.Net&rsquo;s existing commands</h2><p>Discord.Net includes its own <a href=https://discord.foxbot.me/docs/guides/commands/intro.html target=_blank rel="noopener noreffer">Command System</a>. It belongs to the rigid category - it supports a constant string and parameters for input. As I mentioned <a href=#why-regex-commands rel>before</a>, it is enough for needs of most people - especially ones that aren&rsquo;t as crazy for fancy command structures like me. I decided to try to build on top of that.<br>Sadly Discord.Net isn&rsquo;t one of the libraries that really care about extensibility, and some things depend on concrete classes. It is less than perfect, but Discord.Net&rsquo;s commands also have a few really strong characteristics - some I might even end up borrowing for my <a href=https://github.com/TehGM/Wolfringo target=_blank rel="noopener noreffer">Wolfringo</a>:</p><ul><li>It requires writing your own <a href=https://discord.foxbot.me/docs/guides/commands/intro.html#get-started target=_blank rel="noopener noreffer">Command Handler</a> - for many it&rsquo;s an annoyance, but I see it as a place to be flexible - and that means I can use this to make Regex Commands work.</li><li>Its attributes (such as <a href=https://discord.foxbot.me/docs/guides/commands/preconditions.html target=_blank rel="noopener noreffer">Preconditions</a>) are modular in nature - you just add multiple attributes to command method. This allows me to reuse them for my own purposes.</li><li>It supports <a href=https://discord.foxbot.me/docs/guides/commands/dependency-injection.html target=_blank rel="noopener noreffer">Dependency Injection</a> using .NET&rsquo;s native interfaces - this is huge. I mean, HUGE. This allows passing virtually anything to the command method/class - and it fits extremely nicely with <a href="https://docs.microsoft.com/en-gb/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.1" target=_blank rel="noopener noreffer">.NET Generic Host</a> approach, such as ASP.NET Core. This is a big win.</li></ul><h2 id=regex-commands-implementation>Regex Commands Implementation</h2><h3 id=commandsoptions>CommandsOptions</h3><p>Options Pattern really works well with Dependency Injection - especially if used with <a href="https://docs.microsoft.com/en-gb/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.1" target=_blank rel="noopener noreffer">.NET Generic Host</a>. For that reason, I set my regex commands to use a <a href=https://github.com/TehGM/EinherjiBot/blob/b395ab4d27476f61e035f8350121a14a2599ac5c/EinherjiBot.Shared/CommandsProcessing/CommandsOptions.cs target=_blank rel="noopener noreffer">CommandsOptions</a> class. It is basically a POCO object for settings that can be overwritten in ASP.NET Core settings:<div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cs data-lang=cs><span class=k>public</span> <span class=k>class</span> <span class=nc>CommandsOptions</span>
+<span class=p>{</span>
+    <span class=k>public</span> <span class=kt>string</span> <span class=n>Prefix</span> <span class=p>{</span> <span class=k>get</span><span class=p>;</span> <span class=k>set</span><span class=p>;</span> <span class=p>}</span> <span class=p>=</span> <span class=s>&#34;.&#34;</span><span class=p>;</span>
+    <span class=k>public</span> <span class=kt>bool</span> <span class=n>AcceptMentionPrefix</span> <span class=p>{</span> <span class=k>get</span><span class=p>;</span> <span class=k>set</span><span class=p>;</span> <span class=p>}</span> <span class=p>=</span> <span class=k>true</span><span class=p>;</span>
+    <span class=k>public</span> <span class=kt>bool</span> <span class=n>AcceptBotMessages</span> <span class=p>{</span> <span class=k>get</span><span class=p>;</span> <span class=k>set</span><span class=p>;</span> <span class=p>}</span> <span class=p>=</span> <span class=k>false</span><span class=p>;</span>
+    <span class=k>public</span> <span class=kt>bool</span> <span class=n>RequirePublicMessagePrefix</span> <span class=p>{</span> <span class=k>get</span><span class=p>;</span> <span class=k>set</span><span class=p>;</span> <span class=p>}</span> <span class=p>=</span> <span class=k>true</span><span class=p>;</span>    <span class=c1>// if false, prefix won&#39;t be required in guild channels
+</span><span class=c1></span>    <span class=k>public</span> <span class=kt>bool</span> <span class=n>RequirePrivateMessagePrefix</span> <span class=p>{</span> <span class=k>get</span><span class=p>;</span> <span class=k>set</span><span class=p>;</span> <span class=p>}</span> <span class=p>=</span> <span class=k>false</span><span class=p>;</span>  <span class=c1>// if false, prefix won&#39;t be required in private messages
+</span><span class=c1></span>
+    <span class=k>public</span> <span class=kt>bool</span> <span class=n>CaseSensitive</span> <span class=p>{</span> <span class=k>get</span><span class=p>;</span> <span class=k>set</span><span class=p>;</span> <span class=p>}</span> <span class=p>=</span> <span class=k>false</span><span class=p>;</span>
+    <span class=k>public</span> <span class=n>RunMode</span> <span class=n>DefaultRunMode</span> <span class=p>{</span> <span class=k>get</span><span class=p>;</span> <span class=k>set</span><span class=p>;</span> <span class=p>}</span> <span class=p>=</span> <span class=n>RunMode</span><span class=p>.</span><span class=n>Default</span><span class=p>;</span>
+    <span class=k>public</span> <span class=kt>bool</span> <span class=n>IgnoreExtraArgs</span> <span class=p>{</span> <span class=k>get</span><span class=p>;</span> <span class=k>set</span><span class=p>;</span> <span class=p>}</span> <span class=p>=</span> <span class=k>true</span><span class=p>;</span>
+
+    <span class=c1>// for loading
+</span><span class=c1></span>    <span class=k>public</span> <span class=n>ICollection</span><span class=p>&lt;</span><span class=n>Type</span><span class=p>&gt;</span> <span class=n>Classes</span> <span class=p>{</span> <span class=k>get</span><span class=p>;</span> <span class=k>set</span><span class=p>;</span> <span class=p>}</span> <span class=p>=</span> <span class=k>new</span> <span class=n>List</span><span class=p>&lt;</span><span class=n>Type</span><span class=p>&gt;();</span>  <span class=c1>// classes that Regex Command System will look at when initializing
+</span><span class=c1></span>    <span class=k>public</span> <span class=n>ICollection</span><span class=p>&lt;</span><span class=n>Assembly</span><span class=p>&gt;</span> <span class=n>Assemblies</span> <span class=p>{</span> <span class=k>get</span><span class=p>;</span> <span class=k>set</span><span class=p>;</span> <span class=p>}</span> <span class=p>=</span> <span class=k>new</span> <span class=n>List</span><span class=p>&lt;</span><span class=n>Assembly</span><span class=p>&gt;()</span> <span class=p>{</span> <span class=n>Assembly</span><span class=p>.</span><span class=n>GetEntryAssembly</span><span class=p>()</span> <span class=p>};</span>   <span class=c1>// assemblies that Regex Command System will look at when initializing
+</span><span class=c1></span><span class=p>}</span>
+</code></pre></td></tr></table></div></div><div class="details admonition info open"><div class="details-summary admonition-title"><i class="icon fas fa-info-circle fa-fw"></i>More information<i class="details-icon fas fa-angle-right fa-fw"></i></div><div class=details-content><div class=admonition-content>See <a href="https://docs.microsoft.com/en-gb/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1" target=_blank rel="noopener noreffer">Options pattern in ASP.NET Core</a> for more information on using Options Pattern.</div></div></div></p><h3 id=regex-command-instance>Regex Command Instance</h3><div class="details admonition note open"><div class="details-summary admonition-title"><i class="icon fas fa-pencil-alt fa-fw"></i>Naming explanation<i class="details-icon fas fa-angle-right fa-fw"></i></div><div class=details-content><div class=admonition-content>The instance name might be a little bit misleading at first - it refers to parsed instance of a <a href=#regexcommand-attribute rel>[RegexCommand] Attribute</a>, not the actual object of a class that the command method will be executed it - the latter I called RegexCommandModuleInstance. I think I need to work on my naming skills before adding command system to <a href=https://github.com/TehGM/Wolfringo target=_blank rel="noopener noreffer">Wolfringo</a>. <i class="far fa-grin-beam-sweat"></i></div></div></div><h4 id=regexcommand-attribute>[RegexCommand] Attribute</h4><p>Let&rsquo;s start with defining Regex Command as an attribute - this will allow to mark a method to be handled as a Regex Command.<div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cs data-lang=cs><span class=na>[AttributeUsage(AttributeTargets.Method, AllowMultiple = true, Inherited = false)]</span>
+<span class=k>public</span> <span class=k>class</span> <span class=nc>RegexCommandAttribute</span> <span class=p>:</span> <span class=n>Attribute</span>
+<span class=p>{</span>
+    <span class=k>public</span> <span class=k>const</span> <span class=n>RegexOptions</span> <span class=n>DefaultRegexOptions</span> <span class=p>=</span> <span class=n>RegexOptions</span><span class=p>.</span><span class=n>CultureInvariant</span> <span class=p>|</span> <span class=n>RegexOptions</span><span class=p>.</span><span class=n>Multiline</span><span class=p>;</span>
+
+    <span class=k>public</span> <span class=kt>string</span> <span class=n>Pattern</span> <span class=p>{</span> <span class=k>get</span><span class=p>;</span> <span class=p>}</span>
+    <span class=k>public</span> <span class=n>RegexOptions</span> <span class=n>RegexOptions</span> <span class=p>{</span> <span class=k>get</span><span class=p>;</span> <span class=p>}</span>
+
+    <span class=k>public</span> <span class=n>RegexCommandAttribute</span><span class=p>(</span><span class=kt>string</span> <span class=n>pattern</span><span class=p>)</span>
+        <span class=p>:</span> <span class=k>this</span><span class=p>(</span><span class=n>pattern</span><span class=p>,</span> <span class=n>DefaultRegexOptions</span><span class=p>)</span> <span class=p>{</span> <span class=p>}</span>
+
+    <span class=k>public</span> <span class=n>RegexCommandAttribute</span><span class=p>(</span><span class=kt>string</span> <span class=n>pattern</span><span class=p>,</span> <span class=n>RegexOptions</span> <span class=n>options</span><span class=p>)</span>
+    <span class=p>{</span>
+        <span class=k>this</span><span class=p>.</span><span class=n>Pattern</span> <span class=p>=</span> <span class=n>pattern</span><span class=p>;</span>
+        <span class=k>this</span><span class=p>.</span><span class=n>RegexOptions</span> <span class=p>=</span> <span class=n>options</span><span class=p>;</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div></p><p>This class is pretty self-explanatory. We have pattern, and default <code>RegexOptions</code> that can be overriden in a constructor. The attribute can be set on the method multiple times - it&rsquo;ll work as an alias.</p><h4 id=regexcommandinstance-constructor-and-properties>RegexCommandInstance Constructor and Properties</h4><p>The 2nd class, <code>RegexCommandInstance</code>, is a tad bigger, so let&rsquo;s break it up. If you&rsquo;d like to see the full class all at once, check it out on <a href=https://github.com/TehGM/EinherjiBot/blob/b395ab4d27476f61e035f8350121a14a2599ac5c/EinherjiBot.Shared/CommandsProcessing/Services/RegexCommandInstance.cs target=_blank rel="noopener noreffer">GitHub</a>.<br>First, let&rsquo;s have the things we need provided through a constructor.<div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cs data-lang=cs><span class=k>public</span> <span class=n>Regex</span> <span class=n>Regex</span> <span class=p>{</span> <span class=k>get</span><span class=p>;</span> <span class=p>}</span>
+<span class=k>public</span> <span class=n>Type</span> <span class=n>ModuleType</span> <span class=p>=&gt;</span> <span class=n>_method</span><span class=p>.</span><span class=n>DeclaringType</span><span class=p>;</span>
+<span class=k>public</span> <span class=kt>string</span> <span class=n>MethodName</span> <span class=p>=&gt;</span> <span class=n>_method</span><span class=p>.</span><span class=n>Name</span><span class=p>;</span>
+<span class=k>private</span> <span class=k>readonly</span> <span class=n>MethodInfo</span> <span class=n>_method</span><span class=p>;</span>
+<span class=k>private</span> <span class=k>readonly</span> <span class=n>ParameterInfo</span><span class=p>[]</span> <span class=n>_params</span><span class=p>;</span>
+<span class=k>private</span> <span class=k>readonly</span> <span class=n>IRegexCommandModuleProvider</span> <span class=n>_moduleProvider</span><span class=p>;</span>
+
+<span class=k>private</span> <span class=n>RegexCommandInstance</span><span class=p>(</span><span class=n>Regex</span> <span class=n>regex</span><span class=p>,</span> <span class=n>MethodInfo</span> <span class=n>method</span><span class=p>,</span> <span class=n>IRegexCommandModuleProvider</span> <span class=n>moduleProvider</span><span class=p>)</span>
+<span class=p>{</span>
+    <span class=k>this</span><span class=p>.</span><span class=n>Regex</span> <span class=p>=</span> <span class=n>regex</span><span class=p>;</span>
+
+    <span class=k>this</span><span class=p>.</span><span class=n>_method</span> <span class=p>=</span> <span class=n>method</span><span class=p>;</span>
+    <span class=k>this</span><span class=p>.</span><span class=n>_params</span> <span class=p>=</span> <span class=n>method</span><span class=p>.</span><span class=n>GetParameters</span><span class=p>();</span>      <span class=c1>// this will get all parameters the command method accepts
+</span><span class=c1></span>
+    <span class=k>this</span><span class=p>.</span><span class=n>_moduleProvider</span> <span class=p>=</span> <span class=n>moduleProvider</span><span class=p>;</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div>I think this part is mostly self-explanatory. Constructor takes a Regex instance that will trigger this command, a MethodInfo for the method that will be executed, and an <code>IRegexCommandModuleProvider</code> - a service that will cache results of lookups on how to create command instances. Don&rsquo;t worry, it&rsquo;ll be explained <a href=#command-module-provider rel>below</a>.</p><h4 id=preconditions-and-priority>Preconditions and Priority</h4><p>We want Preconditions and Priority to be supported. We will use Discord.Net&rsquo;s existing <a href=https://github.com/discord-net/Discord.Net/blob/dev/src/Discord.Net.Commands/Attributes/PreconditionAttribute.cs target=_blank rel="noopener noreffer">[Precondition] Attribute</a> and <a href=https://github.com/discord-net/Discord.Net/blob/dev/src/Discord.Net.Commands/Attributes/PriorityAttribute.cs target=_blank rel="noopener noreffer">[Priority] Attribute</a> - they&rsquo;re mostly fine, with one exception.
+Discord.Net Precondition&rsquo;s <code>CheckPermissionsAsync</code> method takes a <a href=https://github.com/discord-net/Discord.Net/blob/dev/src/Discord.Net.Commands/Info/CommandInfo.cs target=_blank rel="noopener noreffer">CommandInfo</a> as a parameter. <a href=https://github.com/discord-net/Discord.Net/blob/dev/src/Discord.Net.Commands/Info/CommandInfo.cs target=_blank rel="noopener noreffer">CommandInfo</a> is closely related to <a href=https://github.com/discord-net/Discord.Net/blob/dev/src/Discord.Net.Commands/CommandService.cs target=_blank rel="noopener noreffer">CommandService</a>, which is designed for the &lsquo;rigid&rsquo; commands. This is one place where Discord.Net&rsquo;s lack of extensibility support shows.<br>To work this around, we pass <code>null</code> in place of <code>CheckPermissionsAsync</code>. This could cause issue for some preconditions, but as of Discord.Net 2.2.0, none of the <a href=https://github.com/discord-net/Discord.Net/tree/dev/src/Discord.Net.Commands/Attributes/Preconditions target=_blank rel="noopener noreffer">built-in Preconditions</a> use that param, so with these, we&rsquo;re safe&mldr; for now.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cs data-lang=cs><span class=c1>// add these as class properties
+</span><span class=c1></span><span class=k>public</span> <span class=kt>int</span> <span class=n>Priority</span> <span class=p>{</span> <span class=k>get</span><span class=p>;</span> <span class=k>private</span> <span class=k>set</span><span class=p>;</span> <span class=p>}</span>
+<span class=k>public</span> <span class=n>IEnumerable</span><span class=p>&lt;</span><span class=n>PreconditionAttribute</span><span class=p>&gt;</span> <span class=n>Preconditions</span> <span class=p>{</span> <span class=k>get</span><span class=p>;</span> <span class=k>private</span> <span class=k>set</span><span class=p>;</span> <span class=p>}</span>
+
+<span class=c1>// set their default values in the constructor
+</span><span class=c1></span><span class=k>private</span> <span class=n>RegexCommandInstance</span><span class=p>(</span><span class=n>Regex</span> <span class=n>regex</span><span class=p>,</span> <span class=n>MethodInfo</span> <span class=n>method</span><span class=p>,</span> <span class=n>IRegexCommandModuleProvider</span> <span class=n>moduleProvider</span><span class=p>)</span>
+<span class=p>{</span>
+    <span class=k>this</span><span class=p>.</span><span class=n>Priority</span> <span class=p>=</span> <span class=m>0</span><span class=p>;</span>
+    <span class=k>this</span><span class=p>.</span><span class=n>Preconditions</span> <span class=p>=</span> <span class=k>new</span> <span class=n>List</span><span class=p>&lt;</span><span class=n>PreconditionAttribute</span><span class=p>&gt;();</span>
+
+    <span class=c1>// ... other constructor code ...
+</span><span class=c1></span><span class=p>}</span>
+
+<span class=c1>// method to load up preconditions and priority
+</span><span class=c1></span><span class=k>private</span> <span class=k>void</span> <span class=n>LoadCustomAttributes</span><span class=p>(</span><span class=n>ICustomAttributeProvider</span> <span class=n>provider</span><span class=p>)</span>
+<span class=p>{</span>
+    <span class=n>IEnumerable</span><span class=p>&lt;</span><span class=kt>object</span><span class=p>&gt;</span> <span class=n>attributes</span> <span class=p>=</span> <span class=n>provider</span><span class=p>.</span><span class=n>GetCustomAttributes</span><span class=p>(</span><span class=k>true</span><span class=p>);</span>
+
+    <span class=k>foreach</span> <span class=p>(</span><span class=kt>object</span> <span class=n>attr</span> <span class=k>in</span> <span class=n>attributes</span><span class=p>)</span>
+    <span class=p>{</span>
+        <span class=k>switch</span> <span class=p>(</span><span class=n>attr</span><span class=p>)</span>
+        <span class=p>{</span>
+            <span class=k>case</span> <span class=n>PreconditionAttribute</span> <span class=n>precondition</span><span class=p>:</span>
+                <span class=p>(</span><span class=k>this</span><span class=p>.</span><span class=n>Preconditions</span> <span class=k>as</span> <span class=n>ICollection</span><span class=p>&lt;</span><span class=n>PreconditionAttribute</span><span class=p>&gt;).</span><span class=n>Add</span><span class=p>(</span><span class=n>precondition</span><span class=p>);</span>
+                <span class=k>break</span><span class=p>;</span>
+            <span class=k>case</span> <span class=n>PriorityAttribute</span> <span class=n>priority</span><span class=p>:</span>
+                <span class=k>this</span><span class=p>.</span><span class=n>Priority</span> <span class=p>=</span> <span class=n>priority</span><span class=p>.</span><span class=n>Priority</span><span class=p>;</span>
+                <span class=k>break</span><span class=p>;</span>
+        <span class=p>}</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+
+<span class=c1>// method to execute the preconditions
+</span><span class=c1></span><span class=k>public</span> <span class=k>async</span> <span class=n>Task</span><span class=p>&lt;</span><span class=n>PreconditionResult</span><span class=p>&gt;</span> <span class=n>CheckPreconditionsAsync</span><span class=p>(</span><span class=n>ICommandContext</span> <span class=n>context</span><span class=p>,</span> <span class=n>IServiceProvider</span> <span class=n>services</span><span class=p>)</span>
+<span class=p>{</span>
+    <span class=k>foreach</span> <span class=p>(</span><span class=n>PreconditionAttribute</span> <span class=n>precondition</span> <span class=k>in</span> <span class=n>Preconditions</span><span class=p>)</span>
+    <span class=p>{</span>
+        <span class=n>PreconditionResult</span> <span class=n>result</span> <span class=p>=</span> <span class=k>await</span> <span class=n>precondition</span><span class=p>.</span><span class=n>CheckPermissionsAsync</span><span class=p>(</span><span class=n>context</span><span class=p>,</span> <span class=k>null</span><span class=p>,</span> <span class=n>services</span><span class=p>).</span><span class=n>ConfigureAwait</span><span class=p>(</span><span class=k>false</span><span class=p>);</span>
+        <span class=k>if</span> <span class=p>(!</span><span class=n>result</span><span class=p>.</span><span class=n>IsSuccess</span><span class=p>)</span>
+            <span class=k>return</span> <span class=n>result</span><span class=p>;</span>
+    <span class=p>}</span>
+    <span class=k>return</span> <span class=n>PreconditionResult</span><span class=p>.</span><span class=n>FromSuccess</span><span class=p>();</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div><h4 id=building-the-command>Building the Command</h4><p>Next, we want a method that performs building of the command instance. First, let&rsquo;s add an additional property that will determine how the command is executed:<div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cs data-lang=cs><span class=k>public</span> <span class=n>RunMode</span> <span class=n>RunMode</span>
+<span class=p>{</span>
+    <span class=k>get</span> <span class=p>=&gt;</span> <span class=n>_runMode</span> <span class=p>==</span> <span class=n>RunMode</span><span class=p>.</span><span class=n>Default</span> <span class=p>?</span> <span class=n>RunMode</span><span class=p>.</span><span class=n>Sync</span> <span class=p>:</span> <span class=n>_runMode</span><span class=p>;</span>
+    <span class=k>set</span> <span class=p>=&gt;</span> <span class=n>_runMode</span> <span class=p>=</span> <span class=k>value</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=k>private</span> <span class=n>RunMode</span> <span class=n>_runMode</span> <span class=p>=</span> <span class=n>RunMode</span><span class=p>.</span><span class=n>Default</span><span class=p>;</span>
+</code></pre></td></tr></table></div></div></p><p>Next, let&rsquo;s add a static Build method - it&rsquo;ll be called when initializing the command instance by <a href=#regex-command-handler rel>Command Handler</a>.<div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cs data-lang=cs><span class=k>public</span> <span class=k>static</span> <span class=n>RegexCommandInstance</span> <span class=n>Build</span><span class=p>(</span><span class=n>MethodInfo</span> <span class=n>method</span><span class=p>,</span> <span class=n>RegexCommandAttribute</span> <span class=n>regexAttribute</span><span class=p>,</span> <span class=n>IServiceProvider</span> <span class=n>services</span><span class=p>)</span>
+<span class=p>{</span>
+    <span class=k>if</span> <span class=p>(</span><span class=n>method</span> <span class=p>==</span> <span class=k>null</span><span class=p>)</span>
+        <span class=k>throw</span> <span class=k>new</span> <span class=n>ArgumentNullException</span><span class=p>(</span><span class=n>nameof</span><span class=p>(</span><span class=n>method</span><span class=p>));</span>
+    <span class=k>if</span> <span class=p>(</span><span class=n>regexAttribute</span> <span class=p>==</span> <span class=k>null</span><span class=p>)</span>
+        <span class=k>throw</span> <span class=k>new</span> <span class=n>ArgumentNullException</span><span class=p>(</span><span class=n>nameof</span><span class=p>(</span><span class=n>regexAttribute</span><span class=p>));</span>
+
+    <span class=c1>// init instance
+</span><span class=c1></span>    <span class=n>CommandsOptions</span> <span class=n>options</span> <span class=p>=</span> <span class=n>services</span><span class=p>.</span><span class=n>GetService</span><span class=p>&lt;</span><span class=n>IOptions</span><span class=p>&lt;</span><span class=n>CommandsOptions</span><span class=p>&gt;&gt;()?.</span><span class=n>Value</span><span class=p>;</span>
+    <span class=n>RegexOptions</span> <span class=n>regexOptions</span> <span class=p>=</span> <span class=n>regexAttribute</span><span class=p>.</span><span class=n>RegexOptions</span><span class=p>;</span>
+    <span class=k>if</span> <span class=p>(</span><span class=n>options</span><span class=p>?.</span><span class=n>CaseSensitive</span> <span class=p>!=</span> <span class=k>true</span><span class=p>)</span>
+        <span class=n>regexOptions</span> <span class=p>|=</span> <span class=n>RegexOptions</span><span class=p>.</span><span class=n>IgnoreCase</span><span class=p>;</span>
+    <span class=n>IRegexCommandModuleProvider</span> <span class=n>moduleProvider</span> <span class=p>=</span> <span class=n>services</span><span class=p>.</span><span class=n>GetRequiredService</span><span class=p>&lt;</span><span class=n>IRegexCommandModuleProvider</span><span class=p>&gt;();</span>
+    <span class=n>RegexCommandInstance</span> <span class=n>result</span> <span class=p>=</span> <span class=k>new</span> <span class=n>RegexCommandInstance</span><span class=p>(</span><span class=k>new</span> <span class=n>Regex</span><span class=p>(</span><span class=n>regexAttribute</span><span class=p>.</span><span class=n>Pattern</span><span class=p>,</span> <span class=n>regexOptions</span><span class=p>),</span> <span class=n>method</span><span class=p>,</span> <span class=n>moduleProvider</span><span class=p>);</span>
+    <span class=n>result</span><span class=p>.</span><span class=n>RunMode</span> <span class=p>=</span> <span class=n>options</span><span class=p>?.</span><span class=n>DefaultRunMode</span> <span class=p>??</span> <span class=n>RunMode</span><span class=p>.</span><span class=n>Default</span><span class=p>;</span>
+
+    <span class=c1>// first load base type attributes
+</span><span class=c1></span>    <span class=n>result</span><span class=p>.</span><span class=n>LoadCustomAttributes</span><span class=p>(</span><span class=n>method</span><span class=p>.</span><span class=n>DeclaringType</span><span class=p>);</span>
+    <span class=c1>// then load method attributes (and let them overwrite class ones if necessary)
+</span><span class=c1></span>    <span class=n>result</span><span class=p>.</span><span class=n>LoadCustomAttributes</span><span class=p>(</span><span class=n>method</span><span class=p>);</span>
+
+    <span class=k>return</span> <span class=n>result</span><span class=p>;</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div></p><p>This method will grab provided MethodInfo and <a href=#regexcommand-attribute rel>[RegexCommand] Attribute</a>, along with DI ServiceProvider.<br>Then it takes <a href=#commandsoptions rel>CommandsOptions</a> and <a href=#command-module-provider rel>IRegexCommandModuleProvider</a> from the DI ServiceProvider, and uses them to create an instance of the class. Lastly, it calls <a href=#preconditions-and-priority rel>LoadCustomAttributes</a> twice - first time to grab any attributes on the class that the method is in - and then overwrite with or add the ones that are set on the method itself.</p><h4 id=execute-method>Execute Method</h4><p>Now we can add a method to let actually execute the command - this method will be called by <a href=#regex-command-handler rel>Command Handler</a> if all preconditions passed.<div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cs data-lang=cs><span class=k>public</span> <span class=k>async</span> <span class=n>Task</span><span class=p>&lt;</span><span class=n>IResult</span><span class=p>&gt;</span> <span class=n>ExecuteAsync</span><span class=p>(</span><span class=n>ICommandContext</span> <span class=n>context</span><span class=p>,</span> <span class=kt>int</span> <span class=n>argPos</span><span class=p>,</span> <span class=n>IServiceProvider</span> <span class=n>services</span><span class=p>,</span> <span class=n>CancellationToken</span> <span class=n>cancellationToken</span> <span class=p>=</span> <span class=k>default</span><span class=p>)</span>
+<span class=p>{</span>
+    <span class=c1>// check regex
+</span><span class=c1></span>    <span class=kt>string</span> <span class=n>msg</span> <span class=p>=</span> <span class=n>context</span><span class=p>.</span><span class=n>Message</span><span class=p>.</span><span class=n>Content</span><span class=p>.</span><span class=n>Substring</span><span class=p>(</span><span class=n>argPos</span><span class=p>);</span>
+    <span class=n>Match</span> <span class=n>regexMatch</span> <span class=p>=</span> <span class=k>this</span><span class=p>.</span><span class=n>Regex</span><span class=p>.</span><span class=n>Match</span><span class=p>(</span><span class=n>msg</span><span class=p>);</span>
+    <span class=k>if</span> <span class=p>(</span><span class=n>regexMatch</span> <span class=p>==</span> <span class=k>null</span> <span class=p>||</span> <span class=p>!</span><span class=n>regexMatch</span><span class=p>.</span><span class=n>Success</span><span class=p>)</span>
+        <span class=k>return</span> <span class=n>ExecuteResult</span><span class=p>.</span><span class=n>FromError</span><span class=p>(</span><span class=n>CommandError</span><span class=p>.</span><span class=n>ParseFailed</span><span class=p>,</span> <span class=s>&#34;Regex did not match&#34;</span><span class=p>);</span>
+
+    <span class=c1>// build params
+</span><span class=c1></span>    <span class=n>cancellationToken</span><span class=p>.</span><span class=n>ThrowIfCancellationRequested</span><span class=p>();</span>
+    <span class=kt>object</span><span class=p>[]</span> <span class=n>paramsValues</span> <span class=p>=</span> <span class=k>new</span> <span class=kt>object</span><span class=p>[</span><span class=n>_params</span><span class=p>.</span><span class=n>Length</span><span class=p>];</span>
+    <span class=k>foreach</span> <span class=p>(</span><span class=n>ParameterInfo</span> <span class=n>param</span> <span class=k>in</span> <span class=n>_params</span><span class=p>)</span>
+    <span class=p>{</span>
+        <span class=kt>object</span> <span class=k>value</span> <span class=p>=</span> <span class=k>null</span><span class=p>;</span>
+        <span class=k>if</span> <span class=p>(</span><span class=n>param</span><span class=p>.</span><span class=n>ParameterType</span><span class=p>.</span><span class=n>IsAssignableFrom</span><span class=p>(</span><span class=n>context</span><span class=p>.</span><span class=n>GetType</span><span class=p>()))</span>
+            <span class=k>value</span> <span class=p>=</span> <span class=n>context</span><span class=p>;</span>
+        <span class=k>else</span> <span class=k>if</span> <span class=p>(</span><span class=n>param</span><span class=p>.</span><span class=n>ParameterType</span><span class=p>.</span><span class=n>IsAssignableFrom</span><span class=p>(</span><span class=k>typeof</span><span class=p>(</span><span class=n>Match</span><span class=p>)))</span>
+            <span class=k>value</span> <span class=p>=</span> <span class=n>regexMatch</span><span class=p>;</span>
+        <span class=k>else</span> <span class=k>if</span> <span class=p>(</span><span class=n>param</span><span class=p>.</span><span class=n>ParameterType</span><span class=p>.</span><span class=n>IsAssignableFrom</span><span class=p>(</span><span class=n>context</span><span class=p>.</span><span class=n>Message</span><span class=p>.</span><span class=n>GetType</span><span class=p>()))</span>
+            <span class=k>value</span> <span class=p>=</span> <span class=n>context</span><span class=p>.</span><span class=n>Message</span><span class=p>;</span>
+        <span class=k>else</span> <span class=k>if</span> <span class=p>(</span><span class=n>param</span><span class=p>.</span><span class=n>ParameterType</span><span class=p>.</span><span class=n>IsAssignableFrom</span><span class=p>(</span><span class=n>context</span><span class=p>.</span><span class=n>Guild</span><span class=p>.</span><span class=n>GetType</span><span class=p>()))</span>
+            <span class=k>value</span> <span class=p>=</span> <span class=n>context</span><span class=p>.</span><span class=n>Guild</span><span class=p>;</span>
+        <span class=k>else</span> <span class=k>if</span> <span class=p>(</span><span class=n>param</span><span class=p>.</span><span class=n>ParameterType</span><span class=p>.</span><span class=n>IsAssignableFrom</span><span class=p>(</span><span class=n>context</span><span class=p>.</span><span class=n>Channel</span><span class=p>.</span><span class=n>GetType</span><span class=p>()))</span>
+            <span class=k>value</span> <span class=p>=</span> <span class=n>context</span><span class=p>.</span><span class=n>Channel</span><span class=p>;</span>
+        <span class=k>else</span> <span class=k>if</span> <span class=p>(</span><span class=n>param</span><span class=p>.</span><span class=n>ParameterType</span><span class=p>.</span><span class=n>IsAssignableFrom</span><span class=p>(</span><span class=n>context</span><span class=p>.</span><span class=n>User</span><span class=p>.</span><span class=n>GetType</span><span class=p>()))</span>
+            <span class=k>value</span> <span class=p>=</span> <span class=n>context</span><span class=p>.</span><span class=n>User</span><span class=p>;</span>
+        <span class=k>else</span> <span class=k>if</span> <span class=p>(</span><span class=n>param</span><span class=p>.</span><span class=n>ParameterType</span><span class=p>.</span><span class=n>IsAssignableFrom</span><span class=p>(</span><span class=n>context</span><span class=p>.</span><span class=n>Client</span><span class=p>.</span><span class=n>GetType</span><span class=p>()))</span>
+            <span class=k>value</span> <span class=p>=</span> <span class=n>context</span><span class=p>.</span><span class=n>Client</span><span class=p>;</span>
+        <span class=k>else</span> <span class=k>if</span> <span class=p>(</span><span class=n>param</span><span class=p>.</span><span class=n>ParameterType</span><span class=p>.</span><span class=n>IsAssignableFrom</span><span class=p>(</span><span class=k>typeof</span><span class=p>(</span><span class=n>CancellationToken</span><span class=p>)))</span>
+            <span class=k>value</span> <span class=p>=</span> <span class=n>cancellationToken</span><span class=p>;</span>
+        <span class=k>else</span>
+        <span class=p>{</span>
+            <span class=k>value</span> <span class=p>=</span> <span class=n>services</span><span class=p>.</span><span class=n>GetService</span><span class=p>(</span><span class=n>param</span><span class=p>.</span><span class=n>ParameterType</span><span class=p>);</span>
+            <span class=k>if</span> <span class=p>(</span><span class=k>value</span> <span class=p>==</span> <span class=k>null</span><span class=p>)</span>
+            <span class=p>{</span>
+                <span class=k>if</span> <span class=p>(</span><span class=n>param</span><span class=p>.</span><span class=n>IsOptional</span><span class=p>)</span>
+                    <span class=k>value</span> <span class=p>=</span> <span class=n>param</span><span class=p>.</span><span class=n>HasDefaultValue</span> <span class=p>?</span> <span class=n>param</span><span class=p>.</span><span class=n>DefaultValue</span> <span class=p>:</span> <span class=k>null</span><span class=p>;</span>
+                <span class=k>else</span>
+                    <span class=k>return</span> <span class=n>ExecuteResult</span><span class=p>.</span><span class=n>FromError</span><span class=p>(</span><span class=n>CommandError</span><span class=p>.</span><span class=n>ObjectNotFound</span><span class=p>,</span> <span class=s>$&#34;Unsupported param type: {param.ParameterType.FullName}&#34;</span><span class=p>);</span>
+            <span class=p>}</span>
+        <span class=p>}</span>
+        <span class=n>paramsValues</span><span class=p>[</span><span class=n>param</span><span class=p>.</span><span class=n>Position</span><span class=p>]</span> <span class=p>=</span> <span class=k>value</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=c1>// create class instance, or use pre-initialized if command has that flag
+</span><span class=c1></span>    <span class=n>cancellationToken</span><span class=p>.</span><span class=n>ThrowIfCancellationRequested</span><span class=p>();</span>
+    <span class=kt>object</span> <span class=n>instance</span> <span class=p>=</span> <span class=n>_moduleProvider</span><span class=p>.</span><span class=n>GetModuleInstance</span><span class=p>(</span><span class=k>this</span><span class=p>);</span>
+
+    <span class=c1>// execute
+</span><span class=c1></span>    <span class=k>if</span> <span class=p>(</span><span class=n>_method</span><span class=p>.</span><span class=n>Invoke</span><span class=p>(</span><span class=n>instance</span><span class=p>,</span> <span class=n>paramsValues</span><span class=p>)</span> <span class=k>is</span> <span class=n>Task</span> <span class=n>returnTask</span><span class=p>)</span>
+    <span class=p>{</span>
+        <span class=k>if</span> <span class=p>(</span><span class=n>RunMode</span> <span class=p>==</span> <span class=n>RunMode</span><span class=p>.</span><span class=n>Sync</span><span class=p>)</span>
+            <span class=k>await</span> <span class=n>returnTask</span><span class=p>.</span><span class=n>ConfigureAwait</span><span class=p>(</span><span class=k>false</span><span class=p>);</span>
+        <span class=k>else</span>
+            <span class=n>_</span> <span class=p>=</span> <span class=n>Task</span><span class=p>.</span><span class=n>Run</span><span class=p>(</span><span class=k>async</span> <span class=p>()</span> <span class=p>=&gt;</span> <span class=k>await</span> <span class=n>returnTask</span><span class=p>.</span><span class=n>ConfigureAwait</span><span class=p>(</span><span class=k>false</span><span class=p>),</span> <span class=n>cancellationToken</span><span class=p>);</span>
+    <span class=p>}</span>
+    <span class=k>return</span> <span class=n>ExecuteResult</span><span class=p>.</span><span class=n>FromSuccess</span><span class=p>();</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div></p><p>This method requires some explanation.</p><ol><li>First, the method simply checks if the regex matches the message sent to the bot. If not, it&rsquo;ll return quickly, telling the <a href=#regex-command-handler rel>Command Handler</a> that the execute was not successful, so it should try another command.</li><li>If the regex match was found, the method iterates over parameters excpected by the command method. For each param, it checks the type of the parameter. If the type was found, it&rsquo;ll be provided to the method. Otherwise, it&rsquo;ll return an error of unsupported param type, or if the param is optional, provide a default.<ul><li>First it checks if it&rsquo;s the <a href=https://github.com/discord-net/Discord.Net/blob/dev/src/Discord.Net.Core/Commands/ICommandContext.cs target=_blank rel="noopener noreffer">ICommandContext</a> that is already used by Discord.Net&rsquo;s default Command System, or any of the classes that implement it.</li><li>Then it checks if it is a Regex match. This allows the command method to use Regex match to grab groups etc, which can be used as command arguments.</li><li>Then it checks if it is any of the properties that are provided by <a href=https://github.com/discord-net/Discord.Net/blob/dev/src/Discord.Net.Core/Commands/ICommandContext.cs target=_blank rel="noopener noreffer">ICommandContext</a>. This allows command method to take a guild or user as one of the params.</li><li>Then it checks if it&rsquo;s a <code>CancellationToken</code>, to support async execution cancellation.</li><li>If none of these are true, as last resort it&rsquo;ll try to use <code>IServiceProvider</code> - this allows for injecting any service from DI into the method as a param.</li></ul></li><li>Once values for all method params are found, it&rsquo;ll use <a href=#command-module-provider rel>IRegexCommandModuleProvider</a> to get the module instance.</li><li>Lastly, it&rsquo;ll actually execute the method. If the method returns a <code>Task</code>, it&rsquo;ll await it, or put it on a thread pool, depending on RunMode setting.</li><li>Once done, it&rsquo;ll return success to <a href=#regex-command-handler rel>Command Handler</a>. Yay!</li></ol><h3 id=command-module-provider>Command Module Provider</h3><p>I mentioned a module provider multiple times, now it&rsquo;s time to implement it. You can also see it on <a href=https://github.com/TehGM/EinherjiBot/blob/b395ab4d27476f61e035f8350121a14a2599ac5c/EinherjiBot.Shared/CommandsProcessing/Services/RegexCommandModuleProvider.cs target=_blank rel="noopener noreffer">GitHub</a>.</p><p><code>IRegexCommandModuleProvider</code> in my Commands System is designed to improve performance of command execution. To stay consistent with Discord.Net default approach to <a href=https://discord.foxbot.me/docs/guides/commands/intro.html#modules target=_blank rel="noopener noreffer">re-initialize a fresh instance for every execution</a>, a lot of reflection would be used to find a constructor that can be resolved with things that are in DI container. To avoid this overhead, I chose to cache constructor selection for each command instance.</p><h4 id=persistentmodule-attribute>[PersistentModule] Attribute</h4><p>On top of caching known constructors, using a module provider allows for having a persistent instances - ones that should NOT be recreated and scrapped for every execution. I find this useful for command classes that either listen to gateway events, or have a background Task. In Einherji I used that in a few places - for example with <a href=https://github.com/TehGM/EinherjiBot/blob/b395ab4d27476f61e035f8350121a14a2599ac5c/EinherjiBot.General/EliteDangerous/CommunityGoalsHandler.cs target=_blank rel="noopener noreffer">Elite Dangerous Community Goals feature</a>.</p><p>To enable with this behaviour, I added a new attribute, which I called <code>[PersistentModule]</code>:<div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cs data-lang=cs><span class=na>    
+</span><span class=na>[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false, Inherited = true)]</span>
+<span class=k>public</span> <span class=k>class</span> <span class=nc>PersistentModuleAttribute</span> <span class=p>:</span> <span class=n>Attribute</span>
+<span class=p>{</span>
+    <span class=k>public</span> <span class=kt>bool</span> <span class=n>SharedInstance</span> <span class=p>{</span> <span class=k>get</span><span class=p>;</span> <span class=k>set</span><span class=p>;</span> <span class=p>}</span> <span class=p>=</span> <span class=k>true</span><span class=p>;</span>
+    <span class=k>public</span> <span class=kt>bool</span> <span class=n>PreInitialize</span> <span class=p>{</span> <span class=k>get</span><span class=p>;</span> <span class=k>set</span><span class=p>;</span> <span class=p>}</span> <span class=p>=</span> <span class=k>false</span><span class=p>;</span>
+
+    <span class=k>public</span> <span class=n>PersistentModuleAttribute</span><span class=p>()</span> <span class=p>{</span> <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div></p><p>This attribute allows for specifying additional behaviours that are related:</p><ul><li><code>SharedInstance</code> - if set to true, all command methods inside the same class will share the instance of the command.</li><li><code>PreInitialize</code> - if set to true, the command instance will be added to <a href=#iregexcommandmoduleprovider rel>IRegexCommandModuleProvider</a> as soon as it&rsquo;s built. If false, it&rsquo;ll be added when executing for the first time.</li></ul><p>Before moving on to implementation of <a href=#iregexcommandmoduleprovider rel>IRegexCommandModuleProvider</a> itself, let&rsquo;s just add support for <code>PreInitialize</code> being false. To do so, we need to modify <a href=#building-the-command rel>Build</a> method a little bit.<br>Let&rsquo;s add these 3 lines just before the method returns:<div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=hl><span class=lnt> 5
+</span></span><span class=hl><span class=lnt> 6
+</span></span><span class=hl><span class=lnt> 7
+</span></span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cs data-lang=cs><span class=k>public</span> <span class=k>static</span> <span class=n>RegexCommandInstance</span> <span class=n>Build</span><span class=p>(</span><span class=n>MethodInfo</span> <span class=n>method</span><span class=p>,</span> <span class=n>RegexCommandAttribute</span> <span class=n>regexAttribute</span><span class=p>,</span> <span class=n>IServiceProvider</span> <span class=n>services</span><span class=p>)</span>
+<span class=p>{</span>
+    <span class=c1>// .. other command building code ..
+</span><span class=c1></span>
+<span class=hl>    <span class=n>PersistentModuleAttribute</span> <span class=n>persistent</span> <span class=p>=</span> <span class=n>method</span><span class=p>.</span><span class=n>DeclaringType</span><span class=p>.</span><span class=n>GetCustomAttribute</span><span class=p>&lt;</span><span class=n>PersistentModuleAttribute</span><span class=p>&gt;();</span>
+</span><span class=hl>    <span class=k>if</span> <span class=p>(</span><span class=n>persistent</span> <span class=p>!=</span> <span class=k>null</span> <span class=p>&amp;&amp;</span> <span class=n>persistent</span><span class=p>.</span><span class=n>PreInitialize</span><span class=p>)</span>
+</span><span class=hl>        <span class=n>result</span><span class=p>.</span><span class=n>_moduleProvider</span><span class=p>.</span><span class=n>GetModuleInstance</span><span class=p>(</span><span class=n>result</span><span class=p>);</span>
+</span>
+    <span class=k>return</span> <span class=n>result</span><span class=p>;</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div></p><p>These lines will check for existence of the <code>[PersistentModule]</code> attribute, check if <code>PreInitialize</code> is true, and if so, request the module from <a href=#iregexcommandmoduleprovider rel>IRegexCommandModuleProvider</a> - this will trigger its instantiation.</p><h4 id=iregexcommandmoduleprovider>IRegexCommandModuleProvider</h4><p>Now we can create the module provider itself.<br>The <code>IRegexCommandModuleProvider</code> is really simple:<div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cs data-lang=cs><span class=k>public</span> <span class=k>interface</span> <span class=n>IRegexCommandModuleProvider</span>
+<span class=p>{</span>
+    <span class=kt>object</span> <span class=n>GetModuleInstance</span><span class=p>(</span><span class=n>RegexCommandInstance</span> <span class=n>commandInstance</span><span class=p>);</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div></p><p>The concrete implementation itself is relatively easy, too, but has some parts that need explaining, so let&rsquo;s go step by step.</p><h5 id=iregexcommandmoduleprovider-constructor-and-properties>IRegexCommandModuleProvider Constructor and Properties</h5><p>The constructor and properties for this class is relatively simple - we just take an <code>IServiceProvider</code>, store it, and initialize empty collections:</p><ul><li>Dictionary of known modules, which is simply a cache of &ldquo;which <a href=#regexcommandmoduleinfo rel>RegexCommandModuleInfo</a> should I use for this <a href=#regex-command-instance rel>RegexCommandInstance</a>?&rdquo;.</li><li>Dictionary of module instances with <a href=#persistentmodule-attribute rel>[PersistentModule] Attribute</a>, so they can be easily reused.</li><li>Dictionary of shared module instances, defined with <code>SharedInstance</code> in <a href=#persistentmodule-attribute rel>[PersistentModule] Attribute</a>, keyed by the class type that defines the command methods.<div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cs data-lang=cs><span class=k>public</span> <span class=k>class</span> <span class=nc>RegexComandModuleProvider</span> <span class=p>:</span> <span class=n>IRegexCommandModuleProvider</span>
+<span class=p>{</span>
+    <span class=k>private</span> <span class=k>readonly</span> <span class=n>IServiceProvider</span> <span class=n>_services</span><span class=p>;</span>
+    <span class=k>private</span> <span class=k>readonly</span> <span class=n>IDictionary</span><span class=p>&lt;</span><span class=n>Type</span><span class=p>,</span> <span class=kt>object</span><span class=p>&gt;</span> <span class=n>_sharedInstances</span><span class=p>;</span>
+    <span class=k>private</span> <span class=k>readonly</span> <span class=n>IDictionary</span><span class=p>&lt;</span><span class=n>RegexCommandInstance</span><span class=p>,</span> <span class=kt>object</span><span class=p>&gt;</span> <span class=n>_persistentInstances</span><span class=p>;</span>
+    <span class=k>private</span> <span class=k>readonly</span> <span class=n>IDictionary</span><span class=p>&lt;</span><span class=n>RegexCommandInstance</span><span class=p>,</span> <span class=n>RegexCommandModuleInfo</span><span class=p>&gt;</span> <span class=n>_knownModules</span><span class=p>;</span>
+
+    <span class=k>public</span> <span class=n>RegexComandModuleProvider</span><span class=p>(</span><span class=n>IServiceProvider</span> <span class=n>services</span><span class=p>)</span>
+    <span class=p>{</span>
+        <span class=k>this</span><span class=p>.</span><span class=n>_services</span> <span class=p>=</span> <span class=n>services</span><span class=p>;</span>
+        <span class=k>this</span><span class=p>.</span><span class=n>_sharedInstances</span> <span class=p>=</span> <span class=k>new</span> <span class=n>Dictionary</span><span class=p>&lt;</span><span class=n>Type</span><span class=p>,</span> <span class=kt>object</span><span class=p>&gt;();</span>
+        <span class=k>this</span><span class=p>.</span><span class=n>_persistentInstances</span> <span class=p>=</span> <span class=k>new</span> <span class=n>Dictionary</span><span class=p>&lt;</span><span class=n>RegexCommandInstance</span><span class=p>,</span> <span class=kt>object</span><span class=p>&gt;();</span>
+        <span class=k>this</span><span class=p>.</span><span class=n>_knownModules</span> <span class=p>=</span> <span class=k>new</span> <span class=n>Dictionary</span><span class=p>&lt;</span><span class=n>RegexCommandInstance</span><span class=p>,</span> <span class=n>RegexCommandModuleInfo</span><span class=p>&gt;();</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div></li></ul><h5 id=regexcommandmoduleinfo>RegexCommandModuleInfo</h5><p><code>RegexCommandModuleInfo</code> is a simple class, used only by <code>IRegexCommandModuleProvider</code>, which holds information on the [PersistentModule] Attribute values, the constructor that was found suitable, and the parameters to use when using that constructor. Let&rsquo;s create it!<div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cs data-lang=cs><span class=k>private</span> <span class=k>class</span> <span class=nc>RegexCommandModuleInfo</span>
+<span class=p>{</span>
+    <span class=k>public</span> <span class=n>Type</span> <span class=n>Type</span> <span class=p>{</span> <span class=k>get</span><span class=p>;</span> <span class=p>}</span>
+    <span class=k>public</span> <span class=kt>bool</span> <span class=n>IsShared</span> <span class=p>{</span> <span class=k>get</span><span class=p>;</span> <span class=p>}</span>
+    <span class=k>public</span> <span class=kt>bool</span> <span class=n>IsPersistent</span> <span class=p>{</span> <span class=k>get</span><span class=p>;</span> <span class=p>}</span>
+    <span class=k>private</span> <span class=k>readonly</span> <span class=n>ConstructorInfo</span> <span class=n>_ctor</span><span class=p>;</span>
+    <span class=k>private</span> <span class=k>readonly</span> <span class=kt>object</span><span class=p>[]</span> <span class=n>_params</span><span class=p>;</span>
+
+    <span class=k>public</span> <span class=n>RegexCommandModuleInfo</span><span class=p>(</span><span class=n>ConstructorInfo</span> <span class=n>ctor</span><span class=p>,</span> <span class=kt>object</span><span class=p>[]</span> <span class=n>parameters</span><span class=p>)</span>
+    <span class=p>{</span>
+        <span class=k>this</span><span class=p>.</span><span class=n>_ctor</span> <span class=p>=</span> <span class=n>ctor</span><span class=p>;</span>
+        <span class=k>this</span><span class=p>.</span><span class=n>_params</span> <span class=p>=</span> <span class=n>parameters</span><span class=p>;</span>
+
+        <span class=k>this</span><span class=p>.</span><span class=n>Type</span> <span class=p>=</span> <span class=n>ctor</span><span class=p>.</span><span class=n>DeclaringType</span><span class=p>;</span>
+        <span class=n>PersistentModuleAttribute</span> <span class=n>persistent</span> <span class=p>=</span> <span class=k>this</span><span class=p>.</span><span class=n>Type</span><span class=p>.</span><span class=n>GetCustomAttribute</span><span class=p>&lt;</span><span class=n>PersistentModuleAttribute</span><span class=p>&gt;();</span>
+        <span class=k>this</span><span class=p>.</span><span class=n>IsPersistent</span> <span class=p>=</span> <span class=n>persistent</span> <span class=p>!=</span> <span class=k>null</span><span class=p>;</span>
+        <span class=k>this</span><span class=p>.</span><span class=n>IsShared</span> <span class=p>=</span> <span class=k>this</span><span class=p>.</span><span class=n>IsPersistent</span> <span class=p>&amp;&amp;</span> <span class=n>persistent</span><span class=p>.</span><span class=n>SharedInstance</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=k>public</span> <span class=kt>object</span> <span class=n>CreateInstance</span><span class=p>()</span>
+        <span class=p>=&gt;</span> <span class=n>_ctor</span><span class=p>.</span><span class=n>Invoke</span><span class=p>(</span><span class=n>_params</span><span class=p>);</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div></p><p>To initialize this class, let&rsquo;s add a new method <code>InitializeModuleInfo</code> into our <code>RegexCommandModuleProvider</code>. This method will take a constructor info as input, and try to use <code>IServiceProvider</code> to resolve all of its params. If it can resolve all, it&rsquo;ll return a new <a href=#regexcommandmoduleinfo rel>RegexCommandModuleInfo</a>, otherwise it&rsquo;ll return null. It&rsquo;ll also check if param is optional - if it is and service cannot be resolved, it&rsquo;ll just use the default.<div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=hl><span class=lnt> 5
+</span></span><span class=hl><span class=lnt> 6
+</span></span><span class=hl><span class=lnt> 7
+</span></span><span class=hl><span class=lnt> 8
+</span></span><span class=hl><span class=lnt> 9
+</span></span><span class=hl><span class=lnt>10
+</span></span><span class=hl><span class=lnt>11
+</span></span><span class=hl><span class=lnt>12
+</span></span><span class=hl><span class=lnt>13
+</span></span><span class=hl><span class=lnt>14
+</span></span><span class=hl><span class=lnt>15
+</span></span><span class=hl><span class=lnt>16
+</span></span><span class=hl><span class=lnt>17
+</span></span><span class=hl><span class=lnt>18
+</span></span><span class=hl><span class=lnt>19
+</span></span><span class=hl><span class=lnt>20
+</span></span><span class=hl><span class=lnt>21
+</span></span><span class=hl><span class=lnt>22
+</span></span><span class=lnt>23
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cs data-lang=cs><span class=k>public</span> <span class=k>class</span> <span class=nc>RegexComandModuleProvider</span> <span class=p>:</span> <span class=n>IRegexCommandModuleProvider</span>
+<span class=p>{</span>
+    <span class=c1>// .. properties and constructor ..
+</span><span class=c1></span>
+<span class=hl>    <span class=k>private</span> <span class=n>RegexCommandModuleInfo</span> <span class=n>InitializeModuleInfo</span><span class=p>(</span><span class=n>ConstructorInfo</span> <span class=n>constructor</span><span class=p>)</span>
+</span><span class=hl>    <span class=p>{</span>
+</span><span class=hl>        <span class=n>ParameterInfo</span><span class=p>[]</span> <span class=n>ctorParams</span> <span class=p>=</span> <span class=n>constructor</span><span class=p>.</span><span class=n>GetParameters</span><span class=p>();</span>
+</span><span class=hl>        <span class=kt>object</span><span class=p>[]</span> <span class=n>paramsValues</span> <span class=p>=</span> <span class=k>new</span> <span class=kt>object</span><span class=p>[</span><span class=n>ctorParams</span><span class=p>.</span><span class=n>Length</span><span class=p>];</span>
+</span><span class=hl>        <span class=k>foreach</span> <span class=p>(</span><span class=n>ParameterInfo</span> <span class=n>param</span> <span class=k>in</span> <span class=n>ctorParams</span><span class=p>)</span>
+</span><span class=hl>        <span class=p>{</span>
+</span><span class=hl>            <span class=kt>object</span> <span class=k>value</span> <span class=p>=</span> <span class=n>_services</span><span class=p>.</span><span class=n>GetService</span><span class=p>(</span><span class=n>param</span><span class=p>.</span><span class=n>ParameterType</span><span class=p>);</span>
+</span><span class=hl>            <span class=k>if</span> <span class=p>(</span><span class=k>value</span> <span class=p>==</span> <span class=k>null</span><span class=p>)</span>
+</span><span class=hl>            <span class=p>{</span>
+</span><span class=hl>                <span class=k>if</span> <span class=p>(</span><span class=n>param</span><span class=p>.</span><span class=n>IsOptional</span><span class=p>)</span>
+</span><span class=hl>                    <span class=k>value</span> <span class=p>=</span> <span class=n>param</span><span class=p>.</span><span class=n>HasDefaultValue</span> <span class=p>?</span> <span class=n>param</span><span class=p>.</span><span class=n>DefaultValue</span> <span class=p>:</span> <span class=k>null</span><span class=p>;</span>
+</span><span class=hl>                <span class=k>else</span>
+</span><span class=hl>                    <span class=k>return</span> <span class=k>null</span><span class=p>;</span>
+</span><span class=hl>            <span class=p>}</span>
+</span><span class=hl>            <span class=n>paramsValues</span><span class=p>[</span><span class=n>param</span><span class=p>.</span><span class=n>Position</span><span class=p>]</span> <span class=p>=</span> <span class=k>value</span><span class=p>;</span>
+</span><span class=hl>        <span class=p>}</span>
+</span><span class=hl>        <span class=k>return</span> <span class=k>new</span> <span class=n>RegexCommandModuleInfo</span><span class=p>(</span><span class=n>constructor</span><span class=p>,</span> <span class=n>paramsValues</span><span class=p>);</span>
+</span><span class=hl>    <span class=p>}</span>
+</span><span class=p>}</span>
+</code></pre></td></tr></table></div></div></p><h5 id=retrieving-the-module>Retrieving the module</h5><p>Now for the main star of the module provider - method <code>GetModuleInstance</code>. Don&rsquo;t worry, it isn&rsquo;t too complex. To make it simpler, let&rsquo;s break it into steps.</p><p>First, let&rsquo;s check if the <a href=#regexcommandmoduleinfo rel>RegexCommandModuleInfo</a> was already created before - if so, it&rsquo;ll be cached in <code>_knownModules</code> dictionary. If it&rsquo;s not found, we will grab all constructors in the command class, and order it from the one with most parameters to the one with the least - this will allow to attempt to resolve most services possible - ASP.NET Core <code>IServiceProvider</code> does by default, too.<br>For each of the constructors, we attempt to create a <a href=#regexcommandmoduleinfo rel>RegexCommandModuleInfo</a> using <code>InitializeModuleInfo</code> method we created just a moment ago. If it returns null, we check next constructor, otherwise we found our constructor and can cache it in <code>_knownModules</code> dictionary!
+If we checked all constructors and all returned null, we have an error, so let&rsquo;s throw an exception.<div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cs data-lang=cs><span class=k>public</span> <span class=kt>object</span> <span class=n>GetModuleInstance</span><span class=p>(</span><span class=n>RegexCommandInstance</span> <span class=n>commandInstance</span><span class=p>)</span>
+<span class=p>{</span>
+    <span class=n>RegexCommandModuleInfo</span> <span class=n>moduleInfo</span><span class=p>;</span>
+    <span class=c1>// check if we have constructor info cached
+</span><span class=c1></span>    <span class=k>if</span> <span class=p>(!</span><span class=n>_knownModules</span><span class=p>.</span><span class=n>TryGetValue</span><span class=p>(</span><span class=n>commandInstance</span><span class=p>,</span> <span class=k>out</span> <span class=n>moduleInfo</span><span class=p>))</span>
+    <span class=p>{</span>
+        <span class=c1>// get all constructors
+</span><span class=c1></span>        <span class=n>IEnumerable</span><span class=p>&lt;</span><span class=n>ConstructorInfo</span><span class=p>&gt;</span> <span class=n>constructors</span> <span class=p>=</span> <span class=n>commandInstance</span><span class=p>.</span><span class=n>ModuleType</span>
+            <span class=p>.</span><span class=n>GetConstructors</span><span class=p>(</span><span class=n>BindingFlags</span><span class=p>.</span><span class=n>Instance</span> <span class=p>|</span> <span class=n>BindingFlags</span><span class=p>.</span><span class=n>Public</span> <span class=p>|</span> <span class=n>BindingFlags</span><span class=p>.</span><span class=n>NonPublic</span><span class=p>)</span>
+            <span class=c1>// order them by params count
+</span><span class=c1></span>            <span class=p>.</span><span class=n>OrderByDescending</span><span class=p>(</span><span class=n>ctor</span> <span class=p>=&gt;</span> <span class=n>ctor</span><span class=p>.</span><span class=n>GetParameters</span><span class=p>().</span><span class=n>Length</span><span class=p>);</span>
+        <span class=c1>// try to resolve all services for each constructor
+</span><span class=c1></span>        <span class=k>foreach</span> <span class=p>(</span><span class=n>ConstructorInfo</span> <span class=n>ctor</span> <span class=k>in</span> <span class=n>constructors</span><span class=p>)</span>
+        <span class=p>{</span>
+            <span class=n>moduleInfo</span> <span class=p>=</span> <span class=n>InitializeModuleInfo</span><span class=p>(</span><span class=n>ctor</span><span class=p>);</span>
+            <span class=k>if</span> <span class=p>(</span><span class=n>moduleInfo</span> <span class=p>!=</span> <span class=k>null</span><span class=p>)</span>
+            <span class=p>{</span>
+                <span class=c1>// great, we found a constructor we can resolve!
+</span><span class=c1></span>                <span class=n>_knownModules</span><span class=p>.</span><span class=n>Add</span><span class=p>(</span><span class=n>commandInstance</span><span class=p>,</span> <span class=n>moduleInfo</span><span class=p>);</span>
+                <span class=k>break</span><span class=p>;</span>
+            <span class=p>}</span>
+        <span class=p>}</span>
+        <span class=c1>// if we can&#39;t resolve any constructor, we have an error :(
+</span><span class=c1></span>        <span class=k>if</span> <span class=p>(</span><span class=n>moduleInfo</span> <span class=p>==</span> <span class=k>null</span><span class=p>)</span>
+            <span class=k>throw</span> <span class=k>new</span> <span class=n>InvalidOperationException</span><span class=p>(</span><span class=s>$&#34;Cannot create {commandInstance.ModuleType.FullName} - none of the constructors can have its dependencie resolved&#34;</span><span class=p>);</span>
+    <span class=p>}</span>
+
+    <span class=c1>// ...
+</span><span class=c1></span><span class=p>}</span>
+</code></pre></td></tr></table></div></div></p><p>Next, if we determined we can create the command module instance by finding a constructor, let&rsquo;s check if this <a href=#regex-command-instance rel>RegexCommandInstance</a> already has a persistent module, using a simple dictionary check.<div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cs data-lang=cs><span class=k>public</span> <span class=kt>object</span> <span class=n>GetModuleInstance</span><span class=p>(</span><span class=n>RegexCommandInstance</span> <span class=n>commandInstance</span><span class=p>)</span>
+<span class=p>{</span>
+    <span class=c1>// ...
+</span><span class=c1></span>    <span class=k>if</span> <span class=p>(</span><span class=n>_persistentInstances</span><span class=p>.</span><span class=n>TryGetValue</span><span class=p>(</span><span class=n>commandInstance</span><span class=p>,</span> <span class=k>out</span> <span class=kt>object</span> <span class=n>instance</span><span class=p>))</span>
+        <span class=k>return</span> <span class=n>instance</span><span class=p>;</span>
+    <span class=c1>// ...
+</span><span class=c1></span><span class=p>}</span>
+</code></pre></td></tr></table></div></div></p><p>Then, if it&rsquo;s not a persistent instance we already created - it could be that the command class is persistent AND shared - and that means, if any other method of that class created a module instance, we can use it for this command too! If that&rsquo;s the case, we add that instance to <code>_persistentInstances</code> dictionary - this means the persistent checks step will find this shared instance correctly next time.<div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cs data-lang=cs><span class=k>public</span> <span class=kt>object</span> <span class=n>GetModuleInstance</span><span class=p>(</span><span class=n>RegexCommandInstance</span> <span class=n>commandInstance</span><span class=p>)</span>
+<span class=p>{</span>
+    <span class=c1>// ...
+</span><span class=c1></span>    <span class=k>if</span> <span class=p>(</span><span class=n>_sharedInstances</span><span class=p>.</span><span class=n>TryGetValue</span><span class=p>(</span><span class=n>moduleInfo</span><span class=p>.</span><span class=n>Type</span><span class=p>,</span> <span class=k>out</span> <span class=n>instance</span><span class=p>))</span>
+    <span class=p>{</span>
+        <span class=n>_persistentInstances</span><span class=p>.</span><span class=n>Add</span><span class=p>(</span><span class=n>commandInstance</span><span class=p>,</span> <span class=n>instance</span><span class=p>);</span>
+        <span class=k>return</span> <span class=n>instance</span><span class=p>;</span>
+    <span class=p>}</span>
+    <span class=c1>// ...
+</span><span class=c1></span><span class=p>}</span>
+</code></pre></td></tr></table></div></div></p><p>If we still didn&rsquo;t find a cached instance, it means that either it&rsquo;s the first time we&rsquo;re requesting it, or it&rsquo;s not a persistent module at all. In either case, we create it. Then we can check if it&rsquo;s a persistent or shared module - if so, we add it to cache dictionaries. Once we do this, we can return the instance.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cs data-lang=cs><span class=k>public</span> <span class=kt>object</span> <span class=n>GetModuleInstance</span><span class=p>(</span><span class=n>RegexCommandInstance</span> <span class=n>commandInstance</span><span class=p>)</span>
+<span class=p>{</span>
+    <span class=c1>// ...
+</span><span class=c1></span>    <span class=n>instance</span> <span class=p>=</span> <span class=n>moduleInfo</span><span class=p>.</span><span class=n>CreateInstance</span><span class=p>();</span>
+    <span class=k>if</span> <span class=p>(</span><span class=n>moduleInfo</span><span class=p>.</span><span class=n>IsPersistent</span><span class=p>)</span>
+    <span class=p>{</span>
+        <span class=n>_persistentInstances</span><span class=p>.</span><span class=n>Add</span><span class=p>(</span><span class=n>commandInstance</span><span class=p>,</span> <span class=n>instance</span><span class=p>);</span>
+        <span class=k>if</span> <span class=p>(</span><span class=n>moduleInfo</span><span class=p>.</span><span class=n>IsShared</span><span class=p>)</span>
+            <span class=n>_sharedInstances</span><span class=p>.</span><span class=n>Add</span><span class=p>(</span><span class=n>moduleInfo</span><span class=p>.</span><span class=n>Type</span><span class=p>,</span> <span class=n>instance</span><span class=p>);</span>
+    <span class=p>}</span>
+
+    <span class=k>return</span> <span class=n>instance</span><span class=p>;</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div><p>And that covers the <code>IRegexCommandModuleProvider</code> implementation. Wasn&rsquo;t that bad, eh? And we&rsquo;re almost done, we just need a <a href=#regex-command-handler rel>Command Handler</a> now.</p><h3 id=regex-command-handler>Regex Command Handler</h3><p>Discord.Net requires you to write a <a href=https://discord.foxbot.me/docs/guides/commands/intro.html#get-started target=_blank rel="noopener noreffer">Command Handler</a> for normal commands. For regex commands, we do something really similar. The only difference is that we don&rsquo;t have a <a href=https://discord.foxbot.me/docs/api/Discord.Commands.CommandService.html target=_blank rel="noopener noreffer">CommandService</a> that would load the commands for us - but don&rsquo;t worry, it&rsquo;s quite easy.</p><p>For full code, check the code on <a href=https://github.com/TehGM/EinherjiBot/blob/b395ab4d27476f61e035f8350121a14a2599ac5c/EinherjiBot.Shared/CommandsProcessing/Services/RegexCommandHandler.cs target=_blank rel="noopener noreffer">GitHub</a>.</p><h4 id=regexcommandhandler-constructor-and-properties>RegexCommandHandler Constructor and Properties</h4><p>First we need properties to store all the handler needs for modules, and constructor. I am using .NET Core Hosting Dependency Injection to add them all. We also want the handler to implement <code>IDisposable</code> to stop listening to Discord.Net Client&rsquo;s events when it&rsquo;s deconstruction time. If you&rsquo;re using <a href="https://docs.microsoft.com/en-gb/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.1" target=_blank rel="noopener noreffer">.NET Generic Host</a>, you also want to implement <code>IHostedService</code> - this will ensure the handler is started when the Host starts.<div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cs data-lang=cs><span class=k>public</span> <span class=k>class</span> <span class=nc>RegexCommandHandler</span> <span class=p>:</span> <span class=n>IHostedService</span><span class=p>,</span> <span class=n>IDisposable</span>
+<span class=p>{</span>
+    <span class=k>private</span> <span class=k>readonly</span> <span class=n>DiscordSocketClient</span> <span class=n>_client</span><span class=p>;</span>
+    <span class=k>private</span> <span class=k>readonly</span> <span class=n>IOptionsMonitor</span><span class=p>&lt;</span><span class=n>CommandsOptions</span><span class=p>&gt;</span> <span class=n>_commandOptions</span><span class=p>;</span>
+    <span class=k>private</span> <span class=k>readonly</span> <span class=n>IServiceProvider</span> <span class=n>_serviceProvider</span><span class=p>;</span>
+    <span class=k>private</span> <span class=k>readonly</span> <span class=n>ILogger</span> <span class=n>_log</span><span class=p>;</span>
+    <span class=k>private</span> <span class=n>ICollection</span><span class=p>&lt;</span><span class=n>RegexCommandInstance</span><span class=p>&gt;</span> <span class=n>_commands</span><span class=p>;</span>
+    <span class=k>private</span> <span class=n>CancellationToken</span> <span class=n>_hostCancellationToken</span><span class=p>;</span>
+
+    <span class=k>public</span> <span class=n>RegexCommandHandler</span><span class=p>(</span><span class=n>IServiceProvider</span> <span class=n>serviceProvider</span><span class=p>,</span> <span class=n>DiscordSocketClient</span> <span class=n>client</span><span class=p>,</span> <span class=n>IOptionsMonitor</span><span class=p>&lt;</span><span class=n>CommandsOptions</span><span class=p>&gt;</span> <span class=n>commandOptions</span><span class=p>,</span><span class=n>ILogger</span><span class=p>&lt;</span><span class=n>RegexCommandHandler</span><span class=p>&gt;</span> <span class=n>log</span><span class=p>)</span>
+    <span class=p>{</span>
+        <span class=k>this</span><span class=p>.</span><span class=n>_client</span> <span class=p>=</span> <span class=n>client</span><span class=p>;</span>
+        <span class=k>this</span><span class=p>.</span><span class=n>_commandOptions</span> <span class=p>=</span> <span class=n>commandOptions</span><span class=p>;</span>
+        <span class=k>this</span><span class=p>.</span><span class=n>_serviceProvider</span> <span class=p>=</span> <span class=n>serviceProvider</span><span class=p>;</span>
+        <span class=k>this</span><span class=p>.</span><span class=n>_log</span> <span class=p>=</span> <span class=n>log</span><span class=p>;</span>
+        <span class=k>this</span><span class=p>.</span><span class=n>_commands</span> <span class=p>=</span> <span class=k>new</span> <span class=n>List</span><span class=p>&lt;</span><span class=n>RegexCommandInstance</span><span class=p>&gt;();</span>
+
+        <span class=c1>// re-initialize commands when options change
+</span><span class=c1></span>        <span class=n>_commandOptions</span><span class=p>.</span><span class=n>OnChange</span><span class=p>(</span><span class=k>async</span> <span class=n>_</span> <span class=p>=&gt;</span> <span class=k>await</span> <span class=n>InitializeCommandsAsync</span><span class=p>());</span>
+
+        <span class=c1>// listen to Discord.Net client&#39;s MessageReceived event
+</span><span class=c1></span>        <span class=k>this</span><span class=p>.</span><span class=n>_client</span><span class=p>.</span><span class=n>MessageReceived</span> <span class=p>+=</span> <span class=n>HandleCommandAsync</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=n>Task</span> <span class=n>IHostedService</span><span class=p>.</span><span class=n>StartAsync</span><span class=p>(</span><span class=n>CancellationToken</span> <span class=n>cancellationToken</span><span class=p>)</span>
+    <span class=p>{</span>
+        <span class=k>this</span><span class=p>.</span><span class=n>_hostCancellationToken</span> <span class=p>=</span> <span class=n>cancellationToken</span><span class=p>;</span>
+        <span class=k>return</span> <span class=n>InitializeCommandsAsync</span><span class=p>();</span>
+    <span class=p>}</span>
+
+    <span class=n>Task</span> <span class=n>IHostedService</span><span class=p>.</span><span class=n>StopAsync</span><span class=p>(</span><span class=n>CancellationToken</span> <span class=n>cancellationToken</span><span class=p>)</span>
+    <span class=p>{</span>
+        <span class=k>this</span><span class=p>.</span><span class=n>Dispose</span><span class=p>();</span>
+        <span class=k>return</span> <span class=n>Task</span><span class=p>.</span><span class=n>CompletedTask</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=k>public</span> <span class=k>void</span> <span class=n>Dispose</span><span class=p>()</span>
+    <span class=p>{</span>
+        <span class=k>this</span><span class=p>.</span><span class=n>_client</span><span class=p>.</span><span class=n>MessageReceived</span> <span class=p>-=</span> <span class=n>HandleCommandAsync</span><span class=p>;</span>
+        <span class=k>this</span><span class=p>.</span><span class=n>_lock</span><span class=p>.</span><span class=n>Dispose</span><span class=p>();</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div></p><h4 id=initializing-commands>Initializing Commands</h4><p>As you can see in constructor and <code>StartAsync</code>, we need a method <code>InitializeCommandsAsync</code>, so let&rsquo;s create it!<div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cs data-lang=cs><span class=k>private</span> <span class=k>async</span> <span class=n>Task</span> <span class=n>InitializeCommandsAsync</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=k>this</span><span class=p>.</span><span class=n>_commands</span><span class=p>.</span><span class=n>Clear</span><span class=p>();</span>
+    <span class=n>CommandsOptions</span> <span class=n>options</span> <span class=p>=</span> <span class=k>this</span><span class=p>.</span><span class=n>_commandOptions</span><span class=p>.</span><span class=n>CurrentValue</span><span class=p>;</span>
+    <span class=k>foreach</span> <span class=p>(</span><span class=n>Assembly</span> <span class=n>asm</span> <span class=k>in</span> <span class=n>options</span><span class=p>.</span><span class=n>Assemblies</span><span class=p>)</span>
+        <span class=k>this</span><span class=p>.</span><span class=n>AddAssembly</span><span class=p>(</span><span class=n>asm</span><span class=p>);</span>
+    <span class=k>foreach</span> <span class=p>(</span><span class=n>Type</span> <span class=n>t</span> <span class=k>in</span> <span class=n>options</span><span class=p>.</span><span class=n>Classes</span><span class=p>)</span>
+        <span class=k>this</span><span class=p>.</span><span class=n>AddType</span><span class=p>(</span><span class=n>t</span><span class=p>.</span><span class=n>GetTypeInfo</span><span class=p>());</span>
+
+    <span class=k>this</span><span class=p>.</span><span class=n>_commands</span> <span class=p>=</span> <span class=n>_commands</span><span class=p>.</span><span class=n>OrderByDescending</span><span class=p>(</span><span class=n>cmd</span> <span class=p>=&gt;</span> <span class=n>cmd</span><span class=p>.</span><span class=n>Priority</span><span class=p>).</span><span class=n>ToArray</span><span class=p>();</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div></p><p>In this method, we load each assembly and each class type included in <a href=#commandsoptions rel>CommandsOptions</a>. Once that is done, we order the commands by <code>Priority</code>, to respect <a href=https://github.com/discord-net/Discord.Net/blob/dev/src/Discord.Net.Commands/Attributes/PriorityAttribute.cs target=_blank rel="noopener noreffer">[Priority] Attribute</a>.</p><h4 id=loading-commands>Loading Commands</h4><p>Initializing is simple, but <code>AddAssembly</code> and <code>AddType</code> do not exist yet - so let&rsquo;s add them, too!</p><p>These methods use reflection to find the types. <code>AddAssembly</code> checks all types in assembly that aren&rsquo;t abstract or generic, aren&rsquo;t generated by the compiler, and <a href=#loadregexcommands-attribute rel>[LoadRegexCommands] Attribute</a> - don&rsquo;t worry, we&rsquo;ll create it in a moment.<br><code>AddType</code> does similar, but for methods - it finds all methods that aren&rsquo;t static, generated by the compiler, and have at least one <a href=#regexcommand-attribute rel>[RegexCommand] Attribute</a>.<br>Lastly, <code>AddMethod</code> builds a new <a href=#regex-command-instance rel>Regex Command Instance</a> for each <a href=#regexcommand-attribute rel>[RegexCommand] Attribute</a> it finds on the method.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cs data-lang=cs><span class=k>private</span> <span class=k>void</span> <span class=n>AddAssembly</span><span class=p>(</span><span class=n>Assembly</span> <span class=n>assembly</span><span class=p>)</span>
+<span class=p>{</span>
+    <span class=n>IEnumerable</span><span class=p>&lt;</span><span class=n>TypeInfo</span><span class=p>&gt;</span> <span class=n>types</span> <span class=p>=</span> <span class=n>assembly</span><span class=p>.</span><span class=n>DefinedTypes</span><span class=p>.</span><span class=n>Where</span><span class=p>(</span><span class=n>t</span> <span class=p>=&gt;</span> <span class=p>!</span><span class=n>t</span><span class=p>.</span><span class=n>IsAbstract</span> <span class=p>&amp;&amp;</span> <span class=p>!</span><span class=n>t</span><span class=p>.</span><span class=n>ContainsGenericParameters</span>
+        <span class=p>&amp;&amp;</span> <span class=p>!</span><span class=n>Attribute</span><span class=p>.</span><span class=n>IsDefined</span><span class=p>(</span><span class=n>t</span><span class=p>,</span> <span class=k>typeof</span><span class=p>(</span><span class=n>CompilerGeneratedAttribute</span><span class=p>))</span> <span class=p>&amp;&amp;</span> <span class=n>Attribute</span><span class=p>.</span><span class=n>IsDefined</span><span class=p>(</span><span class=n>t</span><span class=p>,</span> <span class=k>typeof</span><span class=p>(</span><span class=n>LoadRegexCommandsAttribute</span><span class=p>)));</span>
+    <span class=k>if</span> <span class=p>(!</span><span class=n>types</span><span class=p>.</span><span class=n>Any</span><span class=p>())</span>
+    <span class=p>{</span>
+        <span class=n>_log</span><span class=p>.</span><span class=n>LogWarning</span><span class=p>(</span><span class=s>&#34;Cannot initialize Regex commands from assembly {AssemblyName} - no non-static non-abstract classes with {Attribute}&#34;</span><span class=p>,</span><span class=n>assembly</span><span class=p>.</span><span class=n>FullName</span><span class=p>,</span> <span class=n>nameof</span><span class=p>(</span><span class=n>LoadRegexCommandsAttribute</span><span class=p>));</span>
+        <span class=k>return</span><span class=p>;</span>
+    <span class=p>}</span>
+    <span class=k>foreach</span> <span class=p>(</span><span class=n>TypeInfo</span> <span class=n>type</span> <span class=k>in</span> <span class=n>types</span><span class=p>)</span>
+        <span class=n>AddType</span><span class=p>(</span><span class=n>type</span><span class=p>);</span>
+<span class=p>}</span>
+
+<span class=k>private</span> <span class=k>void</span> <span class=n>AddType</span><span class=p>(</span><span class=n>TypeInfo</span> <span class=n>type</span><span class=p>)</span>
+<span class=p>{</span>
+    <span class=n>IEnumerable</span><span class=p>&lt;</span><span class=n>MethodInfo</span><span class=p>&gt;</span> <span class=n>methods</span> <span class=p>=</span> <span class=n>type</span><span class=p>.</span><span class=n>DeclaredMethods</span><span class=p>.</span><span class=n>Where</span><span class=p>(</span><span class=n>m</span> <span class=p>=&gt;</span> <span class=p>!</span><span class=n>m</span><span class=p>.</span><span class=n>IsStatic</span> <span class=p>&amp;&amp;</span> <span class=p>!</span><span class=n>Attribute</span><span class=p>.</span><span class=n>IsDefined</span><span class=p>(</span><span class=n>m</span><span class=p>,</span> <span class=k>typeof</span><span class=p>(</span><span class=n>CompilerGeneratedAttribute</span><span class=p>))</span> <span class=p>&amp;&amp;</span><span class=n>Attribute</span><span class=p>.</span><span class=n>IsDefined</span><span class=p>(</span><span class=n>m</span><span class=p>,</span> <span class=k>typeof</span><span class=p>(</span><span class=n>RegexCommandAttribute</span><span class=p>)));</span>
+    <span class=k>if</span> <span class=p>(!</span><span class=n>methods</span><span class=p>.</span><span class=n>Any</span><span class=p>())</span>
+    <span class=p>{</span>
+        <span class=n>_log</span><span class=p>.</span><span class=n>LogWarning</span><span class=p>(</span><span class=s>&#34;Cannot initialize Regex command from type {TypeName} - no method with {Attribute}&#34;</span><span class=p>,</span> <span class=n>type</span><span class=p>.</span><span class=n>FullName</span><span class=p>,</span> <span class=n>nameo</span><span class=p>(</span><span class=n>RegexCommandAttribute</span><span class=p>));</span>
+        <span class=k>return</span><span class=p>;</span>
+    <span class=p>}</span>
+    <span class=k>foreach</span> <span class=p>(</span><span class=n>MethodInfo</span> <span class=n>method</span> <span class=k>in</span> <span class=n>methods</span><span class=p>)</span>
+        <span class=n>AddMethod</span><span class=p>(</span><span class=n>method</span><span class=p>);</span>
+<span class=p>}</span>
+
+<span class=k>private</span> <span class=k>void</span> <span class=n>AddMethod</span><span class=p>(</span><span class=n>MethodInfo</span> <span class=n>method</span><span class=p>)</span>
+<span class=p>{</span>
+    <span class=n>IEnumerable</span><span class=p>&lt;</span><span class=n>RegexCommandAttribute</span><span class=p>&gt;</span> <span class=n>attributes</span> <span class=p>=</span> <span class=n>method</span><span class=p>.</span><span class=n>GetCustomAttributes</span><span class=p>&lt;</span><span class=n>RegexCommandAttribute</span><span class=p>&gt;();</span>
+    <span class=k>if</span> <span class=p>(!</span><span class=n>attributes</span><span class=p>.</span><span class=n>Any</span><span class=p>())</span>
+    <span class=p>{</span>
+        <span class=n>_log</span><span class=p>.</span><span class=n>LogWarning</span><span class=p>(</span><span class=s>&#34;Cannot initialize Regex command from {TypeName}&#39;s method {MethodName} - {Attribute} missing&#34;</span><span class=p>,</span> <span class=n>method</span><span class=p>.</span><span class=n>DeclaringType</span><span class=p>.</span><span class=n>FullName</span><span class=p>,</span><span class=n>method</span><span class=p>.</span><span class=n>Name</span><span class=p>,</span> <span class=n>nameof</span><span class=p>(</span><span class=n>RegexCommandAttribute</span><span class=p>));</span>
+        <span class=k>return</span><span class=p>;</span>
+    <span class=p>}</span>
+    <span class=k>foreach</span> <span class=p>(</span><span class=n>RegexCommandAttribute</span> <span class=n>attribute</span> <span class=k>in</span> <span class=n>attributes</span><span class=p>)</span>
+        <span class=n>_commands</span><span class=p>.</span><span class=n>Add</span><span class=p>(</span><span class=n>RegexCommandInstance</span><span class=p>.</span><span class=n>Build</span><span class=p>(</span><span class=n>method</span><span class=p>,</span> <span class=n>attribute</span><span class=p>,</span> <span class=n>_serviceProvider</span><span class=p>));</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div><h4 id=loadregexcommands-attribute>[LoadRegexCommands] Attribute</h4><p>I mentioned <code>[LoadRegexCommands]</code> attribute, even though we never created it. But don&rsquo;t worry, it&rsquo;s really simple. Really:<div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cs data-lang=cs><span class=k>public</span> <span class=k>class</span> <span class=nc>LoadRegexCommandsAttribute</span> <span class=p>:</span> <span class=n>Attribute</span> <span class=p>{</span> <span class=p>}</span>
+</code></pre></td></tr></table></div></div>Yep. That&rsquo;s it. An empty attribute! Why do we need an empty attribute?
+The answer is simple - this limits the amount of checks we will need to do when loading our types from an assembly. With this attribute, <code>AddAssembly</code> method will only attempt to load classes that have this attribute present, instead of every single class in your bot. Now, for every class with commands, you add a <code>[LoadRegexCommands]</code> attribute, and handler will know it should try to load that class.</p><p>This might sound like an inconvenience, but Discord.Net does something similar for its own Command System - except it requires you to inherit from <a href=https://discord.foxbot.me/docs/guides/commands/intro.html#modules target=_blank rel="noopener noreffer">ModuleBase</a> class.<br>I found attribute to be more fitting. Yes, not inheriting from a class means you don&rsquo;t get to use its properties, like <code>Context</code> - but it&rsquo;s okay, since we can just add it as a paremeter to the command method. In return, it means we have our &lsquo;one inheritance spot&rsquo; free, and can inherit from any other class we would want to. If you ask me, that&rsquo;s a win!</p><h3 id=handling-a-client-message>Handling a client message</h3><p>Now, the final piece of our handler - actually handling the incoming messages.</p><p>This works very similar to an <a href=https://discord.foxbot.me/docs/guides/commands/intro.html#get-started target=_blank rel="noopener noreffer">example provided by Discord.Net</a> - the main difference is the last call to <code>ExecuteAsync</code> method of the <a href=https://discord.foxbot.me/docs/api/Discord.Commands.CommandService.html target=_blank rel="noopener noreffer">CommandService</a>. Since we don&rsquo;t use <a href=https://discord.foxbot.me/docs/api/Discord.Commands.CommandService.html target=_blank rel="noopener noreffer">CommandService</a> here, we can&rsquo;t use it. Instead, replace that call with a snippet like following:<div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cs data-lang=cs><span class=k>foreach</span> <span class=p>(</span><span class=n>RegexCommandInstance</span> <span class=n>command</span> <span class=k>in</span> <span class=n>_commands</span><span class=p>)</span>
+<span class=p>{</span>
+    <span class=k>try</span>
+    <span class=p>{</span>
+        <span class=n>IResult</span> <span class=n>preconditionsResult</span> <span class=p>=</span> <span class=k>await</span> <span class=n>command</span><span class=p>.</span><span class=n>CheckPreconditionsAsync</span><span class=p>(</span><span class=n>context</span><span class=p>,</span> <span class=n>_serviceProvider</span><span class=p>);</span>
+        <span class=k>if</span> <span class=p>(!</span><span class=n>preconditionsResult</span><span class=p>.</span><span class=n>IsSuccess</span><span class=p>)</span>
+            <span class=k>continue</span><span class=p>;</span>
+        <span class=n>ExecuteResult</span> <span class=n>result</span> <span class=p>=</span> <span class=p>(</span><span class=n>ExecuteResult</span><span class=p>)</span><span class=k>await</span> <span class=n>command</span><span class=p>.</span><span class=n>ExecuteAsync</span><span class=p>(</span>
+            <span class=n>context</span><span class=p>:</span> <span class=n>context</span><span class=p>,</span>
+            <span class=n>argPos</span><span class=p>:</span> <span class=n>argPos</span><span class=p>,</span>
+            <span class=n>services</span><span class=p>:</span> <span class=n>_serviceProvider</span><span class=p>,</span>
+            <span class=n>cancellationToken</span><span class=p>:</span> <span class=n>_hostCancellationToken</span><span class=p>)</span>
+            <span class=p>.</span><span class=n>ConfigureAwait</span><span class=p>(</span><span class=k>false</span><span class=p>);</span>
+        <span class=k>if</span> <span class=p>(</span><span class=n>result</span><span class=p>.</span><span class=n>IsSuccess</span><span class=p>)</span>
+            <span class=k>return</span><span class=p>;</span>
+    <span class=p>}</span>
+    <span class=k>catch</span> <span class=p>(</span><span class=n>OperationCanceledException</span><span class=p>)</span> <span class=p>{</span> <span class=k>return</span><span class=p>;</span> <span class=p>}</span>
+    <span class=k>catch</span> <span class=p>(</span><span class=n>Exception</span> <span class=n>ex</span><span class=p>)</span>
+    <span class=p>{</span>
+        <span class=n>_log</span><span class=p>.</span><span class=n>LogError</span><span class=p>(</span><span class=n>ex</span><span class=p>,</span> <span class=s>&#34;Unhandled Exception when executing command {MethodName}&#34;</span><span class=p>,</span> <span class=n>command</span><span class=p>.</span><span class=n>MethodName</span><span class=p>);</span>
+        <span class=k>return</span><span class=p>;</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div></p><p>In above snippet, we iterate over each loaded command instance. For each instance we perform following steps.</p><ol><li>Check preconditions. If preconditions failed, we proceed to next command. This is similar to Discord.Net&rsquo;s <a href=https://discord.foxbot.me/docs/api/Discord.Commands.CommandService.html target=_blank rel="noopener noreffer">CommandService</a> behaviour.</li><li>Try to execute the command. We provide in context, arg position, <code>IServiceProvider</code>, and <code>_hostCancellationToken</code> as a cancellation token.</li><li>If the execution was successful, we finish.</li><li>Catch <code>OperationCanceledException</code>. We do it separately, as operation canceled is a normal occurence - it&rsquo;ll happen whenever we stop the bot (and therefore set <code>_hostCancellationToken</code> to cancelled) when a command execution is still in progress. You can log a warning before returning, it&rsquo;s okay too.</li><li>Catch any other <code>Exception</code> and log it as error.</li></ol><p>In my code, before the snippet I have shown above, I also do typical command handler stuff - prefix checking and context class creation. I utilize <a href=#commandsoptions rel>CommandsOptions</a> during my prefix checks, so feel free to check the method on <a href=https://github.com/TehGM/EinherjiBot/blob/b395ab4d27476f61e035f8350121a14a2599ac5c/EinherjiBot.Shared/CommandsProcessing/Services/RegexCommandHandler.cs#L100 target=_blank rel="noopener noreffer">GitHub</a> to see how I do it.</p><h2 id=using-commands-system>Using Commands System</h2><p>That&rsquo;s all the core code needed for regex commands. It was a long and perhaps even confusing, I know, but we&rsquo;re almost done! Now we just need to mark all our command classes with <a href=#loadregexcommands-attribute rel>[LoadRegexCommands] Attribute</a>, and add a <a href=#regexcommand-attribute rel>[RegexCommand] Attribute</a> to every method that we want to act as a command. Many real commands can be seen in <a href=https://github.com/TehGM/EinherjiBot/tree/b395ab4d27476f61e035f8350121a14a2599ac5c/EinherjiBot.General target=_blank rel="noopener noreffer">Einherji source code</a>, but here I&rsquo;ll throw one as an example:<div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cs data-lang=cs><span class=na>[LoadRegexCommands]</span>
+<span class=na>[PersistentModule(PreInitialize = true)]</span>
+<span class=k>public</span> <span class=k>class</span> <span class=nc>AdminCommandsHandler</span>
+<span class=p>{</span>
+<span class=na>    [RegexCommand(&#34;^purge(?:\\s+(\\d+))?&#34;)]</span>
+    <span class=k>private</span> <span class=k>async</span> <span class=n>Task</span> <span class=n>CmdPurgeAsync</span><span class=p>(</span><span class=n>SocketCommandContext</span> <span class=n>message</span><span class=p>,</span> <span class=n>Match</span> <span class=n>match</span><span class=p>,</span> <span class=n>CancellationToken</span> <span class=n>cancellationToken</span> <span class=p>=</span> <span class=k>default</span><span class=p>)</span>
+    <span class=p>{</span>
+        <span class=c1>// your command code goes here!
+</span><span class=c1></span>    <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div></p><p>With commands prepared, we just need to create an instances of <a href=#command-module-provider rel>IRegexCommandModuleProvider</a>, <a href=#regex-command-handler rel>RegexCommandHandler</a> and their required services, and call <a href=#initializing-commands rel>InitializeCommandsAsync</a> on the <code>RegexCommandHandler</code>. The exact way you do it depends on how you start your bot.</p><h3 id=net-generic-host--aspnet-core>.NET Generic Host / ASP.NET Core</h3><p>If you use <a href="https://docs.microsoft.com/en-gb/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.1" target=_blank rel="noopener noreffer">.NET Generic Host</a> approach (for example, in ASP.NET Core, but not only), I have a good news for you - this tutorial includes Dependency Injection-enabled classes, and I have a helper class you can add to your project!<div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cs data-lang=cs><span class=k>namespace</span> <span class=nn>Microsoft.Extensions.DependencyInjection</span>
+<span class=p>{</span>
+    <span class=k>public</span> <span class=k>static</span> <span class=k>class</span> <span class=nc>CommandsServiceCollectionExtensions</span>
+    <span class=p>{</span>
+        <span class=k>public</span> <span class=k>static</span> <span class=n>IServiceCollection</span> <span class=n>AddCommands</span><span class=p>(</span><span class=k>this</span> <span class=n>IServiceCollection</span> <span class=n>services</span><span class=p>,</span> <span class=n>Action</span><span class=p>&lt;</span><span class=n>CommandsOptions</span><span class=p>&gt;</span> <span class=n>configure</span> <span class=p>=</span> <span class=k>null</span><span class=p>)</span>
+        <span class=p>{</span>
+            <span class=k>if</span> <span class=p>(</span><span class=n>services</span> <span class=p>==</span> <span class=k>null</span><span class=p>)</span>
+                <span class=k>throw</span> <span class=k>new</span> <span class=n>ArgumentNullException</span><span class=p>(</span><span class=n>nameof</span><span class=p>(</span><span class=n>services</span><span class=p>));</span>
+
+            <span class=k>if</span> <span class=p>(</span><span class=n>configure</span> <span class=p>!=</span> <span class=k>null</span><span class=p>)</span>
+                <span class=n>services</span><span class=p>.</span><span class=n>Configure</span><span class=p>(</span><span class=n>configure</span><span class=p>);</span>
+
+            <span class=n>services</span><span class=p>.</span><span class=n>TryAddSingleton</span><span class=p>&lt;</span><span class=n>IRegexCommandModuleProvider</span><span class=p>,</span> <span class=n>RegexComandModuleProvider</span><span class=p>&gt;();</span>
+            <span class=n>services</span><span class=p>.</span><span class=n>TryAddEnumerable</span><span class=p>(</span><span class=k>new</span> <span class=n>ServiceDescriptor</span><span class=p>[]</span> 
+            <span class=p>{</span>
+                <span class=n>ServiceDescriptor</span><span class=p>.</span><span class=n>Transient</span><span class=p>&lt;</span><span class=n>IHostedService</span><span class=p>,</span> <span class=n>SimpleCommandHandler</span><span class=p>&gt;(),</span>
+                <span class=n>ServiceDescriptor</span><span class=p>.</span><span class=n>Transient</span><span class=p>&lt;</span><span class=n>IHostedService</span><span class=p>,</span> <span class=n>RegexCommandHandler</span><span class=p>&gt;()</span>
+            <span class=p>});</span>
+
+            <span class=k>return</span> <span class=n>services</span><span class=p>;</span>
+        <span class=p>}</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div></p><p>Once you added this class, all you need to do is call <code>services.AddCommands();</code> in your <code>ConfigureServices</code> and you&rsquo;re good to go! This of course assumes you created a hosted discord client and added it to services as well - if you need an example, feel free to check the client created for Einherji on <a href=https://github.com/TehGM/EinherjiBot/tree/b395ab4d27476f61e035f8350121a14a2599ac5c/EinherjiBot.Shared/Client target=_blank rel="noopener noreffer">GitHub</a>.</p><h3 id=other>Other</h3><p>Other methods might need some more work to get this started. You&rsquo;ll need to manually create <a href=#command-module-provider rel>RegexCommandModuleProvider</a> and <a href=#regex-command-handler rel>RegexCommandHandler</a> and <code>IServiceProvider</code>. You might need to remove <code>ILogger</code> and <code>IOptionsMonitor</code> from <a href=#regexcommandhandler-constructor-and-properties rel>RegexCommandHandler constructor</a>, or figure out a way to create them without <a href="https://docs.microsoft.com/en-gb/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.1" target=_blank rel="noopener noreffer">.NET Generic Host</a> - but I&rsquo;ll leave that up to you.</p><h2 id=summary>Summary</h2><p>Whoa, was this a journey! I won&rsquo;t say it will be easy for everyone to add this, but it&rsquo;s not as difficult as it might initially seem. Yes, there was a fair amount of components and reflection needed, and it might not be 100% perfect, but well, it works!</p><p>But most importantly, that was a good learning experience - exactly what I needed before creating my own commands system for <a href=https://github.com/TehGM/Wolfringo target=_blank rel="noopener noreffer">Wolfringo</a>. I hope to make it easier to extend than Discord.Net&rsquo;s system without making it harder to use - but we&rsquo;ll see once I actually do it!</p><p>As I mentioned before - you can find full implementation of the Regex Commands System on <a href=https://github.com/TehGM/EinherjiBot/tree/b395ab4d27476f61e035f8350121a14a2599ac5c/EinherjiBot.Shared/CommandsProcessing target=_blank rel="noopener noreffer">GitHub in EinherjiBot repository</a>.</p></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span>Updated on 17.11.2020</span></div><div class=post-info-license></div></div><div class=post-info-line><div class=post-info-md></div><div class=post-info-share><span><a href=javascript:void(0); title="Share on Twitter" data-sharer=twitter data-url=https://tehgm.net/blog/discordnet-regex-commands/ data-title="Adding Regex Commands to Discord.Net's Command System" data-via=TehOriginalGM data-hashtags=guide,dev><i class="fab fa-twitter fa-fw"></i></a><a href=javascript:void(0); title="Share on Facebook" data-sharer=facebook data-url=https://tehgm.net/blog/discordnet-regex-commands/ data-hashtag=guide><i class="fab fa-facebook-square fa-fw"></i></a><a href=javascript:void(0); title="Share on WhatsApp" data-sharer=whatsapp data-url=https://tehgm.net/blog/discordnet-regex-commands/ data-title="Adding Regex Commands to Discord.Net's Command System" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href=javascript:void(0); title="Share on Tumblr" data-sharer=tumblr data-url=https://tehgm.net/blog/discordnet-regex-commands/ data-title="Adding Regex Commands to Discord.Net's Command System" data-caption="Discord.Net isn't the most extensible library - but let's see if we can extend it to support Regex-based commands!" data-tags=guide,dev><i class="fab fa-tumblr fa-fw"></i></a><a href=javascript:void(0); title="Share on Hacker News" data-sharer=hackernews data-url=https://tehgm.net/blog/discordnet-regex-commands/ data-title="Adding Regex Commands to Discord.Net's Command System"><i class="fab fa-hacker-news fa-fw"></i></a><a href=javascript:void(0); title="Share on Reddit" data-sharer=reddit data-url=https://tehgm.net/blog/discordnet-regex-commands/><i class="fab fa-reddit fa-fw"></i></a><a href=javascript:void(0); title="Share on Myspace" data-sharer=myspace data-url=https://tehgm.net/blog/discordnet-regex-commands/ data-title="Adding Regex Commands to Discord.Net's Command System" data-description="Discord.Net isn't the most extensible library - but let's see if we can extend it to support Regex-based commands!"><i data-svg-src=/lib/simple-icons/icons/myspace.min.svg></i></a></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/blog/tags/guide/>guide</a>,&nbsp;<a href=/blog/tags/dev/>dev</a></section><section><span><a href=javascript:void(0); onclick=window.history.back();>Back</a></span>&nbsp;|&nbsp;<span><a href=/>Home</a></span></section></div><div class=post-nav><a href=/blog/nginx-aspnetcore-grpc-rest/ class=prev rel=prev title="Nginx and ASP.NET Core: Running both, HTTP REST and gRPC services, at once"><i class="fas fa-angle-left fa-fw"></i>Nginx and ASP.NET Core: Running both, HTTP REST and gRPC services, at once</a></div></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2020</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=https://tehgm.net>TehGM</a></span></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title="Back to Top"><i class="fas fa-arrow-up fa-fw"></i></a><a href=# id=view-comments class=fixed-button title="View Comments"><i class="fas fa-comment fa-fw"></i></a></div><script type=text/javascript src=/lib/smooth-scroll/smooth-scroll.min.js></script><script type=text/javascript src=/lib/lazysizes/lazysizes.min.js></script><script type=text/javascript src=/lib/clipboard/clipboard.min.js></script><script type=text/javascript src=/lib/sharer/sharer.min.js></script><script type=text/javascript src=/lib/typeit/typeit.min.js></script><script type=text/javascript>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":60},"comment":{},"data":{"id-1":"TehGM","id-2":"TehGM"},"typeit":{"cursorChar":null,"cursorSpeed":null,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":null,"speed":null}};</script><script type=text/javascript src=/js/theme.min.js></script></body></html>
