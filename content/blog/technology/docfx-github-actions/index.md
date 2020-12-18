@@ -3,15 +3,15 @@ title: "DocFX automation with GitHub Actions"
 slug: docfx-github-actions
 subtitle: ""
 description: "Let me show you how to automate publishing a DocFX documentation page using GitHub Actions"
-date: 2020-11-17T16:19:45+01:00
-lastmod: 2020-11-17T16:19:45+01:00
+date: 2020-12-18T17:44:02+01:00
+lastmod: 2020-12-18T17:44:02+01:00
 draft: false
 list: true
 hiddenFromSearch: false
 type: blog
 
 categories: [ "Technology" ]
-tags: [ "guide", "dev" ]
+tags: [ "guide", "dev", "web" ]
 series: [ ]
 aliases: [ ]
 
