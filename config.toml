@@ -14,7 +14,7 @@ enableRobotsTXT = true
 	dateFormat = "02.01.2006"
 	defaultTheme = "dark"
 	description = "ASP.NET Core programmer by profession. Gamer and developer of libraries and bots by hobby. My personal website - technology, personal thoughts, and more."
-	images = [ "https://cdn.tehgm.net/global/img/tehgm_avatar.png" ]
+	images = [ "/img/tehgm_avatar.png" ]
 
 	[params.app]
 		title = "TehGM"
@@ -49,7 +49,7 @@ enableRobotsTXT = true
 	[params.home.profile]
 		enable = true
 		social = true
-		avatarURL = "https://cdn.tehgm.net/global/img/tehgm_avatar.png"
+		avatarURL = "/img/tehgm_avatar.png"
 		title = "TehGM"
 		subtitle = "ASP.NET Core programmer by profession; <br/> Gamer and developer of libraries and bots by hobby;"
 	[params.home.posts]
@@ -66,8 +66,8 @@ enableRobotsTXT = true
 		Email = "admin@tehgm.net"
 
 	[params.seo]
-		image = "https://cdn.tehgm.net/global/img/tehgm_avatar.png"
-		thumbnailUrl = "https://cdn.tehgm.net/global/img/tehgm_avatar.png"
+		image = "/img/tehgm_avatar.png"
+		thumbnailUrl = "/img/tehgm_avatar.png"
 
 [author]
 	name = "TehGM"
