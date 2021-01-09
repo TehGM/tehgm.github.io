@@ -2,7 +2,7 @@
 title: "Publishing NuGet packages with GitHub Actions"
 slug: nuget-github-actions
 subtitle: ""
-description: "It's time to stop publishing NuGet packages manually"
+description: "It's time to stop publishing NuGet packages manually - learn how to automate NuGet packages publishing with GitHub Actions!"
 date: 2021-01-09T21:54:23+01:00
 lastmod: 2021-01-09T21:54:23+01:00
 draft: false
