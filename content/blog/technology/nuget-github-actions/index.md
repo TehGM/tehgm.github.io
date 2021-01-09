@@ -133,7 +133,7 @@ The first step is to get all of our project code onto virtual machine. This is e
 
 ##### Step 2 - Install .NET Core
 The 2nd step is to install .NET Core. Luckily there is already a predefined action for that called [setup-dotnet](https://github.com/actions/setup-dotnet), so we don't have to run series of commands.  
-In this action we also set nuget source and auth token we created [just before](#creating-auth-token) starting to create our action. This is important, as without it, GitHub Actions will complain. We can override them later on a per-push basis if needed.
+In this action we also set nuget source and auth token we created [just before](#creating-auth-token) starting to create our action. This is important, as without it GitHub Actions will complain. We can override them later on a per-push basis if needed.
 
 {{<highlight yaml "linenostart=13">}}
       - name: Setup .NET Core
@@ -237,10 +237,10 @@ jobs:
 
 #### Selecting Projects to Publish
 Now bear with me for a moment - this action will be good enough when you have only one project in your solution, or your solution has multiple projects but you want to publish them all. If that's the case, you can go to [Saving Action](#saving-action) and enjoy your action now!  
-But in many cases, you don't want to publish all projects, or at the very least you want to control when to publish specific projects, read on!
+But in many cases, you don't want to publish all projects, or at the very least you want to control when to publish specific projects, so read on!
 
 ##### Excluding Projects completely
-You can exclude projects from completely using [`dotnet sln remove`](https://docs.microsoft.com/pl-pl/dotnet/core/tools/dotnet-sln#remove). To do it, add a new step to your Action, preferably just before [Step 3](#step-3---install-dependencies). For example, my libraries tend to have "Examples" folder where example projects reside - I definitely don't need these to be published to NuGet!
+You can exclude projects completely by using [`dotnet sln remove`](https://docs.microsoft.com/pl-pl/dotnet/core/tools/dotnet-sln#remove) command. To do it, add a new step to your Action, preferably just before [Step 3](#step-3---install-dependencies). For example, my libraries tend to have "Examples" folder where example projects reside - I definitely don't need these to be published to NuGet!
 
 {{<highlight yaml "linenostart=20">}}
       - name: Exclude example projects
@@ -248,7 +248,7 @@ You can exclude projects from completely using [`dotnet sln remove`](https://doc
 {{</highlight>}}
 
 ##### Manually selecting projects
-Excluding projects completely is great and will solve most "excluding needs", but we can go a step further - we can individually select the projects we want to publish. To do this, we'll use [Manual triggers inputs](https://github.blog/changelog/2020-07-06-github-actions-manual-triggers-with-workflow_dispatch/) feature of GitHub Actions.
+Excluding projects completely is great and will fulfill most "excluding needs", but we can go a step further - we can individually select the projects we want to publish. To do this, we'll use [Manual triggers inputs](https://github.blog/changelog/2020-07-06-github-actions-manual-triggers-with-workflow_dispatch/) feature of GitHub Actions.
 
 {{<admonition type="danger">}}
 [Manual triggers inputs](https://github.blog/changelog/2020-07-06-github-actions-manual-triggers-with-workflow_dispatch/) only work for actions that are triggered manually (on `workflow_dispatch`). If your action uses different trigger events (for example, on `push` or `pull_request`) this unfortunately is not a feature for you.
@@ -269,7 +269,7 @@ on:
         default: 'Y' # You can remove this line if you don't want to default to "yes"
 {{</highlight>}}
 
-Now, we also need to modify 3 things in [Step 4](#step-4---publish-the-package): we need to change its name, specify the project in `dotnet pack` command, and add an `if` condition that will check whether the step should run.
+Now we also need to modify 3 things in [Step 4](#step-4---publish-the-package): we need to change its name, specify the project in `dotnet pack` command, and add an `if` condition that will check whether the step should run.
 {{<highlight yaml "linenostart=31,hl_lines=1 2 5">}}
       - name: Publish MyLibrary
         if: github.event.inputs.publishMain == 'Y'
@@ -280,7 +280,7 @@ Now, we also need to modify 3 things in [Step 4](#step-4---publish-the-package):
           rm -rf __out
 {{</highlight>}}
 
-Now, just copy this updated step, and paste it right after - of course change name and `project pack` to "*MyLibrary.ExtraStuff*", and name of the input check to `publishExtraStuff`.
+Now just copy this updated step, and paste it right after - of course change name and `project pack` to "*MyLibrary.ExtraStuff*", and name of the input check to `publishExtraStuff`.
 
 ##### Updated Action
 Let's revisit our complete Action. It should look more or less like this:
