@@ -11,7 +11,7 @@ hiddenFromSearch: false
 type: blog
 
 categories: [ "Technology" ]
-tags: [ "guide", "dev", "web" ]
+tags: [ "guide", "dev" ]
 series: [ ]
 aliases: [ ]
 
