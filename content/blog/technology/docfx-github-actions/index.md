@@ -109,7 +109,7 @@ jobs:
 {{</highlight>}}
 
 {{<admonition type=note title="Language-dependent steps">}}
-In this tutorial, I use .NET Core as an example. If you use non-.NET Core language, [Step 2](#step-2---install-net-core) and [Step 4](#step-4---install-depenedncies) might be different.
+In this tutorial, I use .NET Core as an example. If you use non-.NET Core language, [Step 2](#step-2---install-net-core) and [Step 4](#step-4---install-dependencies) might be different.
 {{</admonition>}}
 
 ##### Step 1 - Checkout
