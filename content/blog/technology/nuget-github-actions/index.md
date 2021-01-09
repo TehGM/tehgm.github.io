@@ -92,7 +92,7 @@ You probably want to rename the .yml file as well:
 {{<image src="screenshot-naming-action-1.png">}}
 
 #### Selecting when to run
-Actions can be tryggered by numerous events, but for this action, I'll make it runnable only manually, through **Actions** tab.
+Actions can be triggered by numerous events, but for this action, I'll make it runnable only manually, through **Actions** tab.
 {{<highlight yaml "linenostart=3">}}
 on:
   workflow_dispatch:

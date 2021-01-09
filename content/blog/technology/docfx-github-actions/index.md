@@ -73,7 +73,7 @@ You probably want to rename the .yml file as well:
 {{<image src="screenshot-naming-action-1.png">}}
 
 #### Selecting when to run
-Actions can be tryggered by numerous events. In our example, we'll enable it for pushes and Pull Requests to master branch.
+Actions can be triggered by numerous events. In our example, we'll enable it for pushes and Pull Requests to master branch.
 {{<highlight yaml "linenostart=3">}}
 on:
   push:
