@@ -34,3 +34,23 @@
     margin: 0 auto;
     display: block;
 }
+
+
+/* spoiler */
+.single .content .admonition.spoiler {
+    background-color: rgba(255,255,255,0.005);
+    border-left-color: #5d5d5f;
+
+    i.icon {
+        color: #5d5d5f;
+    }
+
+    .admonition-title {
+        background-color: rgba(159,159,159,0.085);
+        border-bottom-color: #5d5d5f;
+    }
+
+    &.open .admonition-title {
+        background-color: rgba(255,255,255,0.03);
+    }
+}
