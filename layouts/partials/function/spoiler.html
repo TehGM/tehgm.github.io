@@ -1,0 +1,5 @@
+{{- /* Discord-like Spoilers */ -}}
+
+{{- $REin := `\|\|(\S.*?\S)\|\|` -}}
+{{- $REout := `<span class="spoiler hidden"><span class="text">$1</span></span>` -}}
+{{- return replaceRE $REin $REout . -}}

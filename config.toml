@@ -46,6 +46,11 @@ enableRobotsTXT = true
 			Myspace = true
 			Tumblr = true
 
+		[params.page.library]
+			[params.page.library.js]
+				jQuery = "https://code.jquery.com/jquery-3.5.1.min.js"
+				spoiler = "js/spoiler.js"
+
 	[params.home.profile]
 		enable = true
 		social = true
