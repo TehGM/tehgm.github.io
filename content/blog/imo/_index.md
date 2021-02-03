@@ -3,6 +3,8 @@ list: false
 layout: section
 header: "Blog: In My Opinion"
 title: "IMO - TehGM's Blog"
+aliases: 
+- /blog/categories/imo
 ---
 
 <div class="description">
@@ -17,7 +19,7 @@ title: "IMO - TehGM's Blog"
     <div class="details-content">
         <div class="admonition-content">
             <p>These posts might contain minor spoilers. I do my best to not avoid any significant spoilers, but it's not always possible to 'review' something without at least tiny ones.</p>
-            <p>But do not worry! I added support for special spoiler boxes which will be closed by default. Also, I implemented Discord-style spoiler mask - it'll hide spoiler text if you click on it -> ||Spoiler Example||!</p>
+            <p>But do not worry! I implemented Discord-style spoiler mask - it'll hide spoiler text until you click on it -> ||Spoiler Example||!</p>
         </div>
     </div>
 </div>
