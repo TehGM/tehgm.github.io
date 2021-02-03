@@ -5,8 +5,11 @@
 {{- define "content" -}}
     <div class="page archive">
         {{- /* Title */ -}}
-        <h2 class="single-title animated pulse faster">Blog</h2>
+        <h2 class="single-title animated pulse faster">{{- .Params.Header | default "Blog" -}}</h2>
 
+        {{- if .Content -}}
+            {{- dict "Content" .Content "Ruby" .Params.ruby "Fraction" .Params.fraction "Fontawesome" .Params.fontawesome | partial "function/content.html" | safeHTML -}}
+        {{- end -}}
         {{- /* Paginate */ -}}
         {{- if .RegularPagesRecursive -}}
             {{- $pages := where .RegularPagesRecursive "Type" "blog" -}}

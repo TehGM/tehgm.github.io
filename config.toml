@@ -99,6 +99,9 @@ enableRobotsTXT = true
 		codeFences = true
 		lineNos = true
 		noClasses = false
+	[markup.goldmark]
+		[markup.goldmark.renderer]
+			unsafe = true
 
 [sitemap]
 	changefreq = "weekly"
