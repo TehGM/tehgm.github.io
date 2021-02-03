@@ -1,10 +1,9 @@
 ---
 list: false
 layout: section
-header: "In My Opinion"
+header: "Blog: In My Opinion"
 title: "IMO - TehGM's Blog"
 ---
-
 
 <div class="description">
     <h3>Some of my blog posts are review-ish in nature - this is what I call "IMO" posts!</h3>
