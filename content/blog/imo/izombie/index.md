@@ -19,6 +19,7 @@ series: []
 
 featuredImage: "thumb.jpg"
 featuredImagePreview: ""
+images: [ "thumb.jpg" ]
 ---
 <!--more-->
 
