@@ -5,7 +5,7 @@ subtitle: ""
 description: "My opinion on Game of Thrones"
 
 date: 2019-09-22 02:24:07+00:00
-lastmod: 2019-09-22 02:24:07+00:00
+lastmod: 2021-02-04 20:24:07+00:00
 draft: false
 list: true
 hiddenFromSearch: false
@@ -81,16 +81,21 @@ I no longer wonder why it became iconic. And why Leo made a cover of it...
 
 Last thing I want to tackle is the controversy of the last season.
 
-You'll see many people arguing that the last season completely ruined the show. People keep shouting "bad writing" and all that. Now, let me get it straight - I respect other people's opinions, but majority of the people crying didn't say anything constructive at all. Most couldn't back up their claim, and only stick to "it's shit" as an argument.
+You'll see many people arguing that the last season completely ruined the show. People keep shouting "bad writing" and all that. Now, let me get it straight - I respect other people's opinions, but a ton of the people crying didn't say anything constructive at all. Many couldn't back up their claim, and only stick to "it's shit" as an argument.
 
-However I have to agree that the last season definitely feels rushed. It could be longer, and cover more lore etc etc. This one is true, and I can't disagree with it. The story should be expanded, more thought should be put into writing, and all that. The show deserved a more elaborate and thoughtful ending. And some of the evolving plots never came to conclusion.  
-The problem is, I believe most people shout that this season is bad because of the events that happened. Characters snapped, made stupid choices, died, and all that. But honestly, what did you expect from the end of a show? Not to mention that some of those 'plot twists' were really to be expected.
+The second last episode left me in "wow" emotion (although I wasn't really surprised by what happened), and the last one was really slow paced, which IMO fit GoT story very well - soothing after a lot happening in the show. While many people hated it, I believe it was okayish.
 
-I think the last season was okay. Not even closely as good compared to previous ones, but it was okay. Favourite characters dying or doing something stupid doesn't ruin the show - it's a part of the story, and after all the seasons, people should be used to such stuff happening. In fact, audience's favourite characters being immortal is among the lamest things story writers can do.
+However I have to agree that the last season definitely feels rushed. This one is true, and I can't disagree with it. The story should be expanded, more thought should be put into writing, and all that. The show deserved a more elaborate and thoughtful ending. And some of the evolving plots never came to conclusion. Directors forgot about some things, made some illogical story turns etc too.
 
-The second last episode left me in "wow" emotion (although I wasn't really surprised by what happened), and the last one was really slow paced, which IMO fit GoT story very well - soothing after a lot happening in the show. While many people hated it, I believe it was done right, even though not necessarily perfect.
+{{<admonition note "Update: 04.02.2021">}}
+Originally I said that the final season was actually good. Over time I changed my mind a tad, so I updated this section. I still don't completely hate it, but I see why people are mad about it.
+
+Yes, I admit it - I now think that the ending flopped.
+{{</admonition>}}
 
 
 {{<testimonial stars=4 title="My opinion?">}}
-GoT is a fine show. I liked it. I still think it was bit overhyped - it won't beat The Expanse, The 100 and The X Files for me, but I probably could place it 4th. I am not 100% sure about it, but over the time the show indeed did grow on me, and I must say it's actually good - just not as good as people hyped it to be, compared to my other favourites. But yes, this is a purely subjective verdict.
+GoT is a fine show. I liked it. I still think it was bit overhyped. But over the time the show indeed did grow on me, and I must say it's actually very decent - just not as good as people hyped it to be. The ending was really rushed and a drop in the show's quality, but overally the show deserves a decent mark. 
+
+But yes, this is a purely subjective verdict.
 {{</testimonial>}}
