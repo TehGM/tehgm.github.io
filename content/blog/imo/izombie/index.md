@@ -4,8 +4,8 @@ slug: izombie
 subtitle: ""
 description: "iZombie was my first Netflix show, and after a long time I 'finally' finished it. So let's see what's my opinion on it, shall we?"
 
-date: 2021-02-01 02:24:07+01:00
-lastmod: 2021-02-01 02:24:07+01:00
+date: 2021-02-04 20:14:07+01:00
+lastmod: 2021-02-04 20:14:07+01:00
 draft: false
 list: true
 hiddenFromSearch: false
