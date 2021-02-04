@@ -19,7 +19,7 @@ series: []
 
 featuredImage: "thumb.jpg"
 featuredImagePreview: ""
-images: [ "thumb.jpg" ]
+images: [ "/blog/imo/izombie/thumb.jpg" ]
 ---
 <!--more-->
 
