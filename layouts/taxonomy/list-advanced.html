@@ -1,0 +1,25 @@
+{{- define "title" }}
+    {{- .Params.Title | default (T .Section) | default .Section }}
+{{- end -}}
+
+{{- define "content" -}}
+    <div class="page archive">
+        {{- /* Title */ -}}
+        <h2 class="single-title animated pulse faster">
+            {{- $title := .Params.Header | default ( .Title | default "Blog" ) -}}
+            {{- $taxonomy := .Data.Singular -}}
+            {{- if eq $taxonomy "category" -}}
+                <i class="far fa-folder-open fa-fw"></i>&nbsp;{{ $title }}
+            {{- else if eq $taxonomy "tag" -}}
+                <i class="fas fa-tag fa-fw"></i>&nbsp;{{ $title }}
+            {{- else -}}
+                {{- printf "%v - %v" (T $taxonomy | default $taxonomy) $title -}}
+            {{- end -}}
+        </h2>
+
+        {{- if .Content -}}
+            {{- dict "Content" .Content "Ruby" .Params.ruby "Fraction" .Params.fraction "Fontawesome" .Params.fontawesome | partial "function/content.html" | safeHTML -}}
+        {{- end -}}
+        {{- partial "posts-list.html" . -}}
+    </div>
+{{- end -}}

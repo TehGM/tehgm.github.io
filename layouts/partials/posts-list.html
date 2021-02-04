@@ -1,0 +1,20 @@
+{{- /* Paginate */ -}}
+{{- if .RegularPagesRecursive -}}
+    {{- $pages := where .RegularPagesRecursive "Type" "blog" -}}
+    {{- $pages = where $pages "Params.list" "!=" false -}}
+    {{- $pages = $pages.GroupByDate "2006" -}}
+    {{- if $pages -}}
+        {{- with .Site.Params.section.paginate | default .Site.Params.paginate -}}
+            {{- $pages = $.Paginate $pages . -}}
+        {{- else -}}
+            {{- $pages = .Paginate $pages -}}
+        {{- end -}}
+        {{- range $pages.PageGroups -}}
+            <h3 class="group-title">{{ .Key }}</h3>
+            {{- range .Pages -}}
+                {{- .Render "summary" -}}
+            {{- end -}}
+        {{- end -}}
+        {{- partial "paginator.html" . -}}
+    {{- end -}}
+{{- end -}}
