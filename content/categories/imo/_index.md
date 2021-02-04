@@ -1,5 +1,5 @@
 ---
-layout: blog/section
+layout: section
 header: "Blog: In My Opinion"
 title: "IMO"
 url: blog/imo
