@@ -93,6 +93,12 @@ enableRobotsTXT = true
 	url = "/blog/"
 	title = "Blog"
 	weight = 2
+	[[menu.main]]
+	identifier = "imo"
+	name = "IMO"
+	url = "/blog/imo"
+	title = "Blog: IMO"
+	weight = 3
 
 [markup]
 	[markup.highlight]
