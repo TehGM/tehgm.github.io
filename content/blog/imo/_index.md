@@ -3,6 +3,7 @@ list: false
 layout: section
 header: "Blog: In My Opinion"
 title: "IMO - TehGM's Blog"
+url: /blog/imo
 aliases: 
 - /blog/categories/imo
 ---
