@@ -31,10 +31,8 @@
                         {{- if and ($golden) (eq $s $stars) -}}
                             <span class="fas fa-star golden"></span>
                         {{- else if and ($special) (eq $s $stars) -}}
-                        <span class="fa-stack">
-                            <i class="far fa-star fa-stack-2x"></i>
-                            <i class="fas fa-star fa-stack-1x"></i>
-                        </span>
+                            <span class="fas fa-star"></span>
+                            <span class="fas fa-award"></span>
                         {{- else -}}
                             <span class="fas fa-star"></span>
                         {{- end -}}
