@@ -145,8 +145,9 @@ I like this show so much, so this has been my Discord avatar during every Christ
 {{</admonition>}}
 
 {{<testimonial stars=5 title="My opinion?" gold=true >}}
-iZombie is now one of my favourite shows. Right now the only other competitor for that title is The Expanse - which one will win I cannot predict yet, as The Expanse is not yet finished. But iZombie definitely beats even masterpieces like The X Files, Friends or The 100 in my personal ranking.  
-As such, iZombie is the first thing to receive a golden star!
+iZombie is now one of my favourite shows. Right now the only other competitor for that title is The Expanse - which one will win I cannot predict yet, as The Expanse is not yet finished. But iZombie definitely beats even masterpieces like The X Files, Friends or The 100 in my personal ranking.
+
+As such, iZombie is the first thing to receive a golden 5th star!
 
 There's only one reason why I regret watching iZombie - I have no more new iZombie episodes left to watch.
 {{</testimonial>}}
