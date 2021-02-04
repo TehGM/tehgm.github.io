@@ -1,6 +1,7 @@
 {{- $inner := .Inner | .Page.RenderString -}}
 {{- $image := .Get "image" | default .Site.Params.home.profile.avatarURL -}}
 {{- $imageAlt := .Get "imageAlt" | default "Avatar" -}}
+{{- $golden := or (.Get "gold") (.Get "golden") | default false -}}
 {{- $title := "" -}}
 {{- $stars := 0 -}}
 
@@ -26,7 +27,11 @@
                 {{- range $i, $sequence := (seq 5) -}}
                     {{- $s := (add $i 1) -}}
                     {{- if or (lt $s $stars) (eq $s $stars) -}}
-                        <span class="fas fa-star"></span>
+                        {{- if and ($golden) (eq $s $stars) -}}
+                            <span class="fas fa-star golden"></span>
+                        {{- else -}}
+                            <span class="fas fa-star"></span>
+                        {{- end -}}
                     {{- else if lt $s (add $stars 1) -}}
                         <span class="fas fa-star-half-alt"></span>
                     {{- else -}}
