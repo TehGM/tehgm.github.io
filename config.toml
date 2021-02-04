@@ -96,7 +96,7 @@ enableRobotsTXT = true
 	[[menu.main]]
 	identifier = "imo"
 	name = "IMO"
-	url = "/blog/imo"
+	url = "/blog/imo/"
 	title = "Blog: IMO"
 	weight = 3
 
