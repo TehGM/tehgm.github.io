@@ -139,6 +139,11 @@ As I mentioned earlier, when I got Netflix, I started with iZombie cause I thoug
 
 {{<image src="liv-moore-3.gif" alt="Olivia Moore (Rose McIver)" title="Olivia Moore (Rose McIver)" width="90%">}}
 
+{{<admonition type=tip title="Fun Fact" >}}
+I like this show so much, so this has been my Discord avatar during every Christmas since 2018 (thanks, [Yilian](https://yiliansource.dev/)):
+{{<figure src="xmas.png" width="30%" >}}
+{{</admonition>}}
+
 {{<testimonial stars=5 title="My opinion?" gold=true >}}
 iZombie is now one of my favourite shows. Right now the only other competitor for that title is The Expanse - which one will win I cannot predict yet, as The Expanse is not yet finished. But iZombie definitely beats even masterpieces like The X Files, Friends or The 100 in my personal ranking.  
 As such, iZombie is the first thing to receive a golden star!
