@@ -140,7 +140,7 @@ As I mentioned earlier, when I got Netflix, I started with iZombie cause I thoug
 {{<image src="liv-moore-3.gif" alt="Olivia Moore (Rose McIver)" title="Olivia Moore (Rose McIver)" width="90%">}}
 
 {{<admonition type=tip title="Fun Fact" >}}
-I like this show so much, so this has been my Discord avatar during every Christmas since 2018 (thanks, [Yilian](https://yiliansource.dev/)):
+I like this show so much, so this has been my Discord avatar during every Christmas since 2018 (thanks to [Yilian](https://yiliansource.dev/) for editing the image for me!):
 {{<figure src="xmas.png" width="30%" >}}
 {{</admonition>}}
 
