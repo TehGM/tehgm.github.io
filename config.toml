@@ -3,6 +3,7 @@ languageCode = "en-gb"
 title = "TehGM"
 theme = "LoveIt-0.2.10"
 enableRobotsTXT = true
+enableEmoji = true
 
 [permalinks]
 	blog = "/:sections/:slug"
