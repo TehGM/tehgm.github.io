@@ -5,7 +5,7 @@ subtitle: ""
 description: "How to automate compiling SASS and also minifying JS and CSS in your ASP.NET Core project"
 
 date: 2021-03-25 13:10:21+01:00
-lastmod: 2021-03-25 13:10:21+01:00
+lastmod: 2021-03-25 14:02:21+01:00
 draft: false
 list: true
 hiddenFromSearch: false
@@ -148,7 +148,7 @@ Lastly, to ensure that project runs in Development environment when ran through 
 }
 {{</highlight>}}
 
-If you do not have `launchSettings.json` file, you can also change add variables using VS menus. Go to ***Project -> <Project> Properties -> Debug*** and add a new variable there.
+If you do not have `launchSettings.json` file, you can also add variables using VS menus. Go to ***Project -> <Project> Properties -> Debug*** and add a new variable there.
 {{<image src="project-env-variables-1.png" alt="Project Environment Variables" title="Project Environment Variables">}}
 
 ## Excluding from git
@@ -174,7 +174,7 @@ So we now have a full support of SASS and minifying in our project, which is gre
 {{</highlight>}}
 
 Now that's a huge improvement over manually triggering the commands, and would even work with CI/CD pipelines. Unfortunately this approach has one major issue: when you run the project via Visual Studio and none of the non-static files has changed, it will not rebuild the project - so WebCompiler will not run! You could manually trigger full rebuild whenever you change CSS/JS, but that'd be really annoying.  
-The answer to that issue is using a flie watcher. Unfortunately I had issue getting `dotnet watch` to work with webcompiler, and I also didn't want to keep batch files or typing command every time I start working on my project again. For that reason I created a tool called ***fsriev***.
+The answer to that issue is using a file watcher. Unfortunately I had issue getting `dotnet watch` to work with webcompiler, and I also didn't want to keep batch files or typing command every time I start working on my project again. For that reason I created a tool called ***fsriev***.
 
 ##### fsriev
 *fsriev* is a .NET Core-based file watcher for Windows and Linux. It is designed to be fairly customizable, can watch multiple directories at once, run multiple commands on a file change, and supports exclusion filters. It also uses [Microsoft.Extensions.Configuration](https://docs.microsoft.com/en-gb/aspnet/core/fundamentals/configuration/?view=aspnetcore-5.0), which means that it can be configured in a large variety of ways. The recommended way is to use the config file - once it is configured, you can simply add shortcut to `fsriev.exe` to your Desktop or Start menu and run it with a single button click!
