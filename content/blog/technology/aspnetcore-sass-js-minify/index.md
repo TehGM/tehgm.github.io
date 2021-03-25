@@ -79,7 +79,7 @@ You could technically run just one command `webcompiler -r wwwroot -c webcompile
 {{</admonition>}}
 
 Once the commands execute successfully, the project will now have additional files:
-{{<image src="project-structure-1.png" alt="Project Structure (After)" title="Project Structure (After)">}}
+{{<image src="project-structure-2.png" alt="Project Structure (After)" title="Project Structure (After)">}}
 
 ### Using the minified files
 Now we just need to make our website actually use the minified files. To do so, go to the location where your project references your CSS and JS files. This location might vary depending on the project type and any modifications made to it. In case of Razor Pages, the files are referenced in `Pages/Shared/_Layout.cshtml` by default. There you can simply change extensions of references CSS and JS files from `.css` and `.js` to `.min.css` and `.min.js`, respectively.
@@ -223,6 +223,6 @@ If you didn't edit your `.csproj` file to run WebCompiler on build, you also nee
 Once these commands are run, you can proceed with with building the project. You can also add a task to remove any `.scss` file before publishing, but that's completely optional.
 
 ## Summary
-I hope this guide shows the easiest way to automate SASS compilation and CSS and JS minification in your ASP.NET Core project. This is the approach I found to be the easiest (well, besides the need to create **fsriev** - but you won't need to do that!), and I use it myself.
+I hope this guide shows the easiest way to automate SASS compilation and CSS and JS minification in your ASP.NET Core project. This is the approach I found to be the easiest (well, besides the need to create *fsriev* - but you won't need to do that!), and I use it myself.
 
 If I find any improvements or errors, I'll update this guide accordingly. I'll also do so if *fsriev* changes any significantly - and I'll be aware of it, as it's a tool I made myself.
