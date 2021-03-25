@@ -46,7 +46,7 @@ For this reason I did my research and found the approach that works for me, and 
 {{</admonition>}}
 
 ### Project preparation
-First, let's do some preparataion of our project itself - don't worry, there isn't much to change!
+First, let's do some preparation of our project itself - don't worry, there isn't much to change!
 
 This guide assumes that your project has `wwwroot` directory, that contains `css` and `js` directories. It's okay if it doesn't - but you'll need to make the changes as you follow the steps accordingly. Default ASP.NET Core projects might also create `wwwroot/lib` directory, but it's okay - we'll make our process ignore them.
 
