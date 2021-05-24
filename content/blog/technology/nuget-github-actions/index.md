@@ -240,7 +240,7 @@ Now bear with me for a moment - this action will be good enough when you have on
 But in many cases, you don't want to publish all projects, or at the very least you want to control when to publish specific projects, so read on!
 
 ##### Excluding Projects completely
-You can exclude projects completely by using [`dotnet sln remove`](https://docs.microsoft.com/pl-pl/dotnet/core/tools/dotnet-sln#remove) command. To do it, add a new step to your Action, preferably just before [Step 3](#step-3---install-dependencies). For example, my libraries tend to have "Examples" folder where example projects reside - I definitely don't need these to be published to NuGet!
+You can exclude projects completely by using [`dotnet sln remove`](https://docs.microsoft.com/en-gb/dotnet/core/tools/dotnet-sln#remove) command. To do it, add a new step to your Action, preferably just before [Step 3](#step-3---install-dependencies). For example, my libraries tend to have "Examples" folder where example projects reside - I definitely don't need these to be published to NuGet!
 
 {{<highlight yaml "linenostart=20">}}
       - name: Exclude example projects
