@@ -1,3 +1,5 @@
 ---
 list: false
+aliases: 
+- /imo
 ---
