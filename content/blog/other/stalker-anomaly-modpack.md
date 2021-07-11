@@ -35,7 +35,7 @@ And this mod is standalone (and free, but that's a minor - I already have all 3 
 The modpack is just a collection of the mods I use - and I use them, so I know they work. But besides that, there's nothing special about it - it's not exhaustive by any means and all that.  
 The mods in this pack are all compatible with **Stalker Anomaly 1.5.1**.
 
-The modpack comes in two flavours - the main modpack contains sound and texture mods, so it's quite big. For that reason, I also built a *Lite* version of the modpack that simply doesn't include the sound mods.  
+The modpack comes in two flavours - the main modpack contains sound and texture mods, so it's quite big. For that reason, I also built a *Lite* version of the modpack that simply doesn't include the graphics and sound mods.  
 Both packs are WinRar archives with maximum compression possible.
 
 ### Main Pack
