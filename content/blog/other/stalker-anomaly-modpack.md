@@ -31,6 +31,12 @@ But meanwhile, I found out about mod for Stalker Call of Pripyat called **[Anoma
 
 And this mod is standalone (and free, but that's a minor - I already have all 3 Stalker games), and... it allows installing its own mods (well, called "addons" technically)! And a few people expressed interest in it when I started talking about it, so I figured I build up a modpack with the mods I use... so here it comes!
 
+## Stalker Anomaly
+The modpack of course requires Stalker Anomaly itself. This is obvious, yes - this section is just to provide easy download link!  
+Stalker Anomaly can be downloaded from its [ModDB page](https://www.moddb.com/mods/stalker-anomaly) - just scroll the description to "Download and Installation" section.
+
+Download size: *~8.75GB*
+
 ## The Modpack
 The modpack is just a collection of the mods I use - and I use them, so I know they work. But besides that, there's nothing special about it - it's not exhaustive by any means and all that.  
 The mods in this pack are all compatible with **Stalker Anomaly 1.5.1**.
