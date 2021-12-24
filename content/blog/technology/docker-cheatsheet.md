@@ -96,7 +96,7 @@ docker run -d --name=NAME repo/name:tag
 docker run -d --name=NAME --restart=always repo/name:tag
 {{</highlight>}}
 
-### Prune unused Docker Containers
+### Prune unused Docker Images
 {{<highlight bash>}}
 docker image prune -f -a
 {{</highlight>}}
@@ -126,23 +126,25 @@ docker logs NAME
 
 
 ## Dockerfile snippets
-### ASP.NET Core 5.0
+### ASP.NET Core 6.0
 {{<highlight dockerfile>}}
-FROM mcr.microsoft.com/dotnet/aspnet:5.0
+FROM mcr.microsoft.com/dotnet/aspnet:6.0
+WORKDIR /app
 EXPOSE 80
 COPY . .
 ENTRYPOINT ["dotnet", "MyApp.dll"]
 {{</highlight>}}
 
-### ASP.NET Core 5.0 (for armhf)
+### ASP.NET Core 6.0 (for armhf)
 {{<highlight dockerfile>}}
-FROM mcr.microsoft.com/dotnet/aspnet:5.0.10-bullseye-slim-arm32v7
+FROM mcr.microsoft.com/dotnet/aspnet:6.0.1-bullseye-slim-arm32v7
+WORKDIR /app
 EXPOSE 80
 COPY . .
 ENTRYPOINT ["dotnet", "MyApp.dll"]
 {{</highlight>}}
 
-### Keep Container without background Entrypoint running
+### Keep Container running without actual Entrypoint
 {{<highlight dockerfile>}}
 ...
 ENTRYPOINT ["tail", "-f", "/dev/null"]
