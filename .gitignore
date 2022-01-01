@@ -370,3 +370,6 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# Hugo build files
+.hugo_build.lock
