@@ -5,7 +5,7 @@ subtitle: ""
 description: "I compiled a quick modpack with the mods I use for Stalker Anomaly so you can download and experience it the way I do!"
 
 date: 2021-06-13T16:19:45+02:00
-lastmod: 2021-06-13T16:19:45+02:00
+lastmod: 2022-01-01T19:01:36+01:00
 draft: false
 list: true
 hiddenFromSearch: false
@@ -30,6 +30,10 @@ Recently I started playing Stalker Anomaly. I got that itch for Escape from Tark
 But meanwhile, I found out about mod for Stalker Call of Pripyat called **[Anomaly](https://www.moddb.com/mods/stalker-anomaly)**. And it seems to scratch at least some of that itch.
 
 And this mod is standalone (and free, but that's a minor - I already have all 3 Stalker games), and... it allows installing its own mods (well, called "addons" technically)! And a few people expressed interest in it when I started talking about it, so I figured I build up a modpack with the mods I use... so here it comes!
+
+{{< admonition type=tip title="Version 2" open=true >}}
+I recently published a new, enhanced version of my modpack. I am keeping this one up as it's much more lightweight (both in size and performance impact), but if you want to check out my enhancements, check [blog post about Version 2]({{<ref "/blog/other/stalker-anomaly-modpack-v2/index.md">}}).
+{{</ admonition >}}
 
 ## Stalker Anomaly
 The modpack of course requires Stalker Anomaly itself. This is obvious, yes - this section is just to provide easy download link!  
