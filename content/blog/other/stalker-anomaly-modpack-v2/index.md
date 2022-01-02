@@ -5,7 +5,7 @@ subtitle: ""
 description: "Some time ago I posted my modpack for Stalker Anomaly. Recently I got back to it, and made some changes. New guns and now it also looks stunning - come, download and install!"
 
 date: 2022-01-01T19:01:36+01:00
-lastmod: 2022-01-01T19:01:36+01:00
+lastmod: 2022-01-02T12:16:53+01:00
 draft: false
 list: true
 hiddenFromSearch: false
@@ -50,7 +50,7 @@ Another change is that I replaced [KUSH's Better Weapon & Outfit Condition On Dr
 
 What's also worth mentioning that [Anomaly Scopes](https://www.moddb.com/mods/stalker-anomaly/addons/anomaly-scopes-revision-v10) was replaced with [Anomaly Tacticool Scopes](https://www.moddb.com/mods/stalker-anomaly/addons/anomaly-tacticool-scopes). The reason is simple - Anomaly Scopes wasn't really compatible with some additions to this modpack. [Scope Fix for a few Weapons](https://www.moddb.com/mods/stalker-anomaly/addons/scope-fix-for-a-few-weapons-v002c) was removed for the same reason.
 
-Other changes are relatively minor - I included some fixes/addons that I shoul've added to first version of the pack, updated Trader Overhaul version, and added some compatibility patches between mods.
+Other changes are relatively minor - I included some fixes/addons that I should've added to first version of the pack, updated Trader Overhaul version, and added some compatibility patches between mods.
 
 ### No Lite version?
 I decided to not prepare lite version of my 2nd modpack. The most significant changes depend on BaS mod, which on its own is a few gigs.
@@ -61,7 +61,7 @@ You can consider [first version of this modpack]({{<ref "/blog/other/stalker-ano
 
 ### Contents
 {{< admonition type=abstract title="Included Mods" open=true >}}
-- [Broomsticks and Sharpsticks](https://www.moddb.com/mods/stalker-anomaly/addons/boomsticks-and-sharpsticks)
+- [Broomsticks and Sharpsticks](https://www.moddb.com/mods/stalker-anomaly/addons/boomsticks-and-sharpsticks) (+ 28 Dec 2021 Patch)
 - [Agressor Reshade](https://www.moddb.com/mods/stalker-anomaly/addons/agressor-reshade) (with Grass Edit + Ground Edit)
 - [Anomaly Magazines](https://www.moddb.com/mods/stalker-anomaly/addons/anomaly-magazines-for-150-rc)
 - [\[1.5.1\] BaS Anomaly Magazines Patch Update 6 (ENG/RUS)](https://www.moddb.com/mods/stalker-anomaly/addons/151-bas-anomaly-magazines-patch-update-6-engrus) (+ BaS Patch Fix)
@@ -82,10 +82,10 @@ You can consider [first version of this modpack]({{<ref "/blog/other/stalker-ano
 - [Warfare ALife Overhaul](https://www.moddb.com/mods/stalker-anomaly/addons/warfare-alife-overhaul)
 {{</ admonition >}}
 
-Download size: *~7.16GB*  
-Unpacked size: *~14GB*
+Download size: *~7.25GB*  
+Unpacked size: *~14.3GB*
 
-Download link: [click here](https://www.mediafire.com/file/pznyialixon687x/TehGM%2527s_Anomaly_Modpack_v2.rar/file)
+Download link: [click here](https://www.mediafire.com/file/lhbqeczwmj7ft35/TehGM%2527s_Anomaly_Modpack_v2.rar/file)
 
 ## Installation
 These installation steps are for installing the mods with Mod Manager. It is possible to install them without one, but I'll not cover that here - mod manager just makes it better.
@@ -105,6 +105,8 @@ If you don't want to reinstall the game - if you used a mod manager, simply unin
 8. Start a new game.
 9. Open settings again like in point 7. Ensure your settings are applied correctly - otherwise apply them again and save game.
 
+I also recommend playing with crosshair disabled since BaS adds some guns with laser attachment - but the choice is yours, of course!
+
 ### Recommended Mod Order
 For some mods in the pack, the installation order matters - some depend on eachother etc. You are welcome to tweak it, but this is the order I recommend, as it works for me.
 
@@ -118,32 +120,48 @@ For some mods in the pack, the installation order matters - some depend on eacho
 8. `SCO3 P.4 Dead Zone (No Animal Sounds)`
 9. `SCO3 Addon - Anomaly Sounds`
 10. `001. Boomsticks and Sharpsticks 28-Nov-2021`
-11. `Anomaly Magazines 0.4.0.4`
-12. `Magazines Arena Patch 1.01 - 1 mag ready`
-13. `Anomaly Magazines Outfit Quick Info`
-14. `[1.5.1] BaS Anomaly Magazines Patch Update 6 (ENGRUS)`
-15. `World Models for Wuut Mags`
-16. `Patch For BAS Mags Models Patch Fix`
-17. `Loadout Options Overhaul`
-18. `Anomaly Tacticool Scopes`
-19. `Anomaly Tacticool Scopes - BaS adaptation`
-20. `Trader Overhaul (Main Folder)`
-21. `Trader Overhaul B&S Patch`
-22. `Trader Overhaul Neutral Traders`
-23. `Arszi's Mutant Bleeding`
-24. `Warfare Alife Overhaul - Main`
-25. `Anomaly Ground Edit`
-26. `Anomaly Grass Edit`
-27. `Better Weapon & Outfit Condition On Drop - Version 5 (Hard)`
+11. `BaS Patch 28-Dec-21`
+12. `Anomaly Magazines 0.4.0.4`
+13. `Magazines Arena Patch 1.01 - 1 mag ready`
+14. `Anomaly Magazines Outfit Quick Info`
+15. `[1.5.1] BaS Anomaly Magazines Patch Update 6 (ENGRUS)`
+16. `World Models for Wuut Mags`
+17. `Patch For BAS Mags Models Patch Fix`
+18. `Loadout Options Overhaul`
+19. `Anomaly Tacticool Scopes`
+20. `Anomaly Tacticool Scopes - BaS adaptation`
+21. `Trader Overhaul (Main Folder)`
+22. `Trader Overhaul B&S Patch`
+23. `Trader Overhaul Neutral Traders`
+24. `Arszi's Mutant Bleeding`
+25. `Warfare Alife Overhaul - Main`
+26. `Anomaly Ground Edit`
+27. `Anomaly Grass Edit`
+28. `Better Weapon & Outfit Condition On Drop - Version 5 (Hard)`
 
 ## Screenshots
 While mods linked above mostly have their own, better screenshots - here's a few from me.
 
 {{<image src="screenshot-1.png" alt="TehGM's Stalker Anomaly Modpack V2" title="TehGM's Stalker Anomaly Modpack V2">}}
-{{<image src="screenshot-2.png" alt="TehGM's Stalker Anomaly Modpack V2" title="TehGM's Stalker Anomaly Modpack V2">}}
+{{<image src="screenshot-6.png" alt="TehGM's Stalker Anomaly Modpack V2" title="TehGM's Stalker Anomaly Modpack V2">}}
 {{<image src="screenshot-3.png" alt="TehGM's Stalker Anomaly Modpack V2" title="TehGM's Stalker Anomaly Modpack V2">}}
-{{<image src="screenshot-4.png" alt="TehGM's Stalker Anomaly Modpack V2" title="TehGM's Stalker Anomaly Modpack V2">}}
-{{<image src="screenshot-5.png" alt="TehGM's Stalker Anomaly Modpack V2" title="TehGM's Stalker Anomaly Modpack V2">}}
+{{<image src="screenshot-7.png" alt="TehGM's Stalker Anomaly Modpack V2" title="TehGM's Stalker Anomaly Modpack V2">}}
+{{<image src="screenshot-8.png" alt="TehGM's Stalker Anomaly Modpack V2" title="TehGM's Stalker Anomaly Modpack V2">}}
+{{<image src="screenshot-9.png" alt="TehGM's Stalker Anomaly Modpack V2" title="TehGM's Stalker Anomaly Modpack V2">}}
+{{<image src="screenshot-10.png" alt="TehGM's Stalker Anomaly Modpack V2" title="TehGM's Stalker Anomaly Modpack V2">}}
+
+## Updates
+### 02 January 2021
+- `BaS Patch 28-Dec-21` has been added - missed it before.
+- Removed UIDetect shader that was causing Reshade to spit out errors.
+- Added/swapped some screenshots (this blog post only).
+
+This update is save game compatible.
+
+### Future?
+If I spot bugs and find fixes for them, I'll update the pack and make a note.
+
+I also found [MagsRedux](https://github.com/RAX-Anomaly/MagsRedux) mod on GitHub that is meant to replace and improve Anomaly Magazines. However it is not Anomaly Magazines compatible, and Anomaly Magazines is not save game compatible, so I intend on testing it after my current playthrough.
 
 ## Disclaimers
 First and foremost, I am not the author of any of these mods, and I do not take credit for them. I also take no responsibility if the mod caused any damage to your game or computer - I am using these mods as well, so we're both in it.
