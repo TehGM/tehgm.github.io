@@ -5,7 +5,7 @@ subtitle: ""
 description: "Some time ago I posted my modpack for Stalker Anomaly. Recently I got back to it, and made some changes. New guns and now it also looks stunning - come, download and install!"
 
 date: 2022-01-01T19:01:36+01:00
-lastmod: 2022-01-02T12:16:53+01:00
+lastmod: 2022-01-15T09:55:53+01:00
 draft: false
 list: true
 hiddenFromSearch: false
@@ -151,7 +151,7 @@ While mods linked above mostly have their own, better screenshots - here's a few
 {{<image src="screenshot-10.png" alt="TehGM's Stalker Anomaly Modpack V2" title="TehGM's Stalker Anomaly Modpack V2">}}
 
 ## Updates
-### 02 January 2021
+### 02 January 2022
 - `BaS Patch 28-Dec-21` has been added - missed it before.
 - Removed UIDetect shader that was causing Reshade to spit out errors.
 - Added/swapped some screenshots (this blog post only).
