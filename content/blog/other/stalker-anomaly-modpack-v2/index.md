@@ -5,7 +5,7 @@ subtitle: ""
 description: "Some time ago I posted my modpack for Stalker Anomaly. Recently I got back to it, and made some changes. New guns and now it also looks stunning - come, download and install!"
 
 date: 2022-01-01T19:01:36+01:00
-lastmod: 2022-01-15T09:55:53+01:00
+lastmod: 2022-01-15T09:57:53+01:00
 draft: false
 list: true
 hiddenFromSearch: false
@@ -162,6 +162,9 @@ This update is save game compatible.
 If I spot bugs and find fixes for them, I'll update the pack and make a note.
 
 I also found [MagsRedux](https://github.com/RAX-Anomaly/MagsRedux) mod on GitHub that is meant to replace and improve Anomaly Magazines. However it is not Anomaly Magazines compatible, and Anomaly Magazines is not save game compatible, so I intend on testing it after my current playthrough.
+
+## Known Issues
+- The game sometimes crashes when hovering one very specific mag. This mag is for LMGs, and isn't very common, but can cause slight annoyance when looting carelessly. I am on lookout for a patch for this.
 
 ## Disclaimers
 First and foremost, I am not the author of any of these mods, and I do not take credit for them. I also take no responsibility if the mod caused any damage to your game or computer - I am using these mods as well, so we're both in it.
