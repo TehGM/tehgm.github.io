@@ -5,7 +5,7 @@ subtitle: ""
 description: "Some time ago I posted my modpack for Stalker Anomaly. Recently I got back to it, and made some changes. New guns and now it also looks stunning - come, download and install!"
 
 date: 2022-01-01T19:01:36+01:00
-lastmod: 2022-01-15T09:57:53+01:00
+lastmod: 2022-01-19T17:50:53+01:00
 draft: false
 list: true
 hiddenFromSearch: false
