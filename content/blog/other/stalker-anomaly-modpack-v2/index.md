@@ -85,7 +85,8 @@ You can consider [first version of this modpack]({{<ref "/blog/other/stalker-ano
 Download size: *~7.25GB*  
 Unpacked size: *~14.3GB*
 
-Download link: [click here](https://www.mediafire.com/file/lhbqeczwmj7ft35/TehGM%2527s_Anomaly_Modpack_v2.rar/file)
+Download link: [click here](https://www.mediafire.com/file/lhbqeczwmj7ft35/TehGM%2527s_Anomaly_Modpack_v2.rar/file)  
+Mirror: [click here](https://mega.nz/file/hxtDSKqD#FQ5T51RCoArCvARFFhGFkTTw4qVx9nt_e3RLhXC4UIs)
 
 ## Installation
 These installation steps are for installing the mods with Mod Manager. It is possible to install them without one, but I'll not cover that here - mod manager just makes it better.
