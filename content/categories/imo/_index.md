@@ -19,7 +19,7 @@ aliases:
     </div>
     <div class="details-content">
         <div class="admonition-content">
-            <p>These posts might contain minor spoilers. I do my best to not avoid any significant spoilers, but it's not always possible to 'review' something without at least tiny ones.</p>
+            <p>These posts might contain minor spoilers. I do my best to avoid any significant spoilers, but it's not always possible to 'review' something without at least tiny ones.</p>
             <p>But do not worry! I implemented Discord-style spoiler mask - it'll hide spoiler text until you click on it -> ||Spoiler Example||!</p>
         </div>
     </div>
