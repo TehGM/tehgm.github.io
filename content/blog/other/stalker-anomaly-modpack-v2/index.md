@@ -61,7 +61,7 @@ You can consider [first version of this modpack]({{<ref "/blog/other/stalker-ano
 
 ### Contents
 {{< admonition type=abstract title="Included Mods" open=true >}}
-- [Broomsticks and Sharpsticks](https://www.moddb.com/mods/stalker-anomaly/addons/boomsticks-and-sharpsticks) (+ 28 Dec 2021 Patch)
+- [Boomsticks and Sharpsticks](https://www.moddb.com/mods/stalker-anomaly/addons/boomsticks-and-sharpsticks) (+ 28 Dec 2021 Patch)
 - [Agressor Reshade](https://www.moddb.com/mods/stalker-anomaly/addons/agressor-reshade) (with Grass Edit + Ground Edit)
 - [Anomaly Magazines](https://www.moddb.com/mods/stalker-anomaly/addons/anomaly-magazines-for-150-rc)
 - [\[1.5.1\] BaS Anomaly Magazines Patch Update 6 (ENG/RUS)](https://www.moddb.com/mods/stalker-anomaly/addons/151-bas-anomaly-magazines-patch-update-6-engrus) (+ BaS Patch Fix)
