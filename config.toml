@@ -26,6 +26,7 @@ enableEmoji = true
 
 	[params.footer]
 		hugo = false
+		since = 2020
 
 	[params.page]
 		lightgallery = true
