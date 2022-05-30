@@ -30,6 +30,12 @@ Just a little bit less than half year ago, I posted [my modpack for Stalker Anom
 
 It took a while (with some headaches) getting them all to work, but I believe I got my game to be stable, so time to do some sharing again!
 
+{{< admonition type=tip title="Escape from Pripyat" open=true >}}
+I am not sure if I'll keep maintaining this modpack. It should still work as it did, but nowadays I personally simply use **Escape from Pripyat** modpack. Check [this Custerplay's Video](https://www.youtube.com/watch?v=AnA-G3pHY7k) for a decent overview, or go straight to [installation guide video](https://www.youtube.com/watch?v=z3aOYpXV-2U) to get it!
+
+For now I am not removing my modpack - EfP is more polished and complete, but it's also a larger download, and the modpack itself makes the game way more challenging.
+{{</ admonition >}}
+
 ## Stalker Anomaly
 The modpack of course requires Stalker Anomaly itself. This is obvious, yes - this section is just to provide easy download link!  
 Stalker Anomaly can be downloaded from its [ModDB page](https://www.moddb.com/mods/stalker-anomaly) - just scroll the description to "Download and Installation" section.
