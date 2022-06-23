@@ -175,6 +175,7 @@ Random random = new Random(seed);	// can be used as-is with Random class, too
 {{<highlight csharp>}}
 using TehGM.Utilities.Randomization;
 using TehGM.Utilities.Randomization.Services;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
