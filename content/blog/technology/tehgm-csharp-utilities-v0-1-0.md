@@ -105,13 +105,13 @@ Note that explicit cast is required as `DateTime` is much more precise than unix
 using TehGM.Utilities;
 
 DateTime dt = new DateTime(1999, 04, 10, 07, 00, 02, DateTimeKind.Utc);
-Console.WriteLine(dt);						// outputs 04/10/1999 07:00:02 (sorry for .NET Fiddle using American date format :(
+Console.WriteLine(dt);						// outputs 04/10/1999 07:00:02 (sorry for .NET Fiddle using American date format :( )
 UnixTimestamp timestamp = (UnixTimestamp)dt;
 Console.WriteLine(guidBase64);				// outputs 923727602
 
 // works both ways
 timestamp = new UnixTimestamp(923727602);
-Console.WriteLine(timestamp.ToDateTime());	// outputs a750677d-f7ab-43e8-a306-c4f56b5f1bd9
+Console.WriteLine(timestamp.ToDateTime());	// outputs 04/10/1999 07:00:02
 {{</highlight>}}
 
 [TehGM.Utilities.Time.JsonNet](https://www.nuget.org/packages/TehGM.Utilities.Time.JsonNet) expands this functionality by providing `UnixTimestampConverter` type, so you can annotade any of your properties you use with JSON.NET.
