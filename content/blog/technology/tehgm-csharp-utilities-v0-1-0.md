@@ -105,7 +105,7 @@ Note that explicit cast is required as `DateTime` is much more precise than unix
 using TehGM.Utilities;
 
 DateTime dt = new DateTime(1999, 04, 10, 07, 00, 02, DateTimeKind.Utc);
-Console.WriteLine(dt);						// outputs 04/10/1999 07:00:00 (sorry for .NET Fiddle using American date format :(
+Console.WriteLine(dt);						// outputs 04/10/1999 07:00:02 (sorry for .NET Fiddle using American date format :(
 UnixTimestamp timestamp = (UnixTimestamp)dt;
 Console.WriteLine(guidBase64);				// outputs 923727602
 
