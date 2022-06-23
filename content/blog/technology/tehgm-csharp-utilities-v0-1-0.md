@@ -191,19 +191,6 @@ namespace Microsoft.Extensions.DependencyInjection
 }
 {{</highlight>}}
 
-{{<admonition type=tip title="Without Dependency Injection">}}
-Although `IRandomizer` was designed with DI in mind, it can be used without it. Simply create a new `RandomizerService`, and you can benefit from all of its extension methods as well!
-
-{{<highlight csharp>}}
-using TehGM.Utilities.Randomization;
-using TehGM.Utilities.Randomization.Services;
-
-IRandomizer randomizer = new RandomizerService();
-// or with seed
-randomizer = new RandomizerService("my-seed");
-{{</highlight>}}
-{{</admonition>}}
-
 Usage is simple - if you want to use shared `IRandomizer`, simply inject it to your class via constructor. If you want to make use of [RandomSeed](#random-seed), you can inject `IRandomizerProvider` instead, and use its `GetRandomizerWithSeed` method;
 
 {{<highlight csharp>}}
@@ -222,6 +209,19 @@ public MyService(IRandomizer sharedRandomizer, IRandomizerProvider randomizerPro
     this._randomizerWithSeed = randomizerProvider.GetRandomizerWithSeed("my-seed");
 }
 {{</highlight>}}
+
+{{<admonition type=tip title="Without Dependency Injection">}}
+Although `IRandomizer` was designed with DI in mind, it can be used without it. Simply create a new `RandomizerService`, and you can benefit from all of its extension methods as well!
+
+{{<highlight csharp>}}
+using TehGM.Utilities.Randomization;
+using TehGM.Utilities.Randomization.Services;
+
+IRandomizer randomizer = new RandomizerService();
+// or with seed
+randomizer = new RandomizerService("my-seed");
+{{</highlight>}}
+{{</admonition>}}
 
 `IRandomizer` itself also has a few useful methods and extensions for common use cases:
 {{<highlight csharp>}}
