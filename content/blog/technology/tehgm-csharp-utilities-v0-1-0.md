@@ -156,7 +156,7 @@ catch (Exception ex) when (ex.LogAsError(log, "An error has occured")) { }
 
 ### Random Seed
 As you probably know already, `Random` class can use an integer value as seed. Every time `Random` is initialized with same seed, it'll output the same sequence. This can be useful when trying to recreate something from the seed every time.  
-The problem starts when you want to use string as seed in .NET Core. In .NET Core, GetHashCode for string "foobar" will output the same value until you restart the application! This is actually intended, and as Andrew Lock explains in his [blog post](https://andrewlock.net/why-is-string-gethashcode-different-each-time-i-run-my-program-in-net-core/), you actually want that to be the case in many applications.
+The problem starts when you want to use string as seed in .NET Core. In .NET Core, GetHashCode for string "foobar" will output the same value only until you restart the application! This is actually intended, and as Andrew Lock explains in his [blog post](https://andrewlock.net/why-is-string-gethashcode-different-each-time-i-run-my-program-in-net-core/), you actually want that to be the case in many applications.
 
 This however doesn't help if you want to use that string as a seed! That's where `RandomSeed` from [TehGM.Utilities.Randomization](https://www.nuget.org/packages/TehGM.Utilities.Randomization) package comes into play.
 
