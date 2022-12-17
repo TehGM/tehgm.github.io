@@ -87,7 +87,7 @@ https://github.com/TehGM/TehGM.Utilities
 Okay, that's all cool. But what utilities are offered in the first release?
 
 ### Random Strings
-`IRandomizer` has been in added to TehGM's C3 Utilities in version 0.1.0, and it pretty much functions the same - but it now has a new extension: `GetRandomString`.  
+`IRandomizer` has been in added to TehGM's C# Utilities in version 0.1.0, and it pretty much functions the same - but it now has a new extension: `GetRandomString`.  
 This extension will use the `IRandomizer` to generate a random string of your requested length.
 {{<highlight csharp>}}
 string randomString = _randomizer.GetRandomString(10);
