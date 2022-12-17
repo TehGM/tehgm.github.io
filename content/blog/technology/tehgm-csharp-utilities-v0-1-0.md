@@ -5,7 +5,7 @@ subtitle: ""
 description: "Initial version of TehGM's C# Utilities released - but what is that?"
 
 date: 2022-06-24T00:39:06+01:00
-lastmod: 2022-06-24T00:39:06+01:00
+lastmod: 2022-12-17T23:52:04+01:00
 draft: false
 list: true
 hiddenFromSearch: false
@@ -31,6 +31,10 @@ Examples are many. 2 most recent ones I needed are support for Unix Timestamp in
 
 Every new project meant copying code from one of previous projects. I mean - I already implemented it, it works, and fits multiple projects perfectly. Not gonna do the same thing again. Ctrl+C, Ctrl+V we go!  
 I got tired of it. This is tedious, leads to code duplication, etc... I decided to address that. NuGet.org to the rescue!
+
+{{< admonition type=tip title="Version 0.2.0" open=true >}}
+Version 0.2.0 of TehGM's C# Utilities is now out - check all changes [here]({{<ref "/blog/technology/tehgm-csharp-utilities-v0-2-0.md">}}).
+{{</ admonition >}}
 
 ## What is TehGM's C# Utilities
 TehGM's C# Utilities is the unimaginative name I gave to a set of libraries that contain code that I kept reusing over and over again. They're designed for my own purposes, but each of them is quite lightweight and universal, so I imagine virtually anyone could make use of them.
