@@ -173,7 +173,6 @@ Version 0.2.0 adds a JSON.NET support, much like Time utilities had it before.
 
 To begin, install the new JsonNet compatibility package:
 {{<highlight bash>}}
-dotnet add package TehGM.Utilities.Time.JsonNet
 dotnet add package TehGM.Utilities.UniqueIDs.JsonNet
 {{</highlight>}}
 
