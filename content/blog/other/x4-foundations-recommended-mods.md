@@ -361,7 +361,7 @@ Links: [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2
 
 
 ## Summary
-X4 Foundations is a great, if flawed, spacesim game. In my opinion - once you look past some of its shortcomings in some areas, it easily trumps competition like Elite Dangerous, Star Citizen and others - it allows much more gameplay flexibility, and has much much more content than its competitiors.
+X4 Foundations is a great, if flawed, spacesim game. In my opinion - once you look past some of its shortcomings in some areas, it easily trumps competition like Elite Dangerous, Star Citizen and others - it allows much more gameplay flexibility, and has much much more content than its competitors.
 
 Mods for this game help fix/alter some of the shortcomings X4 has. I definitely recommend modding the game as it greatly improves the experience - just be careful not to throw balance out the airlock - unless that's exactly what you want!
 
