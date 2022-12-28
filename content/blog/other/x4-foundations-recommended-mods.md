@@ -74,7 +74,7 @@ Links: [Steam](https://store.steampowered.com/app/1990040/X4_Kingdom_End/) | [GO
 Now with DLCs all explained, let's finally get to the mods. I'll start with the mods I personally consider essential. You're free to decide if you need any of these or not - they're essential to ME.
 
 ### Variety and Rebalance Overhaul
-If there's a mod that I can't imagine playing without, it's VRO. The simplest way to explain what it does is already in the name, but this mod really does... a lot. All ships got rebalanced, all weapons and missiles got replaced, adds some new ships to fulfill role gaps, and increases speed limit as it's created with [NoSuperHighway mod](#nosuperhighway) in mind. It also makes the game harder, as a small fighter now stands a little chance against corvette, yet alone a capital ship - but honestly, that's how it should be in the first place. That said, obvious balance change warning here.
+If there's a mod that I can't imagine playing without, it's VRO. The simplest way to explain what it does is already in the name, but this mod really does... a lot. All ships got rebalanced, all weapons and missiles got replaced, adds some new ships to fulfill role gaps, and increases speed limit as it's created with [NoSuperHighway mod](#nosuperhighway) in mind. It also makes the game harder, as a small fighter now stands little chance against corvette, yet alone a capital ship - but honestly, that's how it should be in the first place. That said, obvious balance change warning here.
 
 This mod has 2 quirks to be aware of: it requires DLCs, and it is not compatible with vanilla saves. You need to start a fresh game if you install it - but it's worth it if you ask me.
 
