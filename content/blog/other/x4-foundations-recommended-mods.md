@@ -50,7 +50,7 @@ Adds entire Sol. That alone is huge. But Terrans and Seagaris Pioneers factions 
 Links: [Steam](https://store.steampowered.com/app/1288460/X4_Cradle_of_Humanity/) | [GOG](https://www.gog.com/en/game/x4_cradle_of_humanity)
 
 ### Split Vendetta
-Expands northern part of the map adding a fair amount of new sectors, primarily occupied by the race of Split. Split are focused on firepower, and gotta say, their ships look quite cool. And of course there are new campaign missions as well.
+Expands ||the northern|| part of the map adding a fair amount of new sectors, primarily occupied by the race of Split. Split are focused on firepower, and gotta say, their ships look quite cool. And of course there are new campaign missions as well.
 
 Links: [Steam](https://store.steampowered.com/app/1133000/X4_Split_Vendetta/) | [GOG](https://www.gog.com/en/game/x4_split_vendetta)
 
