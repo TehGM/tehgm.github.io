@@ -5,7 +5,7 @@ subtitle: ""
 description: "Caching in web is super important for performance, and ASP.NET Core supports it out of the box - however configuring it the documented way can result in a lot of mess. Today we look how to make it cleaner without sacrificing any features."
 
 date: 2023-08-27 16:36:06+01:00
-lastmod: 2023-08-27 18:34:06+01:00
+lastmod: 2023-08-27 16:36:06+01:00
 draft: false
 list: true
 hiddenFromSearch: false
@@ -48,9 +48,10 @@ services.AddControllersWithViews(options =>
 
 Naturally I was super unhappy with that mess.
 
-Today I noticed that there are 2 types of caching config - [Response Caching](https://learn.microsoft.com/en-us/aspnet/core/performance/caching/response?view=aspnetcore-7.0) which tells browsers and proxies how to cache responses, and also [Output Caching](https://learn.microsoft.com/en-us/aspnet/core/performance/caching/output?view=aspnetcore-7.0) which is edge (in your server memory) caching introduced in .NET 7. 
+And I got even more unhappy today when I noticed that there are 2 types of caching config - [Response Caching](https://learn.microsoft.com/en-us/aspnet/core/performance/caching/response?view=aspnetcore-7.0) which tells browsers and proxies how to cache responses, and also [Output Caching](https://learn.microsoft.com/en-us/aspnet/core/performance/caching/output?view=aspnetcore-7.0) which is edge (in your server memory) caching introduced in .NET 7.
 
-.NET 7 caching is meant to solve a variety of issues, so it's probably worth to at least slowly start migrating to new ways. On that spot I decided to *finally* sort this mess in my project.
+That'd mean duplicated configuration with how Microsoft has documented it!  
+*What the hell*. On that spot I decided to *finally* sort this mess in my project.
 
 ## The Solution
 The idea to clean this up is to define something that can represent configuration both cache types, and also is easy to add without polluting Program.cs too much. Thankfully I have handled stuff like that multiple times in past (mainly for MongoDB), so it wasn't hard to get started.
@@ -205,11 +206,6 @@ First, we use our `FindDefinedProfiles()` method to find all of our profiles. Th
 Next, we convert each of our own profiles to **Response Caching** profile. We do this by configuring `MvcOptions` - you could register controllers etc here instead, but I do it that way as my project assumes to have it done already - it still wouldn't hurt, but it's just a design choice.
 
 And lastly, we convert each of our profiles to **Output Caching** policy. The idea is similar as with previous step, however the API differs slightly, so we have to do it a bit differently. Additionally we configure some defaults for caching as well.
-
-{{<admonition type=note >}}
-In practice you only need one of these mechanism configured, however I use both in here for demonstration purposes.  
-This can also be useful during any transition period (like in my case).
-{{</admonition>}}
 
 With this extension defined, we can trim our Program.cs - instead of tens or hundreds of lines, we can now trim it to just 2:
 {{<highlight cs>}}
