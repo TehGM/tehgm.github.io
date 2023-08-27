@@ -5,7 +5,7 @@ subtitle: ""
 description: "Caching in web is super important for performance, and ASP.NET Core supports it out of the box - however configuring it the documented way can result in a lot of mess. Today we look how to make it cleaner without sacrificing any features."
 
 date: 2023-08-27 16:36:06+01:00
-lastmod: 2023-08-27 16:36:06+01:00
+lastmod: 2023-08-27 20:14:06+01:00
 draft: false
 list: true
 hiddenFromSearch: false
