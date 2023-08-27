@@ -73,6 +73,7 @@ public abstract class ResponseCacheProfileBase
     public ResponseCacheLocation Location { get; }
     public string[] VaryByQueryKeys { get; init; }
     public string VaryByHeader { get; init; }
+    public IEnumerable<Type> Policies { get; init; }
 
     public bool IsNoCache => this.Duration < TimeSpan.Zero || this.Location == ResponseCacheLocation.None;
 
@@ -87,7 +88,7 @@ public abstract class ResponseCacheProfileBase
     }
 }
 {{</highlight>}}
-This class is a bit self-explanatory - has a few properties that are used in **Response Cache** configuration, a profile name to distinct it by, and also a helper `IsNoCache` property to determine if this profile disables cache.  
+This class is a bit self-explanatory - has a few properties that are used in **Response Cache** configuration, a profile name to distinct it by, and also a helper `IsNoCache` property to determine if this profile disables cache. There's also collection of `Type` - there we can add any custom `IOutputCachePolicy` policy type we implement.
 
 ### Step 2: The Profiles
 Now let's convert actual profiles into the new approach.
@@ -178,6 +179,9 @@ public static class ResponseCachingServiceCollectionExtensions
                             builder.SetVaryByHeader(profile.VaryByHeader);
                         if (profile.VaryByQueryKeys?.Any() == true)
                             builder.SetVaryByQuery(profile.VaryByQueryKeys);
+
+                        foreach (Type policy in profile.Policies ?? Enumerable.Empty<Type>())
+                            builder.AddPolicy(policy);
                     }
                 });
             }
@@ -226,10 +230,25 @@ Simply put - instead of using `CacheProfileNames.ClansStatistics` in the attribu
 
 And just like that, ASP.NET Core should respect our caching configuration while we (finally) got rid of all the mess in Program.cs.
 
+## Should we keep both attributes?
+You might wonder why I keep both caching mechanisms in parallel and put 2 attributes on the same route. Well, there's 2 reasons: one is "to show an example", but the second reason is much more impactful.
+
+Ff you remember the beginning of this post, I mentioned that **Output Caching** does not tell the client how to handle the cache. Keeping **Response Caching** attributes will add cache-control header for us, while **Output Caching** will actually respond with cached version.
+
+If we want to tell clients not to ask our server over and over again, we keep both attributes.  
+If however we want to support cache invalidation, e-tags etc, we need to remove `[ResponseCache]` attribute.
+
+{{<admonition type=note title="Middleware Pipeline" >}}
+Regardless if we want to keep both attributes or not, we can remove `app.UseResponseCaching()` from Program.cs if we use **Output Caching** - instead we add `app.UseOutputCache()` (after `app.UseRouting()`).
+
+Both middlewares merely handle caching the output and do not affect headers - so we only need one.
+{{</admonition >}}
+
 ## Next Steps
 Now, this solution isn't 100% feature complete. As you might've noticed:
 - The profile needs to have parameter-less constructor since we use `Activator.CreateInstance`;
-- We don't have all features supported by **Output Caching**.
+- We don't have all features supported by **Output Caching**;
+- We need to use 2 attributes to use both mechanisms at once.
 
 The reason for these drawbacks in my current implementation was YAGNI - my current needs are satisfied with this simple implementation.  
 However this implementation is super easy to expand and/or modify as needed - for example adding new optional properties to base class and then handling them within the extension method is enough to support the extended feature set of **Output Caching**. Parameter-less constructor requirement is a bit more tricky, but loading logic can be modified to handle that if needed.
