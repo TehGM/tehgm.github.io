@@ -233,10 +233,11 @@ And just like that, ASP.NET Core should respect our caching configuration while 
 ## Should we keep both attributes?
 You might wonder why I keep both caching mechanisms in parallel and put 2 attributes on the same route. Well, there's 2 reasons: one is "to show an example", but the second reason is much more impactful.
 
-Ff you remember the beginning of this post, I mentioned that **Output Caching** does not tell the client how to handle the cache. Keeping **Response Caching** attributes will add cache-control header for us, while **Output Caching** will actually respond with cached version.
+If you remember the beginning of this post, I mentioned that **Output Caching** does not tell the client how to handle the cache. Keeping **Response Caching** attributes will add cache-control header for us, while **Output Caching** will actually respond with cached version.
 
 If we want to tell clients not to ask our server over and over again, we keep both attributes.  
-If however we want to support cache invalidation, e-tags etc, we need to remove `[ResponseCache]` attribute.
+If however we want to support cache invalidation, e-tags etc, we need to remove `[ResponseCache]` attribute.  
+On the other hand, if we only want client-side cache to be in effect and for server to skip cache, remove `[OutputCache]` attribute.
 
 {{<admonition type=note title="Middleware Pipeline" >}}
 Regardless if we want to keep both attributes or not, we can remove `app.UseResponseCaching()` from Program.cs if we use **Output Caching** - instead we add `app.UseOutputCache()` (after `app.UseRouting()`).
