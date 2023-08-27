@@ -48,9 +48,10 @@ services.AddControllersWithViews(options =>
 
 Naturally I was super unhappy with that mess.
 
-And I got even more unhappy today when I noticed that there are 2 types of caching config - [Response Caching](https://learn.microsoft.com/en-us/aspnet/core/performance/caching/response?view=aspnetcore-7.0) which tells browsers and proxies how to cache responses, and also [Output Caching](https://learn.microsoft.com/en-us/aspnet/core/performance/caching/output?view=aspnetcore-7.0) which is edge (in your server memory) caching introduced in .NET 7.
+And I got even more unhappy today when I noticed that there are 2 types of caching config - [Response Caching](https://learn.microsoft.com/en-us/aspnet/core/performance/caching/response?view=aspnetcore-7.0) which tells browsers and proxies how to cache responses, and also [Output Caching](https://learn.microsoft.com/en-us/aspnet/core/performance/caching/output?view=aspnetcore-7.0) which is edge (in your server memory) caching introduced in .NET 7.  
+**Output Caching** is more feature-rich and doesn't allow browsers to bypass cache, but... it doesn't tell them to cache content either!
 
-That'd mean duplicated configuration with how Microsoft has documented it!  
+That'd mean if we wanted both mechanisms at once, we need duplicated configuration with how Microsoft has documented it!  
 *What the hell*. On that spot I decided to *finally* sort this mess in my project.
 
 ## The Solution
