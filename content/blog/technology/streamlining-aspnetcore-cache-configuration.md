@@ -156,6 +156,7 @@ public static class ResponseCachingServiceCollectionExtensions
                     
                     // NOTE: these 2 lines are commented because we'll remove ResponseCaching middleware
                     // see "Should we keep both attributes?" below
+                    // uncomment these 2 lines if you're going to use ResponseCaching middleware in your project
 
                     //VaryByHeader = profile.VaryByHeader,
                     //VaryByQueryKeys = profile.VaryByQueryKeys
