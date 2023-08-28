@@ -153,8 +153,12 @@ public static class ResponseCachingServiceCollectionExtensions
                     Duration = (int)profile.Duration.TotalSeconds,
                     Location = profile.Location,
                     NoStore = profile.IsNoCache,
-                    VaryByHeader = profile.VaryByHeader,
-                    VaryByQueryKeys = profile.VaryByQueryKeys
+                    
+                    // NOTE: these 2 lines are commented because we'll remove ResponseCaching middleware
+                    // see "Should we keep both attributes?" below
+
+                    //VaryByHeader = profile.VaryByHeader,
+                    //VaryByQueryKeys = profile.VaryByQueryKeys
                 });
             }
         });
