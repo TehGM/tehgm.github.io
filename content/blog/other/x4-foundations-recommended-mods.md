@@ -104,6 +104,13 @@ That's where this mod comes in. It replaces the RNG small and medium ship piracy
 The mod is highly customizable - I personally made it more difficult than default to not make things too easy.  
 The mod also can affect boarding capital ships - however I don't use that part of the mod, as it just makes boarding easier imo.
 
+{{<admonition bug "Bug Reports">}}
+Note: you might hear from people that this mod no longer works, however according to my testing, it's only partially true.
+
+There appear to be issues when you order NPC ships to do piracy - but the Harass option is still there when flying the ship yourself. I actually make extensive use of this feature and have a great success.  
+It's been commented by *iomatix* that he'll work on fixing the mod - but until then, it still works as a **significant** improvement to vanilla piracy.
+{{</admonition>}}
+
 Author: Alberto Rota  
 Links: [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2056100433) | [Nexus](https://www.nexusmods.com/x4foundations/mods/491)
 
