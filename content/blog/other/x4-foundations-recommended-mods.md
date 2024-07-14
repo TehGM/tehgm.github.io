@@ -5,7 +5,7 @@ subtitle: ""
 description: "UPDATED FOR 7.0: In 2022 Steam Winter Sale X4 Foundations is seemingly getting some traction, and I keep seeing newcomers trying the game out and looking for tips. This post will not have tips perhaps, but I will recommend some solid mods for the game!"
 
 date: 2022-12-28T12:10:04+01:00
-lastmod: 2024-07-28T09:20:04+01:00
+lastmod: 2024-07-28T14:03:04+01:00
 draft: false
 list: true
 hiddenFromSearch: false
@@ -261,6 +261,14 @@ Links: [Nexus](https://www.nexusmods.com/x4foundations/mods/136)
 
 ## Smaller Mods
 Finally, mods that are smaller, or I consider less essential. That said, I still use every single of the mods listed, and definitely still recommend them all.
+
+### External App
+This mod, combined with 2 executables you need to launch, starts a local web server and opens a fancy nearly real-time dashboard website. You can use it for tracking log messages, highlight log messages based on key words, track missions, research, money, reputation and more.
+
+If you only have one screen it's probably pointless, but if you play on a multi-monitor setup it's insanely helpful. All information it provides can be accessed in-game, but having it open on second screen without having to go through in-game menus is a huge QoL feature.
+
+Author: Mycu  
+Links: [Nexus](https://www.nexusmods.com/x4foundations/mods/818)
 
 ### Head Hunter
 So, reports are that [Better Kill Credit](#better-kill-credit) mod no longer works. Head Hunter comes in with the rescue - now all kills can reward a small reward. But the reward is small as that's not the meat of what this mod offers.
