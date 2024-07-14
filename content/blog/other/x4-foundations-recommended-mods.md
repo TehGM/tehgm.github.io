@@ -105,7 +105,7 @@ The mod is highly customizable - I personally made it more difficult than defaul
 The mod also can affect boarding capital ships - however I don't use that part of the mod, as it just makes boarding easier imo.
 
 {{<admonition bug "Bug Reports">}}
-Note: you might hear from people that this mod no longer works, however according to my testing, it's only partially true.
+You might hear from people that this mod no longer works, however according to my testing, it's only partially true.
 
 There appear to be issues when you order NPC ships to do piracy - but the Harass option is still there when flying the ship yourself. I actually make extensive use of this feature and have a great success.  
 It's been commented by *iomatix* that he'll work on fixing the mod - but until then, it still works as a **significant** improvement to vanilla piracy.
@@ -178,6 +178,12 @@ Links: [Nexus](https://www.nexusmods.com/x4foundations/mods/56)
 Vanilla patrol commands for your combat ships are quite lacking, to the point they're nearly useless. This mod adds a new set of highly customizable commands that allow patrolling ships actually respond to distress signals set by your and friendly ships. Definitely must-have if you want to own sectors and have some enemies in-game.
 
 The mod was originaly created by Shibdib, but it was later picked up by I.C.E.
+
+{{<admonition bug "Bug Reports">}}
+According to comments on Reddit and Steam, this mod is currently not working in 7.0, but I had no chance to test it myself yet.
+
+I am keeping it in the list for now as I.C.E. said he'll update the mod soon.
+{{</admonition>}}
 
 Author: I.C.E.  
 Links: [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2463118472) | [Nexus](https://www.nexusmods.com/x4foundations/mods/703)
