@@ -149,7 +149,7 @@ Author: MoistDreams & doctorhay53
 Links: [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2013772865) | [Nexus](https://www.nexusmods.com/x4foundations/mods/416)
 
 ### Hazard Rework
-Hazard sectors are in X4... interesting. I understand what they were going for, and I like that idea.  
+Hazard sectors in X4 are... interesting. I understand what they were going for, and I like that idea.  
 The problem is the execution - while it works great when you're flying your own ship, hazard is just a serial killer for AI ships that just fly into hazard zones, get stuck and die. This becomes especially apparent with one certain sector in Boron DLC.
 
 This mod addresses that by making Hazard regions not affect ship hull. Shields still get damaged, but at least stupid AI doesn't die all the time.
@@ -265,7 +265,7 @@ Finally, mods that are smaller, or I consider less essential. That said, I still
 ### Head Hunter
 So, reports are that [Better Kill Credit](#better-kill-credit) mod no longer works. Head Hunter comes in with the rescue - now all kills can reward a small reward. But the reward is small as that's not the meat of what this mod offers.
 
-The mod also adds accumulating bounties on ships. As ships kill other ships, the accumulate bounty over bounty and can easily be wanted for millions of credits over time. Kill them, you get the payout. It can feel a bit OP, but it's all customizable - I set the bounty amount to 50%, and I think it's great.
+The mod also adds accumulating bounties on ships. As ships kill other ships, they accumulate bounty over bounty and can easily be wanted for millions of credits over time. Kill them and you get the payout. It can feel a bit OP, but it's all customizable - I set the bounty amount to 50%, and I think it's great.
 
 Your own ships can also be hunted by other bounty hunters. These bounty hunters actually look for you instead of just spawning. Once they find you, you either fight or comm them to pay off your bounty 10x its value.  
 Unfortunately I ended up disabling this particular feature. It worked great in the beginning - being hunted for my crimes against HOP and others felt immersive and added an interesting layer to the game. The problems started when I started using fleets for wars - it'd be fine if only enemy bounty hunters tried to kill your assets, but why do Argons etc hunt my ships for killing HOP assets?
@@ -276,9 +276,9 @@ Author: Chillmatica
 Links: [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2992233767) | [Nexus](https://www.nexusmods.com/x4foundations/mods/1150)
 
 ### Emergent Missions
-Adds dynamic escort, patrol, search and destroy, and some other mission types, all based on what actually is happening in your area. Patrol missions actually have a fleet commander that assigns targets for you, bounty kill missions are targetting ships that actually annoyed the faction that gives the quest. Reward is based on your performance instead of being static - kill more/do more damage, get higher payment. You can also assign your ships to do some of these for you - you simply have to pick the reward once they're done.
+Adds dynamic escort, patrol, search and destroy, and some other mission types, all based on what actually is happening in your area. Patrol missions actually have a fleet commander that assigns targets for you, bounty kill missions are targetting ships that actually annoyed the faction that gives the quest. Reward is based on your performance instead of being static - kill more/do more damage, get higher payment. You can also assign your ships to do some of these for you - you simply have to pick up the reward once they're done.
 
-My 7.0 playthrough is more mercenary-themed than pirate-themed, and these fit great - I assign a fleet to patrol missions while going to head hunt myself.
+My 7.0 playthrough is more mercenary-themed than pirate-themed, and these fit great - I assign a fleet to patrol missions while going to head hunt myself. You can customize how high the rewards are, and the required reputation to receive the mission offers.
 
 Author: kuertee  
 Links: [Nexus](https://www.nexusmods.com/x4foundations/mods/780)
@@ -391,7 +391,7 @@ Author: Vectorial1024
 Links: [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2092839403) | [Nexus](https://www.nexusmods.com/x4foundations/mods/335)
 
 ### Custom Tabs
-Allows you to get 3 more tabs on map, and pick what goes into them. This makes browsing your large empire much better.
+Allows you to get 3 more tabs on map and pick what goes into them. This makes browsing your large empire much better.
 
 Author: Mycu  
 Links: [Nexus](https://www.nexusmods.com/x4foundations/mods/842)
@@ -446,12 +446,12 @@ Links: [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2
 
 ### Better Kill Credit
 {{<admonition abstract "Obsolete Mod">}}
-**Why Obsolete**: I've heard a number of mentions of this mod not working anymore for a long long time already. It also does conflict with some other mods that affect kill credits.
+**Why Obsolete**: I've heard a number of mentions of this mod not working anymore for a long long time now. It also does conflict with some other mods that affect kill credits.
 
 ***Still use if***: It works for you. I admit I haven't tested if it still works.
 {{</admonition>}}
 
-In vanilla X4, we get a "thank you" payment for killing pirates and other enemies next to NPC stations only if we personally killed them.  
+In vanilla X4 we get a "thank you" payment for killing pirates and other enemies next to NPC stations only if we personally killed them.  
 This mod changes it so that kills made by other ships in player faction also count.
 
 Author: Mysterial  
