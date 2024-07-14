@@ -393,14 +393,12 @@ The ambient sounds in the Player Headquarters can definitely be annoying, especi
 Author: draeath  
 Links: [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2783283086) | [Nexus](https://www.nexusmods.com/x4foundations/mods/858)
 
-### Civilian Fleets
-Allows you to create a fleet of civilian ships, similarly how vanilla game allows creating fleets of combat ships. Great for management when your empire grows and you have a ton of logistics going all over the place.
-
-Author: Vectorial1024  
-Links: [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2092839403) | [Nexus](https://www.nexusmods.com/x4foundations/mods/335)
-
 ### Custom Tabs
 Allows you to get 3 more tabs on map and pick what goes into them. This makes browsing your large empire much better.
+
+{{<admonition bug "Bug Reports">}}
+The mod currently only works for stations - ships will work again soon once the mod is updated by *Mycu*.
+{{</admonition>}}
 
 Author: Mycu  
 Links: [Nexus](https://www.nexusmods.com/x4foundations/mods/842)
@@ -426,7 +424,7 @@ They're still worth considering if for some reason you play older version, they 
 {{<admonition abstract "Obsolete Mod">}}
 **Why Obsolete**: You can now opt in to disable highway generation by starting a custom game. It also bugs out one non-essential quest in Boron storyline, at least in my experience.
 
-***Still use if***: You play older version that has no custom start option, or you hate that this start option doesn't hide the highway "gates".
+***Still use if***: You play older version that has no custom start option, want to remove the highways on the existing save, or you hate that this start option doesn't hide the highway "gates".
 {{</admonition>}}
 
 A mod with admittedly misleading name, as it doesn't remove super highways (they're used to get from sector to sector, similarly to jump gates), but a ring highway around the core sectors of the galaxy.
@@ -491,6 +489,18 @@ Of course, [Tides of Avarice DLC](#tides-of-avarice) is required.
 
 Author: Phipsz  
 Links: [Nexus](https://www.nexusmods.com/x4foundations/mods/893)
+
+### Civilian Fleets
+{{<admonition abstract "Obsolete Mod">}}
+**Why Obsolete**: *Vectorial1024* said this mod is now discontinued as 7.0 update improved mimic behaviour for the ships.
+
+***Still use if***: Playing before 7.0 release.
+{{</admonition>}}
+
+Allows you to create a fleet of civilian ships, similarly how vanilla game allows creating fleets of combat ships. Great for management when your empire grows and you have a ton of logistics going all over the place.
+
+Author: Vectorial1024  
+Links: [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2092839403) | [Nexus](https://www.nexusmods.com/x4foundations/mods/335)
 
 
 ## Summary
