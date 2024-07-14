@@ -173,14 +173,6 @@ Vanilla patrol commands for your combat ships are quite lacking, to the point th
 Author: Shibdib  
 Links: [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2069655173) | [Nexus](https://www.nexusmods.com/x4foundations/mods/453/)
 
-### Tugs Better Flee
-One of small fix-mods from Phipsz. In vanilla X4, tug ships will cling onto the wreck they're hauling even when under attack. This mod fixes that problem.
-
-Of course, [Tides of Avarice DLC](#tides-of-avarice) is required.
-
-Author: Phipsz  
-Links: [Nexus](https://www.nexusmods.com/x4foundations/mods/893)
-
 ### Multi Scrap Processor Station Fix
 A mod fixing issue where salvaging station with multiple processor modules doesn't use more than 1-2 modules at once.
 
@@ -458,6 +450,19 @@ This mod changes it so that kills made by other ships in player faction also cou
 
 Author: Mysterial  
 Links: [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=1700645587)
+
+
+### Tugs Better Flee
+{{<admonition abstract "Obsolete Mod">}}
+**Why Obsolete**: It appears the mod has been unlisted from Nexus. It is unclear to me if it stopped working, is no longer needed, or anything else - but you can't get it by normal means anymore, so keeping it here just as a reference.
+{{</admonition>}}
+
+One of small fix-mods from Phipsz. In vanilla X4, tug ships will cling onto the wreck they're hauling even when under attack. This mod fixes that problem.
+
+Of course, [Tides of Avarice DLC](#tides-of-avarice) is required.
+
+Author: Phipsz  
+Links: [Nexus](https://www.nexusmods.com/x4foundations/mods/893)
 
 
 ### Teuta Salvage Workaround
