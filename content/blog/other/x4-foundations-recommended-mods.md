@@ -2,10 +2,10 @@
 title: "My Recommended Mods for X4: Foundations"
 slug: x4-foundations-recommended-mods
 subtitle: ""
-description: "In 2022 Steam Winter Sale X4 Foundations is seemingly getting some traction, and I keep seeing newcomers trying the game out and looking for tips. This post will not have tips perhaps, but I will recommend some solid mods for the game!"
+description: "UPDATED FOR 7.0: In 2022 Steam Winter Sale X4 Foundations is seemingly getting some traction, and I keep seeing newcomers trying the game out and looking for tips. This post will not have tips perhaps, but I will recommend some solid mods for the game!"
 
 date: 2022-12-28T12:10:04+01:00
-lastmod: 2022-12-28T12:10:04+01:00
+lastmod: 2024-07-28T09:20:04+01:00
 draft: false
 list: true
 hiddenFromSearch: false
@@ -24,6 +24,10 @@ featuredImagePreview: ""
 
 It's Steam Winder Sale 2022, and I suddenly see some people gaining interest in one of my favourite games: [X4 Foundations](https://store.steampowered.com/app/392160/X4_Foundations/). Many want tips and tricks, but some are interested in mods as well... and just happens that this game has a great modding community. Mods *almost* always have been one of pillars of the series, and X4 is no different - some mods are so good and so essential so I personally can't imagine playing this game without them.
 
+{{<admonition success "2024 Update" true>}}
+The post has been updated for Kingdom End and Timelines DLCs - game version 7.10 is in beta 2 as I am updating this post.
+{{</admonition>}}
+
 In this article I will showcase some of the mods I personally use and briefly explain what each mod does. Do note though that this list is definitely not conclusive - there are many other great mods for X4 out there, but I simply don't use them. But the opposite also applies - just because a mod is listed below, no one says you *have* to use it. It's just a recommendation.
 
 {{<admonition warning "Mods and Balance" true>}}
@@ -41,8 +45,8 @@ Well, yes. However if you think about it, DLCs kinda are like mods, and they con
 
 Most mods don't require DLCs usually, but some (like VRO for example) do. Also in this game it's usually worth to start fresh when you install a new DLC just so you don't let a new faction fall behind - and this is even more true when your mods affect balance.
 
-Which DLCs do I recommend? Mmm... all of them!  
-But I'll list them in order from most important to least important (Kingdom End DLC is last purely cause it hasn't released yet, so can't judge yet).
+Which DLCs do I recommend? Before Timelines I used to say all of them. Now... it's a bit more complicated (although I still personally would - and did - just pick all of them up).  
+But I'll list them in order from most important to least important.
 
 ### Cradle of Humanity
 Adds entire Sol. That alone is huge. But Terrans and Seagaris Pioneers factions also have their own unique and *sleek* ships, their own campaigns, and even own economy. And to be honest... they're OP (well, Terrans are). Simplified economy means it's harder to cripple, and their ships are quite strong. But regardless of that, this DLC offers a lot of new stuff, and as such is really worth it - even if like myself, you largely focus on commonwealth economy instead of terran one cause you don't want to make the logistical gameplay shallow for yourself.
@@ -62,13 +66,23 @@ The new sectors look really *really* interesting, especially Windfall which admi
 Links: [Steam](https://store.steampowered.com/app/1701060/X4_Tides_of_Avarice/) | [GOG](https://www.gog.com/en/game/x4_tides_of_avarice)
 
 ### Kingdom End
-Not much can be said about this DLC yet as it has just been announced, except... OMG BORONS ARE BACK, BORONS ARE BACK!
+One thing needs to be known about this DLC - Borons are back! Yes, fans of X series longed for Borons ever since X4 released (or perhaps even since X Rebirth). Egosoft had to think how to add them in carefully (yakno, Borons being aquatic creatures doesn't mix all too well with ability to walk on your ship). But looks like they came up with a solution, and our pacifists are back in the series.
 
-Yes, fans of X series longed for Borons ever since X4 released (or perhaps even since X Rebirth). Egosoft had to think how to add them in carefully (yakno, Borons being aquatic creatures doesn't mix all too well with ability to walk on your ship). But looks like they came up with a solution, and our pacifists are coming back to X4... and from what we've seen on trailers so far, the design of their ships and stations is just brilliant. And it's safe to assume we'll get more sectors and campaign missions.
+They have their own campaign, ships and sectors (obviously), but also own unique station modules that look really brilliant. And they kept the unique soundtrack of Kingdom End sector! <3
 
-And they kept the unique soundtrack of Kingdom End sector! <3
+On the flip side... I had tough time picking where it should go on this list. While there's new sectors, it feels that there are less of them than in Split Vendetta. The campaign is also short, and mechanically it's less rich than Tides of Avarice. For these reasons I decided to, at least for now, list Borons after both of these DLCs. Sorry my aquatic fellas!
 
 Links: [Steam](https://store.steampowered.com/app/1990040/X4_Kingdom_End/) | [GOG](https://www.gog.com/en/game/x4_kingdom_end)
+
+### Timelines
+The latest DLC we got, and probably the most controversial one.
+
+The gist of this DLC is a separate mode which is quick mission based. Some of these missions feel nice, like something new - others are purely tedious. It's also advertised as letting players replay old events from the series, but sadly I have to say, only some of these missions have events that are recognizable or were impactful in previous games. Most feel just... random.
+
+That said, I still kinda recommend playing it. Part of it cause I am a long-time series fan - but also cause completing the missions in Timelines does add stuff to open world. The additions maybe aren't many or that significant, but completing the Timelines does add at least some sectors, ships, and other unique things.  
+But I also understand people who will skip this DLC altogether.
+
+Links: [Steam](https://store.steampowered.com/app/2700340/X4_Timelines/) | [GOG](https://www.gog.com/en/game/x4_timelines)
 
 ## Essential Mods
 Now with DLCs all explained, let's finally get to the mods. I'll start with the mods I personally consider essential. You're free to decide if you need any of these or not - they're essential to ME.
@@ -80,15 +94,6 @@ This mod has 2 quirks to be aware of: it requires DLCs, and it is not compatible
 
 Author: Shuulo  
 Links: [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=1696862840) | [Nexus](https://www.nexusmods.com/x4foundations/mods/305)
-
-### NoSuperHighway
-A mod with admittedly misleading name, as it doesn't remove super highways (they're used to get from sector to sector, similarly to jump gates), but a ring highway around the core sectors of the galaxy.
-
-But why it's so important? IMO the highway doesn't belong in space. It looks out of place, and also makes the playable universe *feel* smaller. With this mod installed, the space in X4 feels more like... ykno, space.  
-And as mentioned [above](#variety-and-rebalance-overhaul), VRO mod is designed with this mod in mind as well.
-
-Author: stupidprocess  
-Links: [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2202908702) | [Nexus](https://www.nexusmods.com/x4foundations/mods/80)
 
 ### Better Piracy
 In X4, pirating small ships is a hit and miss. It's pure RNG, and it's fine if you don't actually care about stealing ships - but if you want to make piracy one of your main focuses, it becomes an annoyance.
@@ -142,6 +147,15 @@ Mules mod adds a new set of highly customizable orders for trade ships. This mak
 
 Author: MoistDreams & doctorhay53  
 Links: [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2013772865) | [Nexus](https://www.nexusmods.com/x4foundations/mods/416)
+
+### Hazard Rework
+Hazard sectors are in X4... interesting. I understand what they were going for, and I like that idea.  
+The problem is the execution - while it works great when you're flying your own ship, hazard is just a serial killer for AI ships that just fly into hazard zones, get stuck and die. This becomes especially apparent with one certain sector in Boron DLC.
+
+This mod addresses that by making Hazard regions not affect ship hull. Shields still get damaged, but at least stupid AI doesn't die all the time.
+
+Author: draeath  
+Links: [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2440309187) | [Nexus](https://www.nexusmods.com/x4foundations/mods/770/)
 
 ### Legacy Music
 Now a mod that doesn't even change gameplay at all, but because of my nostalgia, it's my personal must-have.
@@ -210,15 +224,6 @@ Links: [Nexus](https://www.nexusmods.com/x4foundations/mods/552)
 Mods that still are highly recommended by me, but can change balance - which can make game much harder. It should be okay still, and they're all really worth installing, but caution is definitely advised.  
 Technically [VRO](#variety-and-rebalance-overhaul) probably belongs in this category too, but I decided to put it in essential mods - it's just too good to pass on, even though it does affect balance a fair bit.
 
-### Starbright
-Sectors in X4 vanilla as well as Split Vendetta all have solar cells production set to 100% - no matter how exposed to sunlight the sector is. This was changed in later DLCs - new sectors now have different solar cell production values - some sectors have efficiency above 100%, some below 100%. This is pretty great, as it adds variety to the in-game sectors.
-
-Unfortunately Egosoft decided to keep all pre-CoH sectors to 100%. Their argument is to not break stations built by players in older versions in the game - this is understandable. I don't get why they don't add it for all newly started playthroughs though... ah well.  
-Luckily, modding community came to the rescue - Starbright mod changes solar production efficiency of all pre-CoH sectors in game depending on how the sector looks like etc!
-
-Author: Allectus  
-Links: [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2412422230) | [Nexus](https://www.nexusmods.com/x4foundations/mods/618)
-
 ### Foundation of Conquest and War
 Probably the most customizable mod on this list. Just after installing, it changes pretty much nothing. But then you can customize the amount of combat ships each faction will aim to produce.  
 The configuration is done via XML file, which might be scary for less tech-savvy folks, but don't worry - all you have is to change some values to your liking. Each faction can be altered separately, so you can effectively decide on the balance of power in your playthrough.
@@ -257,6 +262,39 @@ Links: [Nexus](https://www.nexusmods.com/x4foundations/mods/136)
 ## Smaller Mods
 Finally, mods that are smaller, or I consider less essential. That said, I still use every single of the mods listed, and definitely still recommend them all.
 
+### Head Hunter
+So, reports are that [Better Kill Credit](#better-kill-credit) mod no longer works. Head Hunter comes in with the rescue - now all kills can reward a small reward. But the reward is small as that's not the meat of what this mod offers.
+
+The mod also adds accumulating bounties on ships. As ships kill other ships, the accumulate bounty over bounty and can easily be wanted for millions of credits over time. Kill them, you get the payout. It can feel a bit OP, but it's all customizable - I set the bounty amount to 50%, and I think it's great.
+
+Your own ships can also be hunted by other bounty hunters. These bounty hunters actually look for you instead of just spawning. Once they find you, you either fight or comm them to pay off your bounty 10x its value.  
+Unfortunately I ended up disabling this particular feature. It worked great in the beginning - being hunted for my crimes against HOP and others felt immersive and added an interesting layer to the game. The problems started when I started using fleets for wars - it'd be fine if only enemy bounty hunters tried to kill your assets, but why do Argons etc hunt my ships for killing HOP assets?
+
+But overall, this mod is fine addition, and is pretty customizable. Also offers a nice in-map view and bounty search tab, making it quite seamless to use.
+
+Author: Chillmatica  
+Links: [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2992233767) | [Nexus](https://www.nexusmods.com/x4foundations/mods/1150)
+
+### Emergent Missions
+Adds dynamic escort, patrol, search and destroy, and some other mission types, all based on what actually is happening in your area. Patrol missions actually have a fleet commander that assigns targets for you, bounty kill missions are targetting ships that actually annoyed the faction that gives the quest. Reward is based on your performance instead of being static - kill more/do more damage, get higher payment. You can also assign your ships to do some of these for you - you simply have to pick the reward once they're done.
+
+My 7.0 playthrough is more mercenary-themed than pirate-themed, and these fit great - I assign a fleet to patrol missions while going to head hunt myself.
+
+Author: kuertee  
+Links: [Nexus](https://www.nexusmods.com/x4foundations/mods/780)
+
+### Jobs Shuffle
+Allows AI with certain jobs to fly to sectors other than DLC they were added in. This makes DLCs integrate with each other better, and also helps if you add custom sectors to the game.
+
+Author: Treybor  
+Links: [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2970210602)
+
+### More AI Economy Ships
+Adds more civilian jobs to AI ships, allowing S ships perform M/L jobs, M/L ships perform S jobs, and removes some other wierd and artificial restrictions on AI that didn't make much sense (or outright broke them).
+
+Author: Treybor  
+Links: [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2967312547) | [Nexus](https://www.nexusmods.com/x4foundations/mods/1104?tab=description)
+
 ### X4 Fire and Smoke
 Purely graphical mod, making explosions more flashy. Isn't realistic by any means, but looks super cool!
 
@@ -269,13 +307,6 @@ This mod re-adds this functionality to X4.
 
 Author: iforgotmysocks  
 Links: [Nexus](https://www.nexusmods.com/x4foundations/mods/381)
-
-### Better Kill Credit
-In vanilla X4, we get a "thank you" payment for killing pirates and other enemies next to NPC stations only if we personally killed them.  
-This mod changes it so that kills made by other ships in player faction also count.
-
-Author: Mysterial  
-Links: [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=1700645587)
 
 ### Better Scan Colors
 Adjusts the color shading that appears on station modules while in scan mode.
@@ -358,6 +389,73 @@ Allows you to create a fleet of civilian ships, similarly how vanilla game allow
 
 Author: Vectorial1024  
 Links: [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2092839403) | [Nexus](https://www.nexusmods.com/x4foundations/mods/335)
+
+### Custom Tabs
+Allows you to get 3 more tabs on map, and pick what goes into them. This makes browsing your large empire much better.
+
+Author: Mycu  
+Links: [Nexus](https://www.nexusmods.com/x4foundations/mods/842)
+
+### Go Fix Your Face
+A simple mod that adds a right click option for ships to go repair themselves at the closest station/ship they can, instead of having to manually order them to go there.
+
+Author: Chillmatica  
+Links [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2987666925) | [Nexus](https://www.nexusmods.com/x4foundations/mods/1136)
+
+### Roaming Fleet
+Adds a command for fleet commander to go roam to some sector, kill the baddies, loot and come back.
+
+Author: Chillmatica  
+Links: [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2980971677) | [Nexus](https://www.nexusmods.com/x4foundations/mods/1130)
+
+## Obsolete Mods
+There are some mods that I used, think are great, and would still use if... they didn't get either massively outdated or their functionality didn't get added to the game by Egosoft.  
+They're still worth considering if for some reason you play older version, they get updated, or you prefer them as alternative to what Egosoft added.
+
+
+### NoSuperHighway
+{{<admonition abstract "Obsolete Mod">}}
+**Why Obsolete**: You can now opt in to disable highway generation by starting a custom game. It also bugs out one non-essential quest in Boron storyline, at least in my experience.
+
+***Still use if***: You play older version that has no custom start option, or you hate that this start option doesn't hide the highway "gates".
+{{</admonition>}}
+
+A mod with admittedly misleading name, as it doesn't remove super highways (they're used to get from sector to sector, similarly to jump gates), but a ring highway around the core sectors of the galaxy.
+
+But why it's so important? IMO the highway doesn't belong in space. It looks out of place, and also makes the playable universe *feel* smaller. With this mod installed, the space in X4 feels more like... ykno, space.  
+And as mentioned [above](#variety-and-rebalance-overhaul), VRO mod is designed with this mod in mind as well.
+
+Author: stupidprocess  
+Links: [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2202908702) | [Nexus](https://www.nexusmods.com/x4foundations/mods/80)
+
+
+### Starbright
+{{<admonition abstract "Obsolete Mod">}}
+**Why Obsolete**: This functionality has been added to the game in version 7.0.
+
+***Still use if***: You play game versions before 7.0, or want to play with the alternative sunlight amounts set by the mod.
+{{</admonition>}}
+
+Sectors in X4 vanilla as well as Split Vendetta all had solar cells production set to 100% - no matter how exposed to sunlight the sector is. This was changed in later DLCs - new sectors now have different solar cell production values - some sectors have efficiency above 100%, some below 100%. This is pretty great, as it adds variety to the in-game sectors.
+
+Unfortunately Egosoft decided to keep all pre-CoH sectors to 100% until update 7.0. Luckily, modding community came to the rescue - Starbright mod changes solar production efficiency of all pre-CoH sectors in game depending on how the sector looks like etc!
+
+Author: Allectus  
+Links: [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2412422230) | [Nexus](https://www.nexusmods.com/x4foundations/mods/618)
+
+
+### Better Kill Credit
+{{<admonition abstract "Obsolete Mod">}}
+**Why Obsolete**: I've heard a number of mentions of this mod not working anymore for a long long time already. It also does conflict with some other mods that affect kill credits.
+
+***Still use if***: It works for you. I admit I haven't tested if it still works.
+{{</admonition>}}
+
+In vanilla X4, we get a "thank you" payment for killing pirates and other enemies next to NPC stations only if we personally killed them.  
+This mod changes it so that kills made by other ships in player faction also count.
+
+Author: Mysterial  
+Links: [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=1700645587)
 
 
 ## Summary
