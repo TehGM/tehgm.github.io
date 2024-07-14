@@ -28,7 +28,9 @@ It's Steam Winder Sale 2022, and I suddenly see some people gaining interest in 
 The post has been updated for Kingdom End and Timelines DLCs - game version 7.10 is in beta 2 as I am updating this post.
 {{</admonition>}}
 
-In this article I will showcase some of the mods I personally use and briefly explain what each mod does. Do note though that this list is definitely not conclusive - there are many other great mods for X4 out there, but I simply don't use them. But the opposite also applies - just because a mod is listed below, no one says you *have* to use it. It's just a recommendation.
+In this article I will showcase some of the mods I personally use and briefly explain what each mod does. Do note though that this list is definitely not conclusive - there are many other great mods for X4 out there, but I simply don't use them. But the opposite also applies - just because a mod is listed below, no one says you *have* to use it. This list is meant to be just my personal recommendation, from which you can mix and match as you please.
+
+I cannot guarantee any of the mod works for you or that it doesn't conflict with other mods, as I don't maintain any of these. However I do play with them, so I can confirm that they work *for me*.
 
 {{<admonition warning "Mods and Balance" true>}}
 Mods often affect balance, and some can affect it more than others. I'll try to make a note on the more balance affecting mods, but still keep in mind that any mod can cause balance shift.  
