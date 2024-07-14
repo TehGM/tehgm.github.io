@@ -177,8 +177,10 @@ Links: [Nexus](https://www.nexusmods.com/x4foundations/mods/56)
 ### Reaction Force
 Vanilla patrol commands for your combat ships are quite lacking, to the point they're nearly useless. This mod adds a new set of highly customizable commands that allow patrolling ships actually respond to distress signals set by your and friendly ships. Definitely must-have if you want to own sectors and have some enemies in-game.
 
-Author: Shibdib  
-Links: [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2069655173) | [Nexus](https://www.nexusmods.com/x4foundations/mods/453/)
+The mod was originaly created by Shibdib, but it was later picked up by I.C.E.
+
+Author: I.C.E.  
+Links: [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2463118472) | [Nexus](https://www.nexusmods.com/x4foundations/mods/703)
 
 ### Multi Scrap Processor Station Fix
 A mod fixing issue where salvaging station with multiple processor modules doesn't use more than 1-2 modules at once.
