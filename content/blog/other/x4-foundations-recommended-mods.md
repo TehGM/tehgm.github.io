@@ -179,14 +179,12 @@ Vanilla patrol commands for your combat ships are quite lacking, to the point th
 
 The mod was originaly created by Shibdib, but it was later picked up by I.C.E.
 
-{{<admonition bug "Bug Reports">}}
-According to comments on Reddit and Steam, this mod is currently not working in 7.0, but I had no chance to test it myself yet.
-
-I am keeping it in the list for now as I.C.E. said he'll update the mod soon.
+{{<admonition info "Use Nexus Version">}}
+Steam Workshop uses a bugged version of this mod. It's possible to fix it - in fact I did that initially to get it work properly in my save - but it's easier to just use Nexus version.
 {{</admonition>}}
 
 Author: I.C.E.  
-Links: [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2463118472) | [Nexus](https://www.nexusmods.com/x4foundations/mods/703)
+Links: ~~[Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2463118472) |~~ [Nexus](https://www.nexusmods.com/x4foundations/mods/703)
 
 ### Multi Scrap Processor Station Fix
 A mod fixing issue where salvaging station with multiple processor modules doesn't use more than 1-2 modules at once.
@@ -395,10 +393,6 @@ Links: [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2
 
 ### Custom Tabs
 Allows you to get 3 more tabs on map and pick what goes into them. This makes browsing your large empire much better.
-
-{{<admonition bug "Bug Reports">}}
-The mod currently only works for stations - ships will work again soon once the mod is updated by *Mycu*.
-{{</admonition>}}
 
 Author: Mycu  
 Links: [Nexus](https://www.nexusmods.com/x4foundations/mods/842)
